@@ -1,0 +1,10 @@
+D5G Weather framework
+
+Functionality will focus on stream gauge data available from the following
+agencies:
+
+United States Geological Survey
+United States Army Corps of Engineers
+
+Specifically, initial functionality will focus on stream gauges, their current
+levels, precipitation amounts, flood stage levels, and discharge levels.
