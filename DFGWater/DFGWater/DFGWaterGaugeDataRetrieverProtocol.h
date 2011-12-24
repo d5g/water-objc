@@ -1,5 +1,5 @@
 //
-//  DFGWater.h
+//  DFGWaterGaugeDataRetrieverProtocol.h
 //  DFGWater
 //
 //  Created by Brian DeShong on 12/23/11.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DFGWater : NSObject
+@protocol DFGWaterGaugeDataRetrieverProtocol <NSObject>
 
 @end

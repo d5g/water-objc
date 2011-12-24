@@ -15,6 +15,9 @@
 		6704B83A14A57569002C0A30 /* libDFGWater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82214A57569002C0A30 /* libDFGWater.a */; };
 		6704B84014A57569002C0A30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6704B83E14A57569002C0A30 /* InfoPlist.strings */; };
 		6704B84314A57569002C0A30 /* DFGWaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B84214A57569002C0A30 /* DFGWaterTests.m */; };
+		6704B84E14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */; };
+		6704B85114A57B19002C0A30 /* DFGWaterRetrievalParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B84F14A57B19002C0A30 /* DFGWaterRetrievalParameters.h */; };
+		6704B85214A57B19002C0A30 /* DFGWaterRetrievalParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B85014A57B19002C0A30 /* DFGWaterRetrievalParameters.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		6704B83F14A57569002C0A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6704B84114A57569002C0A30 /* DFGWaterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterTests.h; sourceTree = "<group>"; };
 		6704B84214A57569002C0A30 /* DFGWaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGWaterTests.m; sourceTree = "<group>"; };
+		6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDataRetrieverProtocol.h; sourceTree = "<group>"; };
+		6704B84F14A57B19002C0A30 /* DFGWaterRetrievalParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterRetrievalParameters.h; sourceTree = "<group>"; };
+		6704B85014A57B19002C0A30 /* DFGWaterRetrievalParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterRetrievalParameters.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 			children = (
 				6704B82A14A57569002C0A30 /* DFGWater.h */,
 				6704B82B14A57569002C0A30 /* DFGWater.m */,
+				6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */,
+				6704B84F14A57B19002C0A30 /* DFGWaterRetrievalParameters.h */,
+				6704B85014A57B19002C0A30 /* DFGWaterRetrievalParameters.m */,
 				6704B82814A57569002C0A30 /* Supporting Files */,
 			);
 			path = DFGWater;
@@ -138,6 +147,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6704B84E14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h in Headers */,
+				6704B85114A57B19002C0A30 /* DFGWaterRetrievalParameters.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6704B82C14A57569002C0A30 /* DFGWater.m in Sources */,
+				6704B85214A57B19002C0A30 /* DFGWaterRetrievalParameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
