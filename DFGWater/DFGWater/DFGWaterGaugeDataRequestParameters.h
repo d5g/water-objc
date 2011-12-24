@@ -40,26 +40,26 @@
              delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // ID of gauge; agency-agnostic
-@property (readonly, strong) NSString* gaugeID;
+@property (nonatomic, readonly, strong) NSString* gaugeID;
 
 //
 // Date-based criteria
 //
 
-@property (readonly, strong) NSDate* sinceDate;
-@property (readonly, strong) NSDate* endDate;
-@property (readonly) NSUInteger numDaysAgo;
+@property (nonatomic, readonly, strong) NSDate* sinceDate;
+@property (nonatomic, readonly, strong) NSDate* endDate;
+@property (nonatomic, readonly) NSUInteger numDaysAgo;
 
 // Retrieve gauge height?
-@property (readonly) BOOL height;
+@property (nonatomic, readonly) BOOL height;
 
 // Retrieve precipitation?
-@property (readonly) BOOL precipitation;
+@property (nonatomic, readonly) BOOL precipitation;
 
 // Retrieve discharge?
-@property (readonly) BOOL discharge;
+@property (nonatomic, readonly) BOOL discharge;
 
 // Delegate to receive any callbacks
-@property (readonly, weak) id<DFGWaterGaugeDataRetrieverDelegateProtocol> delegate;
+@property (nonatomic, readonly, weak) id<DFGWaterGaugeDataRetrieverDelegateProtocol> delegate;
 
 @end

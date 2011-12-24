@@ -15,7 +15,7 @@
 
 - (BOOL)hasDate;
 
-@property (readonly, copy) NSString* value;
-@property (readonly, strong) NSDate* date;
+@property (nonatomic, readonly, copy) NSString* value;
+@property (nonatomic, readonly, strong) NSDate* date;
 
 @end
