@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6704B82614A57569002C0A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82514A57569002C0A30 /* Foundation.framework */; };
+		6704B82C14A57569002C0A30 /* DFGWater.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B82B14A57569002C0A30 /* DFGWater.m */; };
+		6704B83414A57569002C0A30 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B83314A57569002C0A30 /* SenTestingKit.framework */; };
+		6704B83614A57569002C0A30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B83514A57569002C0A30 /* UIKit.framework */; };
+		6704B83714A57569002C0A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82514A57569002C0A30 /* Foundation.framework */; };
+		6704B83A14A57569002C0A30 /* libDFGWater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82214A57569002C0A30 /* libDFGWater.a */; };
+		6704B84014A57569002C0A30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6704B83E14A57569002C0A30 /* InfoPlist.strings */; };
+		6704B84314A57569002C0A30 /* DFGWaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B84214A57569002C0A30 /* DFGWaterTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6704B83814A57569002C0A30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6704B81914A57569002C0A30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6704B82114A57569002C0A30;
+			remoteInfo = DFGWater;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6704B82214A57569002C0A30 /* libDFGWater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDFGWater.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6704B82514A57569002C0A30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6704B82914A57569002C0A30 /* DFGWater-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFGWater-Prefix.pch"; sourceTree = "<group>"; };
+		6704B82A14A57569002C0A30 /* DFGWater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWater.h; sourceTree = "<group>"; };
+		6704B82B14A57569002C0A30 /* DFGWater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGWater.m; sourceTree = "<group>"; };
+		6704B83214A57569002C0A30 /* DFGWaterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DFGWaterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6704B83314A57569002C0A30 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6704B83514A57569002C0A30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		6704B83D14A57569002C0A30 /* DFGWaterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DFGWaterTests-Info.plist"; sourceTree = "<group>"; };
+		6704B83F14A57569002C0A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6704B84114A57569002C0A30 /* DFGWaterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterTests.h; sourceTree = "<group>"; };
+		6704B84214A57569002C0A30 /* DFGWaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGWaterTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6704B81F14A57569002C0A30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6704B82614A57569002C0A30 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6704B82E14A57569002C0A30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6704B83414A57569002C0A30 /* SenTestingKit.framework in Frameworks */,
+				6704B83614A57569002C0A30 /* UIKit.framework in Frameworks */,
+				6704B83714A57569002C0A30 /* Foundation.framework in Frameworks */,
+				6704B83A14A57569002C0A30 /* libDFGWater.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6704B81714A57569002C0A30 = {
+			isa = PBXGroup;
+			children = (
+				6704B82714A57569002C0A30 /* DFGWater */,
+				6704B83B14A57569002C0A30 /* DFGWaterTests */,
+				6704B82414A57569002C0A30 /* Frameworks */,
+				6704B82314A57569002C0A30 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6704B82314A57569002C0A30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6704B82214A57569002C0A30 /* libDFGWater.a */,
+				6704B83214A57569002C0A30 /* DFGWaterTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6704B82414A57569002C0A30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6704B82514A57569002C0A30 /* Foundation.framework */,
+				6704B83314A57569002C0A30 /* SenTestingKit.framework */,
+				6704B83514A57569002C0A30 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6704B82714A57569002C0A30 /* DFGWater */ = {
+			isa = PBXGroup;
+			children = (
+				6704B82A14A57569002C0A30 /* DFGWater.h */,
+				6704B82B14A57569002C0A30 /* DFGWater.m */,
+				6704B82814A57569002C0A30 /* Supporting Files */,
+			);
+			path = DFGWater;
+			sourceTree = "<group>";
+		};
+		6704B82814A57569002C0A30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6704B82914A57569002C0A30 /* DFGWater-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6704B83B14A57569002C0A30 /* DFGWaterTests */ = {
+			isa = PBXGroup;
+			children = (
+				6704B84114A57569002C0A30 /* DFGWaterTests.h */,
+				6704B84214A57569002C0A30 /* DFGWaterTests.m */,
+				6704B83C14A57569002C0A30 /* Supporting Files */,
+			);
+			path = DFGWaterTests;
+			sourceTree = "<group>";
+		};
+		6704B83C14A57569002C0A30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6704B83D14A57569002C0A30 /* DFGWaterTests-Info.plist */,
+				6704B83E14A57569002C0A30 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6704B82014A57569002C0A30 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6704B82114A57569002C0A30 /* DFGWater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6704B84614A57569002C0A30 /* Build configuration list for PBXNativeTarget "DFGWater" */;
+			buildPhases = (
+				6704B81E14A57569002C0A30 /* Sources */,
+				6704B81F14A57569002C0A30 /* Frameworks */,
+				6704B82014A57569002C0A30 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DFGWater;
+			productName = DFGWater;
+			productReference = 6704B82214A57569002C0A30 /* libDFGWater.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6704B83114A57569002C0A30 /* DFGWaterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6704B84914A57569002C0A30 /* Build configuration list for PBXNativeTarget "DFGWaterTests" */;
+			buildPhases = (
+				6704B82D14A57569002C0A30 /* Sources */,
+				6704B82E14A57569002C0A30 /* Frameworks */,
+				6704B82F14A57569002C0A30 /* Resources */,
+				6704B83014A57569002C0A30 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6704B83914A57569002C0A30 /* PBXTargetDependency */,
+			);
+			name = DFGWaterTests;
+			productName = DFGWaterTests;
+			productReference = 6704B83214A57569002C0A30 /* DFGWaterTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6704B81914A57569002C0A30 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Half Off Depot";
+			};
+			buildConfigurationList = 6704B81C14A57569002C0A30 /* Build configuration list for PBXProject "DFGWater" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6704B81714A57569002C0A30;
+			productRefGroup = 6704B82314A57569002C0A30 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6704B82114A57569002C0A30 /* DFGWater */,
+				6704B83114A57569002C0A30 /* DFGWaterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6704B82F14A57569002C0A30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6704B84014A57569002C0A30 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6704B83014A57569002C0A30 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6704B81E14A57569002C0A30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6704B82C14A57569002C0A30 /* DFGWater.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6704B82D14A57569002C0A30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6704B84314A57569002C0A30 /* DFGWaterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6704B83914A57569002C0A30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6704B82114A57569002C0A30 /* DFGWater */;
+			targetProxy = 6704B83814A57569002C0A30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6704B83E14A57569002C0A30 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6704B83F14A57569002C0A30 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6704B84414A57569002C0A30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6704B84514A57569002C0A30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6704B84714A57569002C0A30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DFGWater.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6704B84814A57569002C0A30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DFGWater.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6704B84A14A57569002C0A30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
+				INFOPLIST_FILE = "DFGWaterTests/DFGWaterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6704B84B14A57569002C0A30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
+				INFOPLIST_FILE = "DFGWaterTests/DFGWaterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6704B81C14A57569002C0A30 /* Build configuration list for PBXProject "DFGWater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6704B84414A57569002C0A30 /* Debug */,
+				6704B84514A57569002C0A30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6704B84614A57569002C0A30 /* Build configuration list for PBXNativeTarget "DFGWater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6704B84714A57569002C0A30 /* Debug */,
+				6704B84814A57569002C0A30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6704B84914A57569002C0A30 /* Build configuration list for PBXNativeTarget "DFGWaterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6704B84A14A57569002C0A30 /* Debug */,
+				6704B84B14A57569002C0A30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6704B81914A57569002C0A30 /* Project object */;
+}
