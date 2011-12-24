@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DFGWaterGaugeDataRetrieverDelegateProtocol.h"
 
 @interface DFGWaterGaugeDataRequestParameters : NSObject
 
 // Get the most recent reading for all parameters.
-- (id)initWithGaugeIDForAllMostRecentReadings:(NSString*)theGaugeID;
+- (id)initWithGaugeIDForAllMostRecentReadings:(NSString*)theGaugeID
+                                     delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // Get the most recent reading for specific parameters.
 - (id)initWithGaugeIDForMostRecentReading:(NSString*)theGaugeID
                                    height:(BOOL)theHeight
                             precipitation:(BOOL)thePrecipitation
-                                discharge:(BOOL)theDischarge;
+                                discharge:(BOOL)theDischarge
+                                 delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // Get readings in date range for specific parameters.
 - (id)initWithGaugeID:(NSString*)theGaugeID
@@ -25,14 +28,16 @@
               endDate:(NSDate*)theEndDate
                height:(BOOL)theHeight
         precipitation:(BOOL)thePrecipitation
-            discharge:(BOOL)theDischarge;
+            discharge:(BOOL)theDischarge
+             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // Get reading from n number of days ago for specific parameters.
 - (id)initWithGaugeID:(NSString*)theGaugeID
            numDaysAgo:(NSUInteger)theNumDaysAgo
                height:(BOOL)theHeight
         precipitation:(BOOL)thePrecipitation
-            discharge:(BOOL)theDischarge;
+            discharge:(BOOL)theDischarge
+             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // ID of gauge; agency-agnostic
 @property (readonly, strong) NSString* gaugeID;
@@ -55,6 +60,6 @@
 @property (readonly) BOOL discharge;
 
 // Delegate to receive any callbacks
-@property (readonly, weak) id delegate;
+@property (readonly, weak) id<DFGWaterGaugeDataRetrieverDelegateProtocol> delegate;
 
 @end

@@ -21,11 +21,13 @@
 
 // Get the most recent reading for all parameters.
 - (id)initWithGaugeIDForAllMostRecentReadings:(NSString*)theGaugeID
+                                     delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     return [self initWithGaugeIDForMostRecentReading:theGaugeID
                                               height:YES
                                        precipitation:YES
-                                           discharge:YES];
+                                           discharge:YES
+                                            delegate:theDelegate];
 }
 
 // Get the most recent reading for specific parameters.
@@ -33,6 +35,7 @@
                                    height:(BOOL)theHeight
                             precipitation:(BOOL)thePrecipitation
                                 discharge:(BOOL)theDischarge
+                                 delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
@@ -41,6 +44,7 @@
         height = theHeight;
         precipitation = thePrecipitation;
         discharge = theDischarge;
+        delegate = theDelegate;
     }
     
     return self;
@@ -53,6 +57,7 @@
                height:(BOOL)theHeight
         precipitation:(BOOL)thePrecipitation
             discharge:(BOOL)theDischarge
+             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
@@ -63,6 +68,7 @@
         height = theHeight;
         precipitation = thePrecipitation;
         discharge = theDischarge;
+        delegate = theDelegate;
     }
     
     return self;
@@ -74,6 +80,7 @@
                height:(BOOL)theHeight
         precipitation:(BOOL)thePrecipitation
             discharge:(BOOL)theDischarge
+             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
@@ -83,6 +90,7 @@
         height = theHeight;
         precipitation = thePrecipitation;
         discharge = theDischarge;
+        delegate = theDelegate;
     }
     
     return self;
