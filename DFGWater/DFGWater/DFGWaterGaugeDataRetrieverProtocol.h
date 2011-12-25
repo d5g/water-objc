@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+enum {
+    DFGWaterGaugeDataRetrieverErrorInadequateParameters = 1
+};
+
+@class DFGWaterGaugeDataRequestParameters;
+
 @protocol DFGWaterGaugeDataRetrieverProtocol <NSObject>
+
+// Retrieve data with the given parameters.
+- (BOOL)retrieveData:(DFGWaterGaugeDataRequestParameters*)params
+               error:(NSError**)error;
 
 @end
