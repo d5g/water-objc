@@ -38,6 +38,8 @@
     BOOL retrieving = [retriever retrieveData:params error:&error];
     
     STAssertTrue(retrieving, @"expected retrieval to have started");
+    
+    sleep(5);
 }
 
 // Will retrieve data for parameters.

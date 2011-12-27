@@ -60,10 +60,10 @@
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:operationQueue
                            completionHandler:^(NSURLResponse* response, NSData* data, NSError* error) {
-                               NSLog(@"done for %@; got data: %@", params, data);
+                               NSString* dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               NSLog(@"done for %@; got data: %@", params, dataString);
                            }];
     
-    sleep(10);
     return YES;
 }
 
