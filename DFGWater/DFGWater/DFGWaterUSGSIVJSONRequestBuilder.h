@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "DFGWaterServiceRequestBuilderProtocol.h"
 
-@interface DFGWaterUSGSIVRequestBuilder : NSObject <DFGWaterServiceRequestBuilderProtocol>
+@interface DFGWaterUSGSIVJSONRequestBuilder : NSObject <DFGWaterServiceRequestBuilderProtocol>
 
 @end

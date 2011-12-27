@@ -14,7 +14,6 @@
 		6704B83714A57569002C0A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82514A57569002C0A30 /* Foundation.framework */; };
 		6704B83A14A57569002C0A30 /* libDFGWater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704B82214A57569002C0A30 /* libDFGWater.a */; };
 		6704B84014A57569002C0A30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6704B83E14A57569002C0A30 /* InfoPlist.strings */; };
-		6704B84314A57569002C0A30 /* DFGWaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B84214A57569002C0A30 /* DFGWaterTests.m */; };
 		6704B84E14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */; };
 		6704B85114A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */; };
 		6704B85214A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */; };
@@ -27,8 +26,13 @@
 		67EAC80E14A955580040101E /* DFGWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC80C14A955580040101E /* DFGWaterGauge.h */; };
 		67EAC80F14A955580040101E /* DFGWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC80D14A955580040101E /* DFGWaterGauge.m */; };
 		67EAC81214A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81114A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h */; };
-		67EAC81514A95D440040101E /* DFGWaterUSGSIVRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81314A95D440040101E /* DFGWaterUSGSIVRequestBuilder.h */; };
-		67EAC81614A95D440040101E /* DFGWaterUSGSIVRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81414A95D440040101E /* DFGWaterUSGSIVRequestBuilder.m */; };
+		67EAC81514A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81314A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h */; };
+		67EAC81614A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81414A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m */; };
+		67EAC81814A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */; };
+		67EAC81B14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81914A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h */; };
+		67EAC81C14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */; };
+		67EAC81F14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */; };
+		67EAC82114A964C00040101E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EAC82014A964C00040101E /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +56,6 @@
 		6704B83514A57569002C0A30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		6704B83D14A57569002C0A30 /* DFGWaterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DFGWaterTests-Info.plist"; sourceTree = "<group>"; };
 		6704B83F14A57569002C0A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6704B84114A57569002C0A30 /* DFGWaterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterTests.h; sourceTree = "<group>"; };
-		6704B84214A57569002C0A30 /* DFGWaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGWaterTests.m; sourceTree = "<group>"; };
 		6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDataRetrieverProtocol.h; sourceTree = "<group>"; };
 		6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDataRequestParameters.h; sourceTree = "<group>"; };
 		6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeDataRequestParameters.m; sourceTree = "<group>"; };
@@ -66,8 +68,14 @@
 		67EAC80C14A955580040101E /* DFGWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGauge.h; sourceTree = "<group>"; };
 		67EAC80D14A955580040101E /* DFGWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGauge.m; sourceTree = "<group>"; };
 		67EAC81114A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterServiceRequestBuilderProtocol.h; sourceTree = "<group>"; };
-		67EAC81314A95D440040101E /* DFGWaterUSGSIVRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVRequestBuilder.h; sourceTree = "<group>"; };
-		67EAC81414A95D440040101E /* DFGWaterUSGSIVRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVRequestBuilder.m; sourceTree = "<group>"; };
+		67EAC81314A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVJSONRequestBuilder.h; sourceTree = "<group>"; };
+		67EAC81414A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVJSONRequestBuilder.m; sourceTree = "<group>"; };
+		67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterServiceResponseParserProtocol.h; sourceTree = "<group>"; };
+		67EAC81914A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVJSONResponseParser.h; sourceTree = "<group>"; };
+		67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVJSONResponseParser.m; sourceTree = "<group>"; };
+		67EAC81D14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVIntegrationTests.h; sourceTree = "<group>"; };
+		67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVIntegrationTests.m; sourceTree = "<group>"; };
+		67EAC82014A964C00040101E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EAC82114A964C00040101E /* CoreLocation.framework in Frameworks */,
 				6704B83414A57569002C0A30 /* SenTestingKit.framework in Frameworks */,
 				6704B83614A57569002C0A30 /* UIKit.framework in Frameworks */,
 				6704B83714A57569002C0A30 /* Foundation.framework in Frameworks */,
@@ -115,6 +124,7 @@
 		6704B82414A57569002C0A30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67EAC82014A964C00040101E /* CoreLocation.framework */,
 				6704B82514A57569002C0A30 /* Foundation.framework */,
 				6704B83314A57569002C0A30 /* SenTestingKit.framework */,
 				6704B83514A57569002C0A30 /* UIKit.framework */,
@@ -135,8 +145,11 @@
 				6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */,
 				6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */,
 				67EAC81114A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h */,
-				67EAC81314A95D440040101E /* DFGWaterUSGSIVRequestBuilder.h */,
-				67EAC81414A95D440040101E /* DFGWaterUSGSIVRequestBuilder.m */,
+				67EAC81314A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h */,
+				67EAC81414A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m */,
+				67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */,
+				67EAC81914A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h */,
+				67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */,
 				67B82B8514A659590054487A /* DFGWaterReading.h */,
 				67B82B8614A659590054487A /* DFGWaterReading.m */,
 				67EAC80C14A955580040101E /* DFGWaterGauge.h */,
@@ -157,9 +170,9 @@
 		6704B83B14A57569002C0A30 /* DFGWaterTests */ = {
 			isa = PBXGroup;
 			children = (
-				6704B84114A57569002C0A30 /* DFGWaterTests.h */,
-				6704B84214A57569002C0A30 /* DFGWaterTests.m */,
 				6704B83C14A57569002C0A30 /* Supporting Files */,
+				67EAC81D14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.h */,
+				67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */,
 			);
 			path = DFGWaterTests;
 			sourceTree = "<group>";
@@ -188,7 +201,9 @@
 				670D0AFC14A6C7CF00F05E97 /* DFGError.h in Headers */,
 				67EAC80E14A955580040101E /* DFGWaterGauge.h in Headers */,
 				67EAC81214A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h in Headers */,
-				67EAC81514A95D440040101E /* DFGWaterUSGSIVRequestBuilder.h in Headers */,
+				67EAC81514A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h in Headers */,
+				67EAC81814A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h in Headers */,
+				67EAC81B14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +310,8 @@
 				67B82B8814A659590054487A /* DFGWaterReading.m in Sources */,
 				670D0AF914A6C72700F05E97 /* DFGWaterUSGSGaugeDataRetriever.m in Sources */,
 				67EAC80F14A955580040101E /* DFGWaterGauge.m in Sources */,
-				67EAC81614A95D440040101E /* DFGWaterUSGSIVRequestBuilder.m in Sources */,
+				67EAC81614A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m in Sources */,
+				67EAC81C14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6704B84314A57569002C0A30 /* DFGWaterTests.m in Sources */,
+				67EAC81F14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

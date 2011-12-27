@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 D5G Technology, LLC. All rights reserved.
 //
 
-#import "DFGWaterUSGSIVRequestBuilder.h"
+#import "DFGWaterUSGSIVJSONRequestBuilder.h"
 #import "DFGWaterGaugeDataRequestParameters.h"
 
-@implementation DFGWaterUSGSIVRequestBuilder
+@implementation DFGWaterUSGSIVJSONRequestBuilder
 
 /**
  *
@@ -22,6 +22,7 @@
 - (NSURLRequest*)buildRequest:(DFGWaterGaugeDataRequestParameters*)theParameters
                         error:(NSError**)error
 {
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://waterservices.usgs.gov/nwis/iv?format=json,1.1&sites=02336910,02337000&period=P1D&parameterCd=00060,00065"]];
 }
 
 @end

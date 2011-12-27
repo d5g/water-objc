@@ -9,7 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "DFGWaterGaugeDataRetrieverProtocol.h"
 #import "DFGError.h"
+#import "DFGWaterServiceRequestBuilderProtocol.h"
+#import "DFGWaterServiceResponseParserProtocol.h"
 
 @interface DFGWaterUSGSGaugeDataRetriever : NSObject <DFGWaterGaugeDataRetrieverProtocol, DFGError>
+
+- (id)initWithOperationQueue:(NSOperationQueue*)theOperationQueue
+              requestBuilder:(id<DFGWaterServiceRequestBuilderProtocol>)theRequestBuilder
+              responseParser:(id<DFGWaterServiceResponseParserProtocol>)theResponseParser;
+
+@property (nonatomic, readonly, strong) NSOperationQueue* operationQueue;
+@property (nonatomic, readonly, strong) id<DFGWaterServiceRequestBuilderProtocol> requestBuilder;
+@property (nonatomic, readonly, strong) id<DFGWaterServiceResponseParserProtocol> responseParser;
 
 @end
