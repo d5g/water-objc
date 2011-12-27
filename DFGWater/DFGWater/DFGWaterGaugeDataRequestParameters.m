@@ -7,10 +7,11 @@
 //
 
 #import "DFGWaterGaugeDataRequestParameters.h"
+#import "DFGWaterGauge.h"
 
 @implementation DFGWaterGaugeDataRequestParameters
 
-@synthesize gaugeID;
+@synthesize gauge;
 @synthesize sinceDate;
 @synthesize endDate;
 @synthesize numDaysAgo;
@@ -20,27 +21,27 @@
 @synthesize delegate;
 
 // Get the most recent reading for all parameters.
-- (id)initWithGaugeIDForAllMostRecentReadings:(NSString*)theGaugeID
-                                     delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
+- (id)initWithGaugeForAllMostRecentReadings:(DFGWaterGauge*)theGauge
+                                   delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
-    return [self initWithGaugeIDForMostRecentReading:theGaugeID
-                                              height:YES
-                                       precipitation:YES
-                                           discharge:YES
-                                            delegate:theDelegate];
+    return [self initWithGaugeForMostRecentReading:theGauge
+                                            height:YES
+                                     precipitation:YES
+                                         discharge:YES
+                                          delegate:theDelegate];
 }
 
 // Get the most recent reading for specific parameters.
-- (id)initWithGaugeIDForMostRecentReading:(NSString*)theGaugeID
-                                   height:(BOOL)theHeight
-                            precipitation:(BOOL)thePrecipitation
-                                discharge:(BOOL)theDischarge
-                                 delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
+- (id)initWithGaugeForMostRecentReading:(DFGWaterGauge*)theGauge
+                                 height:(BOOL)theHeight
+                          precipitation:(BOOL)thePrecipitation
+                              discharge:(BOOL)theDischarge
+                               delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
     if (self) {
-        gaugeID = [theGaugeID copy];
+        gauge = theGauge;
         height = theHeight;
         precipitation = thePrecipitation;
         discharge = theDischarge;
@@ -51,18 +52,18 @@
 }
 
 // Get readings in date range for specific parameters.
-- (id)initWithGaugeID:(NSString*)theGaugeID
-            sinceDate:(NSDate*)theSinceDate
-              endDate:(NSDate*)theEndDate
-               height:(BOOL)theHeight
-        precipitation:(BOOL)thePrecipitation
-            discharge:(BOOL)theDischarge
-             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
+- (id)initWithGauge:(DFGWaterGauge*)theGauge
+          sinceDate:(NSDate*)theSinceDate
+            endDate:(NSDate*)theEndDate
+             height:(BOOL)theHeight
+      precipitation:(BOOL)thePrecipitation
+          discharge:(BOOL)theDischarge
+           delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
     if (self) {
-        gaugeID = [theGaugeID copy];
+        gauge = theGauge;
         sinceDate = theSinceDate;
         endDate = theEndDate;
         height = theHeight;
@@ -75,17 +76,17 @@
 }
 
 // Get reading from n number of days ago for specific parameters.
-- (id)initWithGaugeID:(NSString*)theGaugeID
-           numDaysAgo:(NSUInteger)theNumDaysAgo
-               height:(BOOL)theHeight
-        precipitation:(BOOL)thePrecipitation
-            discharge:(BOOL)theDischarge
-             delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
+- (id)initWithGauge:(DFGWaterGauge*)theGauge
+         numDaysAgo:(NSUInteger)theNumDaysAgo
+             height:(BOOL)theHeight
+      precipitation:(BOOL)thePrecipitation
+          discharge:(BOOL)theDischarge
+           delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate
 {
     self = [super init];
     
     if (self) {
-        gaugeID = [theGaugeID copy];
+        gauge = theGauge;
         numDaysAgo = theNumDaysAgo;
         height = theHeight;
         precipitation = thePrecipitation;
