@@ -13,8 +13,22 @@
 
 @interface DFGWaterGaugeDataRequestParameters : NSObject
 
+// Get readings in date range for specific parameters.
+- (id)initWithGauges:(NSArray*)theGauges
+          numDaysAgo:(NSUInteger)theNumDaysAgo
+           sinceDate:(NSDate*)theSinceDate
+             endDate:(NSDate*)theEndDate
+              height:(BOOL)theHeight
+       precipitation:(BOOL)thePrecipitation
+           discharge:(BOOL)theDischarge
+            delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
+
 // Get the most recent reading for all parameters.
 - (id)initWithGaugeForAllMostRecentReadings:(DFGWaterGauge*)theGauge
+                                   delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
+
+// Get the most recent reading for all parameters.
+- (id)initWithGaugesForAllMostRecentReadings:(NSArray*)theGauges
                                    delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
 // Get the most recent reading for specific parameters.
@@ -24,25 +38,8 @@
                               discharge:(BOOL)theDischarge
                                delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
 
-// Get readings in date range for specific parameters.
-- (id)initWithGauge:(DFGWaterGauge*)theGauge
-          sinceDate:(NSDate*)theSinceDate
-            endDate:(NSDate*)theEndDate
-             height:(BOOL)theHeight
-      precipitation:(BOOL)thePrecipitation
-          discharge:(BOOL)theDischarge
-           delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
-
-// Get reading from n number of days ago for specific parameters.
-- (id)initWithGauge:(DFGWaterGauge*)theGauge
-         numDaysAgo:(NSUInteger)theNumDaysAgo
-             height:(BOOL)theHeight
-      precipitation:(BOOL)thePrecipitation
-          discharge:(BOOL)theDischarge
-           delegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)theDelegate;
-
-// ID of gauge; agency-agnostic
-@property (nonatomic, readonly, strong) DFGWaterGauge* gauge;
+// Array of gauges to retrieve for
+@property (nonatomic, readonly, strong) NSArray* gauges;
 
 //
 // Date-based criteria
