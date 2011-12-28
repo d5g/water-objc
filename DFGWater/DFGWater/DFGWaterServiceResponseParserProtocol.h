@@ -12,8 +12,8 @@
 
 @protocol DFGWaterServiceResponseParserProtocol <NSObject>
 
-- (NSDictionary*)parseResponse:(NSURLResponse*)theResponse
-                      withData:(NSData*)theData
-                    parameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+- (NSArray*)parseResponse:(NSURLResponse*)theResponse
+                 withData:(NSData*)theData
+               parameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 
 @end

@@ -41,4 +41,9 @@
     return self;
 }
 
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"gauge id = %@; name = %@; location = %d , %d; agency code = %@; state code = %@; county code = %@; huc code = %@", gaugeID, name, 0, 0, agencyCode, stateCode, countyCode, hydrologicUnitCode];
+}
+
 @end

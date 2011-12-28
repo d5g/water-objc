@@ -61,7 +61,14 @@
                                        queue:operationQueue
                            completionHandler:^(NSURLResponse* response, NSData* data, NSError* error) {
                                NSString* dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                               NSLog(@"done for %@; got data: %@", params, dataString);
+                               NSArray* gaugeData = [responseParser parseResponse:response
+                                                                         withData:data
+                                                                       parameters:params];
+                               
+                               NSLog(@"gauge data = %@", gaugeData);
+                               
+                               for (NSDictionary* gaugeDataSet in gaugeData) {
+                               }
                            }];
     
     return YES;
