@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class DFGWaterGaugeDataRequestParameters;
+@class DFGWaterReadingGroup;
 
 @protocol DFGWaterServiceResponseParserProtocol <NSObject>
 
-- (NSArray*)parseResponse:(NSURLResponse*)theResponse
-                 withData:(NSData*)theData
-               parameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+- (DFGWaterReadingGroup*)parseResponse:(NSURLResponse*)theResponse
+                              withData:(NSData*)theData
+                            parameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 
 @end

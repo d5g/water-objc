@@ -7,6 +7,7 @@
 //
 
 #import "DFGWaterUSGSGaugeDataRetriever.h"
+#import "DFGWaterReadingGroup.h"
 
 @implementation DFGWaterUSGSGaugeDataRetriever
 
@@ -60,15 +61,11 @@
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:operationQueue
                            completionHandler:^(NSURLResponse* response, NSData* data, NSError* error) {
-                               NSString* dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                               NSArray* gaugeData = [responseParser parseResponse:response
-                                                                         withData:data
-                                                                       parameters:params];
+                               DFGWaterReadingGroup* readingGroup = [responseParser parseResponse:response
+                                                                                         withData:data
+                                                                                       parameters:params];
                                
-                               NSLog(@"gauge data = %@", gaugeData);
-                               
-                               for (NSDictionary* gaugeDataSet in gaugeData) {
-                               }
+                               NSLog(@"reading group = %@", readingGroup);
                            }];
     
     return YES;

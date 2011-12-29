@@ -8,12 +8,14 @@
 
 #import "DFGWaterUSGSIVJSONResponseParser.h"
 #import "DFGWaterGauge.h"
+#import "DFGWaterReadingGroup.h"
+#import "DFGWaterReading.h"
 
 @implementation DFGWaterUSGSIVJSONResponseParser
 
-- (NSArray*)parseResponse:(NSURLResponse*)theResponse
-                 withData:(NSData*)theData
-               parameters:(DFGWaterGaugeDataRequestParameters*)theParams
+- (DFGWaterReadingGroup*)parseResponse:(NSURLResponse*)theResponse
+                              withData:(NSData*)theData
+                            parameters:(DFGWaterGaugeDataRequestParameters*)theParams
 {
     // parse JSON into dictionary
     
@@ -34,11 +36,21 @@
     NSError* jsonParseError;
     NSDictionary* dict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:theData options:0 error:&jsonParseError];
     
-    NSMutableArray* gaugeData = [NSMutableArray arrayWithCapacity:1];
-    
     NSArray* timeSeries = [[dict objectForKey:@"value"] objectForKey:@"timeSeries"];
     
+    // Prepare the digest of our response data.
+    DFGWaterReadingGroup* readingGroup = [[DFGWaterReadingGroup alloc] init];
+    
+    // Formatter for reading dates.
+    NSDateFormatter* readingDateFormatter = [[NSDateFormatter alloc] init];
+    
+    // TODO: fix me to get correct GMT offset.
+    [readingDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+    
     for (NSDictionary* seriesData in timeSeries) {
+        // Get the USGS parameter ID.
+        NSString* variableCodeValue = [[[[seriesData objectForKey:@"variable"] objectForKey:@"variableCode"] objectAtIndex:0] objectForKey:@"value"];
+                                        
         NSDictionary* sourceInfo = [seriesData objectForKey:@"sourceInfo"];
         NSDictionary* geogLocation = [[sourceInfo objectForKey:@"geoLocation"] objectForKey:@"geogLocation"];
         NSArray* siteProperty = [sourceInfo objectForKey:@"siteProperty"];
@@ -71,12 +83,31 @@
                                                            countyCode:countyCode
                                                    hydrologicUnitCode:hucCode];
         
-        // TODO: parse the values into a usable object
+        // Get the DFGWaterReadingGroupType value for this timeSeries.
+        DFGWaterReadingGroupType readingGroupType;
         
-        [gaugeData addObject:gauge];
+        if ([variableCodeValue isEqualToString:@"00065"]) {
+            readingGroupType = DFGWaterReadingGroupTypeHeight;
+        } else if ([variableCodeValue isEqualToString:@"00060"]) {
+            readingGroupType = DFGWaterReadingGroupTypeDischarge;
+        } else if ([variableCodeValue isEqualToString:@"00045"]) {
+            readingGroupType = DFGWaterReadingGroupTypePrecipitation;
+        }
+        
+        for (NSDictionary* value in [[[seriesData objectForKey:@"values"] objectAtIndex:0] objectForKey:@"value"]) {
+            NSString* readingValue = [value objectForKey:@"value"];
+            NSString* readingDateTime = [value objectForKey:@"dateTime"];
+            NSMutableString* modifiedReadingDateTime = [NSMutableString stringWithString:readingDateTime];
+            [modifiedReadingDateTime insertString:@"GMT" atIndex:23];
+             
+            NSDate* readingDate = [readingDateFormatter dateFromString:modifiedReadingDateTime];
+            DFGWaterReading* reading = [[DFGWaterReading alloc] initWithValue:readingValue atDate:readingDate];
+            
+            [readingGroup addReading:reading ofType:readingGroupType forGauge:gauge];
+        }
     }
     
-    return [NSArray arrayWithArray:gaugeData];
+    return readingGroup;
 }
 
 @end

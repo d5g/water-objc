@@ -19,10 +19,14 @@
                                                         stateCode:nil
                                                        countyCode:nil
                                                hydrologicUnitCode:nil];
-    
+
+    /**
     DFGWaterGaugeDataRequestParameters* params =
     [[DFGWaterGaugeDataRequestParameters alloc] initWithGaugeForAllMostRecentReadings:gauge
                                                                              delegate:self];
+    **/
+    
+    DFGWaterGaugeDataRequestParameters* params = [[DFGWaterGaugeDataRequestParameters alloc] initWithGauges:[NSArray arrayWithObject:gauge] numDaysAgo:1 sinceDate:nil endDate:nil height:YES precipitation:YES discharge:YES delegate:self];
     
     NSOperationQueue* operationQueue = [[NSOperationQueue alloc] init];
     [operationQueue setMaxConcurrentOperationCount:1];

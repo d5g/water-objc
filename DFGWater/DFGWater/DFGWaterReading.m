@@ -35,4 +35,9 @@
     return date != nil;
 }
 
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"value = %@; when = %@", value, date];
+}
+
 @end
