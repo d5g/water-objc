@@ -16,6 +16,7 @@
 - (DFGWaterReadingGroup*)parseResponse:(NSURLResponse*)theResponse
                               withData:(NSData*)theData
                             parameters:(DFGWaterGaugeDataRequestParameters*)theParams
+                                 error:(NSError**)theError
 {
     // parse JSON into dictionary
     
@@ -33,8 +34,28 @@
     //
     //     variable.values ...array with .value, .dateTime
     
+    if ([theData length] == 0) {
+        if (theError != NULL) {
+            *theError = [NSError errorWithDomain:[self errorDomain]
+                                         code:DFGWaterServiceResponseParserProtocolErrorNoDataToParse
+                                     userInfo:nil];
+        }
+        
+        return nil;
+    }
+    
     NSError* jsonParseError;
     NSDictionary* dict = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:theData options:0 error:&jsonParseError];
+    
+    if (!dict) {
+        if (theError != NULL) {
+            *theError = [NSError errorWithDomain:[self errorDomain]
+                                         code:DFGWaterServiceResponseParserProtocolErrorUnableToParseData
+                                     userInfo:nil];
+        }
+        
+        return nil;
+    }
     
     NSArray* timeSeries = [[dict objectForKey:@"value"] objectForKey:@"timeSeries"];
     
@@ -108,6 +129,14 @@
     }
     
     return readingGroup;
+}
+
+#pragma mark -
+#pragma mark DFGError methods
+
+- (NSString*)errorDomain
+{
+    return @"DFGWateUSGSIVJSONResponseParserErrors";
 }
 
 @end

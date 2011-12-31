@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
+typedef enum {
     DFGWaterGaugeDataRetrieverErrorInadequateParameters = 1,
     DFGWaterGaugeDataRetrieverErrorUnableToBuildRequest,
-};
+    DFGWaterGaugeDataRetrieverErrorUnableToParseResponse,
+} DFGWaterGaugeDataRetrieverError;
 
 @class DFGWaterGaugeDataRequestParameters;
 

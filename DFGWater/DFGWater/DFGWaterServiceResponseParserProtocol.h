@@ -7,14 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DFGError.h"
 
 @class DFGWaterGaugeDataRequestParameters;
 @class DFGWaterReadingGroup;
 
-@protocol DFGWaterServiceResponseParserProtocol <NSObject>
+typedef enum {
+    DFGWaterServiceResponseParserProtocolErrorNoDataToParse = 1,
+    DFGWaterServiceResponseParserProtocolErrorUnableToParseData,
+} DFGWaterServiceResponseParserError;
+
+@protocol DFGWaterServiceResponseParserProtocol <NSObject, DFGError>
 
 - (DFGWaterReadingGroup*)parseResponse:(NSURLResponse*)theResponse
                               withData:(NSData*)theData
-                            parameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+                            parameters:(DFGWaterGaugeDataRequestParameters*)theParams
+                                 error:(NSError**)theError;
 
 @end

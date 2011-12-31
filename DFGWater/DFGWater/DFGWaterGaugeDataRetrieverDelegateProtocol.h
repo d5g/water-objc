@@ -24,39 +24,19 @@ willRetrieveDataForParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 - (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
 didFailToRetrieveDataForParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 
+//
+// Height
+//
+
 // Retrieved height reading(s).
 - (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
  didRetrieveHeightReadings:(NSArray*)theReadings
                   forGauge:(DFGWaterGauge*)theGauge
             withParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 
-// Retrieved precipitation reading(s).
-- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
-didRetrievePrecipitationReadings:(NSArray*)theReadings
-                  forGauge:(DFGWaterGauge*)theGauge
-             forParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
-
-// Retrieved discharge reading(s).
-- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
-didRetrieveDischargeReadings:(NSArray*)theReadings
-                  forGauge:(DFGWaterGauge*)theGauge
-             forParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
-
 // Failed to retrieve height readings(s).
 - (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
 didFailToRetrieveHeightReadingsForGauge:(DFGWaterGauge*)theGauge
-            withParameters:(DFGWaterGaugeDataRequestParameters*)theParams
-                     error:(NSError*)theError;
-
-// Failed to retrieve precipitation reading(s).
-- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
-didFailToRetrievePrecipitationReadingsForGauge:(DFGWaterGauge*)theGauge
-            withParameters:(DFGWaterGaugeDataRequestParameters*)theParams
-                     error:(NSError*)theError;
-
-// Failed to retrieve discharge reading(s).
-- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
-didFailToRetrieveDischargeReadingsForGauge:(DFGWaterGauge*)theGauge
             withParameters:(DFGWaterGaugeDataRequestParameters*)theParams
                      error:(NSError*)theError;
 
@@ -65,10 +45,43 @@ didFailToRetrieveDischargeReadingsForGauge:(DFGWaterGauge*)theGauge
 heightReadingsNotAvailableForGauge:(DFGWaterGauge*)theGauge
             withParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
 
+
+//
+// Precipitation
+//
+
+// Retrieved precipitation reading(s).
+- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
+didRetrievePrecipitationReadings:(NSArray*)theReadings
+                  forGauge:(DFGWaterGauge*)theGauge
+             forParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+
+// Failed to retrieve precipitation reading(s).
+- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
+didFailToRetrievePrecipitationReadingsForGauge:(DFGWaterGauge*)theGauge
+            withParameters:(DFGWaterGaugeDataRequestParameters*)theParams
+                     error:(NSError*)theError;
+
 // Precipitation reading(s) not available.
 - (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
 precipitationReadingsNotAvailableForGauge:(DFGWaterGauge*)theGauge
             withParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+
+//
+// Discharge
+//
+
+// Retrieved discharge reading(s).
+- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
+didRetrieveDischargeReadings:(NSArray*)theReadings
+                  forGauge:(DFGWaterGauge*)theGauge
+             forParameters:(DFGWaterGaugeDataRequestParameters*)theParams;
+
+// Failed to retrieve discharge reading(s).
+- (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
+didFailToRetrieveDischargeReadingsForGauge:(DFGWaterGauge*)theGauge
+            withParameters:(DFGWaterGaugeDataRequestParameters*)theParams
+                     error:(NSError*)theError;
 
 // Discharge reading(s) not available.
 - (void)gaugeDataRetriever:(id<DFGWaterGaugeDataRetrieverProtocol>)theRetriever
