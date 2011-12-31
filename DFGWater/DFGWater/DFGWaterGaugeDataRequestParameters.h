@@ -59,6 +59,6 @@
 @property (nonatomic, readonly) BOOL discharge;
 
 // Delegate to receive any callbacks
-@property (nonatomic, readonly, weak) id<DFGWaterGaugeDataRetrieverDelegateProtocol> delegate;
+@property (nonatomic, weak) id<DFGWaterGaugeDataRetrieverDelegateProtocol> delegate;
 
 @end

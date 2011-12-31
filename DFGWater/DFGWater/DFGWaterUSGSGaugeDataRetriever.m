@@ -11,6 +11,14 @@
 #import "DFGWaterGaugeDataRequestParameters.h"
 #import "DFGWaterGaugeDataRetrieverDelegateProtocol.h"
 
+@interface DFGWaterUSGSGaugeDataRetriever ()
+
+- (void)notifyDelegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)delegate
+               ofError:(NSError*)error
+            withParams:(DFGWaterGaugeDataRequestParameters*)params;
+
+@end
+
 @implementation DFGWaterUSGSGaugeDataRetriever
 
 @synthesize operationQueue;
@@ -46,7 +54,7 @@
         
         return NO;
     }
-
+    
     NSError* requestError;
     NSURLRequest* request = [requestBuilder buildRequest:params error:&requestError];
     
@@ -76,7 +84,16 @@
                                        return;
                                    }
                                }
-
+                               
+                               // Handle general request errors.  Pass the error along
+                               // to the delegate.
+                               if (error) {
+                                   [self notifyDelegate:delegate
+                                                ofError:error
+                                             withParams:params];
+                                   return;
+                               }
+                               
                                // Parse the response data into a group of readings.
                                NSError* parseError;
                                DFGWaterReadingGroup* readingGroup = [responseParser parseResponse:response
@@ -84,40 +101,15 @@
                                                                                        parameters:params
                                                                                             error:&parseError];
                                
-
-                               NSLog(@"reading group = %@", readingGroup);
                                
+                               NSLog(@"thread = %@; reading group = %@", [NSThread currentThread], readingGroup);
+                               
+                               // Handle failure to parse the response data.
                                if (readingGroup == nil) {
-                                   // Pass back height failures for all gages.
-                                   if ([params height] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrieveHeightReadingsForGauge:withParameters:error:)]) { 
-                                       for (DFGWaterGauge* gauge in [params gauges]) {
-                                           [delegate gaugeDataRetriever:self
-                                didFailToRetrieveHeightReadingsForGauge:gauge
-                                                         withParameters:params
-                                                                  error:parseError];
-                                       }
-                                   }
-                                   
-                                   // Pass back precipitation failures for all gages.
-                                   if ([params precipitation] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrievePrecipitationReadingsForGauge:withParameters:error:)]) { 
-                                       for (DFGWaterGauge* gauge in [params gauges]) {
-                                           [delegate gaugeDataRetriever:self
-                         didFailToRetrievePrecipitationReadingsForGauge:gauge
-                                                         withParameters:params
-                                                                  error:parseError];
-                                       }
-                                   }
-                                   
-                                   // Pass back discharge failures for all gages.
-                                   if ([params discharge] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrieveDischargeReadingsForGauge:withParameters:error:)]) { 
-                                       for (DFGWaterGauge* gauge in [params gauges]) {
-                                           [delegate gaugeDataRetriever:self
-                         didFailToRetrieveDischargeReadingsForGauge:gauge
-                                                         withParameters:params
-                                                                  error:parseError];
-                                       }
-                                   }
-
+                                   [self notifyDelegate:delegate
+                                                ofError:parseError
+                                             withParams:params];
+                                   return;
                                }
                                
                                NSArray* readings;
@@ -127,7 +119,7 @@
                                    // Pass back height readings
                                    //
                                    readings = [readingGroup gauge:gauge readingsOfType:DFGWaterReadingGroupTypeHeight];
-
+                                   
                                    // Pass back what we got, or indicate not available if none are present.
                                    if (readings) {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didRetrieveHeightReadings:forGauge:withParameters:)]) {
@@ -143,7 +135,7 @@
                                                          withParameters:params];
                                        }
                                    }
-
+                                   
                                    //
                                    // Pass back precipitation readings
                                    //
@@ -155,7 +147,7 @@
                                            [delegate gaugeDataRetriever:self
                                        didRetrievePrecipitationReadings:readings
                                                                forGauge:gauge
-                                                          forParameters:params];
+                                                         withParameters:params];
                                        }
                                    } else {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:heightReadingsNotAvailableForGauge:withParameters:)]) {
@@ -174,19 +166,17 @@
                                    if (readings) {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didRetrieveDischargeReadings:forGauge:withParameters:)]) {
                                            [delegate gaugeDataRetriever:self
-                                       didRetrieveDischargeReadings:readings
+                                           didRetrieveDischargeReadings:readings
                                                                forGauge:gauge
-                                                          forParameters:params];
+                                                         withParameters:params];
                                        }
                                    } else {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:dischargeReadingsNotAvailableForGauge:withParameters:)]) {
                                            [delegate gaugeDataRetriever:self
-                                     dischargeReadingsNotAvailableForGauge:gauge
+                                  dischargeReadingsNotAvailableForGauge:gauge
                                                          withParameters:params];
                                        }
                                    }
-                                   
-
                                }
                            }];
     
@@ -199,6 +189,44 @@
 - (NSString*)errorDomain
 {
     return @"DFGWaterUSGSGaugeDataRetrieverErrors";
+}
+
+#pragma mark -
+#pragma mark Private methods
+
+- (void)notifyDelegate:(id<DFGWaterGaugeDataRetrieverDelegateProtocol>)delegate
+               ofError:(NSError*)error
+            withParams:(DFGWaterGaugeDataRequestParameters*)params
+{
+    // Pass back height failures for all gages.
+    if ([params height] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrieveHeightReadingsForGauge:withParameters:error:)]) { 
+        for (DFGWaterGauge* gauge in [params gauges]) {
+            [delegate gaugeDataRetriever:self
+ didFailToRetrieveHeightReadingsForGauge:gauge
+                          withParameters:params
+                                   error:error];
+        }
+    }
+    
+    // Pass back precipitation failures for all gages.
+    if ([params precipitation] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrievePrecipitationReadingsForGauge:withParameters:error:)]) { 
+        for (DFGWaterGauge* gauge in [params gauges]) {
+            [delegate gaugeDataRetriever:self
+didFailToRetrievePrecipitationReadingsForGauge:gauge
+                          withParameters:params
+                                   error:error];
+        }
+    }
+    
+    // Pass back discharge failures for all gages.
+    if ([params discharge] && [delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrieveDischargeReadingsForGauge:withParameters:error:)]) { 
+        for (DFGWaterGauge* gauge in [params gauges]) {
+            [delegate gaugeDataRetriever:self
+didFailToRetrieveDischargeReadingsForGauge:gauge
+                          withParameters:params
+                                   error:error];
+        }
+    }
 }
 
 @end

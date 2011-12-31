@@ -13,5 +13,11 @@
 #import "DFGWater.h"
 
 @interface DFGWaterUSGSIVIntegrationTests : SenTestCase <DFGWaterGaugeDataRetrieverDelegateProtocol>
+{
+    BOOL willRetrieveCalled;
+    BOOL didRetrieveHeightReadings;
+    BOOL didRetrievePrecipitationReadings;
+    BOOL didRetrieveDischargeReadings;
+}
 
 @end
