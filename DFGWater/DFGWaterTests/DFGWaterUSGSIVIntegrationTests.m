@@ -18,7 +18,7 @@
     didRetrieveDischargeReadings = NO;
 }
 
-- (void)testSweetwaterCreekHeightPrecipitationDischarge
+- (void)testSweetwaterCreekHeightPrecipitationDischargeLastReading
 {
     DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
                                                              name:nil
@@ -32,10 +32,6 @@
     [[DFGWaterGaugeDataRequestParameters alloc] initWithGaugeForAllMostRecentReadings:gauge
                                                                              delegate:self];
     
-    /**
-     DFGWaterGaugeDataRequestParameters* params = [[DFGWaterGaugeDataRequestParameters alloc] initWithGauges:[NSArray arrayWithObject:gauge] numDaysAgo:1 sinceDate:nil endDate:nil height:YES precipitation:YES discharge:YES delegate:self];
-     **/
-    
     NSOperationQueue* operationQueue = [[NSOperationQueue alloc] init];
     [operationQueue setMaxConcurrentOperationCount:1];
     
@@ -48,6 +44,93 @@
     
     NSError* error;
     NSLog(@"retrieving on thread %@", [NSThread currentThread]);
+    BOOL retrieving = [retriever retrieveData:params error:&error];
+    
+    STAssertTrue(retrieving, @"expected retrieval to have started");
+    
+    sleep(5);
+    
+    STAssertTrue(willRetrieveCalled, @"expected willRetrieveCalled to be true");
+    STAssertTrue(didRetrieveHeightReadings, @"expected didRetrieveHeightReadings to be called");
+    STAssertTrue(didRetrievePrecipitationReadings, @"expected didRetrievePrecipitationReadings to be called");
+    STAssertTrue(didRetrieveDischargeReadings, @"expected didRetrieveDischargeReadings to be called");
+}
+
+- (void)testSweetwaterCreekHeightPrecipitationDischargeOneDayAgo
+{
+    DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
+                                                             name:nil
+                                               locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
+                                                       agencyCode:nil
+                                                        stateCode:nil
+                                                       countyCode:nil
+                                               hydrologicUnitCode:nil];
+    
+     DFGWaterGaugeDataRequestParameters* params = [[DFGWaterGaugeDataRequestParameters alloc] initWithGauges:[NSArray arrayWithObject:gauge]
+                                                                                                  numDaysAgo:1
+                                                                                                   sinceDate:nil
+                                                                                                     endDate:nil
+                                                                                                      height:YES
+                                                                                               precipitation:YES
+                                                                                                   discharge:YES
+                                                                                                    delegate:self];
+    
+    NSOperationQueue* operationQueue = [[NSOperationQueue alloc] init];
+    [operationQueue setMaxConcurrentOperationCount:1];
+    
+    DFGWaterUSGSIVJSONRequestBuilder* requestBuilder = [[DFGWaterUSGSIVJSONRequestBuilder alloc] init];
+    DFGWaterUSGSIVJSONResponseParser* responseParser = [[DFGWaterUSGSIVJSONResponseParser alloc] init];
+    
+    DFGWaterUSGSGaugeDataRetriever* retriever = [[DFGWaterUSGSGaugeDataRetriever alloc] initWithOperationQueue:operationQueue
+                                                                                                requestBuilder:requestBuilder
+                                                                                                responseParser:responseParser];
+    
+    NSError* error;
+    BOOL retrieving = [retriever retrieveData:params error:&error];
+    
+    STAssertTrue(retrieving, @"expected retrieval to have started");
+    
+    sleep(5);
+    
+    STAssertTrue(willRetrieveCalled, @"expected willRetrieveCalled to be true");
+    STAssertTrue(didRetrieveHeightReadings, @"expected didRetrieveHeightReadings to be called");
+    STAssertTrue(didRetrievePrecipitationReadings, @"expected didRetrievePrecipitationReadings to be called");
+    STAssertTrue(didRetrieveDischargeReadings, @"expected didRetrieveDischargeReadings to be called");
+}
+
+- (void)testSweetwaterCreekHeightPrecipitationDischargeWithDateRange
+{
+    DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
+                                                             name:nil
+                                               locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
+                                                       agencyCode:nil
+                                                        stateCode:nil
+                                                       countyCode:nil
+                                               hydrologicUnitCode:nil];
+    
+    NSDate* sinceDate = [NSDate dateWithTimeIntervalSinceNow:-691200];
+    NSDate* endDate = [NSDate dateWithTimeIntervalSinceNow:-86400];
+    
+    DFGWaterGaugeDataRequestParameters* params = [[DFGWaterGaugeDataRequestParameters alloc] initWithGauges:[NSArray arrayWithObject:gauge]
+                                                                                                 numDaysAgo:0
+                                                                                                  sinceDate:sinceDate
+                                                                                                    endDate:endDate
+                                                                                                     height:YES
+                                                                                              precipitation:YES
+                                                                                                  discharge:YES
+                                                                                                   delegate:self];
+
+    NSOperationQueue* operationQueue = [[NSOperationQueue alloc] init];
+    [operationQueue setMaxConcurrentOperationCount:1];
+    
+    DFGWaterUSGSIVJSONRequestBuilder* requestBuilder = [[DFGWaterUSGSIVJSONRequestBuilder alloc] init];
+    DFGWaterUSGSIVJSONResponseParser* responseParser = [[DFGWaterUSGSIVJSONResponseParser alloc] init];
+    
+    DFGWaterUSGSGaugeDataRetriever* retriever = [[DFGWaterUSGSGaugeDataRetriever alloc] initWithOperationQueue:operationQueue
+                                                                                                requestBuilder:requestBuilder
+                                                                                                responseParser:responseParser];
+    
+    NSError* error;
     BOOL retrieving = [retriever retrieveData:params error:&error];
     
     STAssertTrue(retrieving, @"expected retrieval to have started");
