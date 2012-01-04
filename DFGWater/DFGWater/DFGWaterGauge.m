@@ -18,6 +18,18 @@
 @synthesize countyCode;
 @synthesize hydrologicUnitCode;
 
++ (id)gaugeWithID:(NSString*)theGaugeID
+          name:(NSString*)theName
+{
+    return [[self alloc] initWithGaugeID:theGaugeID
+                                    name:theName
+                      locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
+                              agencyCode:nil
+                               stateCode:nil
+                              countyCode:nil 
+                      hydrologicUnitCode:nil];
+}
+
 - (id)initWithGaugeID:(NSString*)theGaugeID
                  name:(NSString*)theName
    locationCoordinate:(CLLocationCoordinate2D)theLocationCoordinate

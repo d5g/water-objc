@@ -11,6 +11,9 @@
 
 @interface DFGWaterGauge : NSObject
 
++ (id)gaugeWithID:(NSString*)theGaugeID
+          name:(NSString*)theName;
+
 - (id)initWithGaugeID:(NSString*)theGaugeID
                  name:(NSString*)theName
    locationCoordinate:(CLLocationCoordinate2D)theLocationCoordinate
