@@ -13,6 +13,7 @@
 #import "DFGWaterUSGSIVJSONRequestBuilder.h"
 #import "DFGWaterUSGSIVJSONResponseParser.h"
 #import "DFGWaterGaugeDataRetrieverDelegateProtocol.h"
+#import "DFGWaterReading.h"
 
 @interface DFGWater : NSObject
 
