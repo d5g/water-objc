@@ -80,7 +80,9 @@
                            completionHandler:^(NSURLResponse* response, NSData* data, NSError* error) {
                                if ([(NSHTTPURLResponse*)response statusCode] != 200) {
                                    if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didFailToRetrieveDataForParameters:)]) {
-                                       [delegate gaugeDataRetriever:self didFailToRetrieveDataForParameters:params];
+                                       dispatch_sync(dispatch_get_main_queue(), ^() {
+                                           [delegate gaugeDataRetriever:self didFailToRetrieveDataForParameters:params];
+                                       });
                                        return;
                                    }
                                }
@@ -102,13 +104,13 @@
                                                                                             error:&parseError];
                                
                                
-                               NSLog(@"thread = %@; reading group = %@", [NSThread currentThread], readingGroup);
-                               
                                // Handle failure to parse the response data.
                                if (readingGroup == nil) {
-                                   [self notifyDelegate:delegate
-                                                ofError:parseError
-                                             withParams:params];
+                                   dispatch_sync(dispatch_get_main_queue(), ^() {
+                                       [self notifyDelegate:delegate
+                                                    ofError:parseError
+                                                 withParams:params];
+                                   });
                                    return;
                                }
                                
@@ -123,16 +125,20 @@
                                    // Pass back what we got, or indicate not available if none are present.
                                    if (readings) {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didRetrieveHeightReadings:forGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                              didRetrieveHeightReadings:readings
-                                                               forGauge:gauge
-                                                         withParameters:params];
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                               [delegate gaugeDataRetriever:self
+                                                  didRetrieveHeightReadings:readings
+                                                                   forGauge:gauge
+                                                             withParameters:params];
+                                           });
                                        }
                                    } else {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:heightReadingsNotAvailableForGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                     heightReadingsNotAvailableForGauge:gauge
-                                                         withParameters:params];
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                               [delegate gaugeDataRetriever:self
+                                         heightReadingsNotAvailableForGauge:gauge
+                                                             withParameters:params];
+                                           });
                                        }
                                    }
                                    
@@ -144,16 +150,20 @@
                                    // Pass back what we got, or indicate not available if none are present.
                                    if (readings) {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didRetrievePrecipitationReadings:forGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                       didRetrievePrecipitationReadings:readings
-                                                               forGauge:gauge
-                                                         withParameters:params];
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                               [delegate gaugeDataRetriever:self
+                                           didRetrievePrecipitationReadings:readings
+                                                                   forGauge:gauge
+                                                             withParameters:params];
+                                           });
                                        }
                                    } else {
-                                       if ([delegate respondsToSelector:@selector(gaugeDataRetriever:heightReadingsNotAvailableForGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                     heightReadingsNotAvailableForGauge:gauge
-                                                         withParameters:params];
+                                       if ([delegate respondsToSelector:@selector(gaugeDataRetriever:precipitationReadingsNotAvailableForGauge:withParameters:)]) {
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                                   [delegate gaugeDataRetriever:self
+                                             precipitationReadingsNotAvailableForGauge:gauge
+                                                                 withParameters:params];
+                                           });
                                        }
                                    }
                                    
@@ -165,16 +175,20 @@
                                    // Pass back what we got, or indicate not available if none are present.
                                    if (readings) {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:didRetrieveDischargeReadings:forGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                           didRetrieveDischargeReadings:readings
-                                                               forGauge:gauge
-                                                         withParameters:params];
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                               [delegate gaugeDataRetriever:self
+                                               didRetrieveDischargeReadings:readings
+                                                                   forGauge:gauge
+                                                             withParameters:params];
+                                           });
                                        }
                                    } else {
                                        if ([delegate respondsToSelector:@selector(gaugeDataRetriever:dischargeReadingsNotAvailableForGauge:withParameters:)]) {
-                                           [delegate gaugeDataRetriever:self
-                                  dischargeReadingsNotAvailableForGauge:gauge
-                                                         withParameters:params];
+                                           dispatch_sync(dispatch_get_main_queue(), ^() {
+                                               [delegate gaugeDataRetriever:self
+                                      dischargeReadingsNotAvailableForGauge:gauge
+                                                             withParameters:params];
+                                           });
                                        }
                                    }
                                }
