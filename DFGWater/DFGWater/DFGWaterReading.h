@@ -13,6 +13,7 @@
 - (id)initWithValue:(NSString*)theValue;
 - (id)initWithValue:(NSString*)theValue atDate:(NSDate*)theDate;
 
+- (NSDecimalNumber*)valueAsDecimalNumber;
 - (BOOL)hasDate;
 
 @property (nonatomic, readonly, copy) NSString* value;

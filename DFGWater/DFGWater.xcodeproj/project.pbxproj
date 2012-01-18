@@ -400,6 +400,10 @@
 		6704B84714A57569002C0A30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				DSTROOT = /tmp/DFGWater.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
@@ -412,6 +416,10 @@
 		6704B84814A57569002C0A30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				DSTROOT = /tmp/DFGWater.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";

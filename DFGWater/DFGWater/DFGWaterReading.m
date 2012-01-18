@@ -30,6 +30,15 @@
     return [self initWithValue:theValue atDate:nil];
 }
 
+- (NSDecimalNumber*)valueAsDecimalNumber
+{
+    NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSDecimalNumber* decimal = (NSDecimalNumber*)[formatter numberFromString:value];
+    
+    return decimal;
+}
+
 - (BOOL)hasDate
 {
     return date != nil;
