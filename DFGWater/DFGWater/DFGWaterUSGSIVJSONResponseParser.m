@@ -3,7 +3,7 @@
 //  DFGWater
 //
 //  Created by Brian DeShong on 12/26/11.
-//  Copyright (c) 2011 Half Off Depot. All rights reserved.
+//  Copyright (c) 2011 D5G Technology, LLC. All rights reserved.
 //
 
 #import "DFGWaterUSGSIVJSONResponseParser.h"
