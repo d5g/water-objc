@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "DFGWaterGaugeDataFinderDelegateProtocol.h"
+#import "DFGWaterGaugeFinderDelegateProtocol.h"
 
 @interface DFGWaterGaugeFinderContext : NSObject
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)theCoordinate
            radiusInMiles:(float)theRadiusInMiles
-                delegate:(id<DFGWaterGaugeDataFinderDelegateProtocol>)theDelegate;
+                delegate:(id<DFGWaterGaugeFinderDelegateProtocol>)theDelegate;
 
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, assign) float radiusInMiles;
-@property (nonatomic, readonly, assign) id<DFGWaterGaugeDataFinderDelegateProtocol> delegate;
+@property (nonatomic, readonly, assign) id<DFGWaterGaugeFinderDelegateProtocol> delegate;
 
 @end

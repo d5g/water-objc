@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DFGWaterGaugeFinderContext.h"
+
+@class DFGWaterGaugeFinderContext;
 
 typedef enum {
     DFGWaterGaugeFinderErrorInadequateParameters = 1,

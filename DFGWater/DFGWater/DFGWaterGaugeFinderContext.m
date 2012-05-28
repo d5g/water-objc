@@ -16,7 +16,7 @@
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)theCoordinate
            radiusInMiles:(float)theRadiusInMiles
-                delegate:(id<DFGWaterGaugeDataFinderDelegateProtocol>)theDelegate
+                delegate:(id<DFGWaterGaugeFinderDelegateProtocol>)theDelegate
 {
     self = [super init];
     

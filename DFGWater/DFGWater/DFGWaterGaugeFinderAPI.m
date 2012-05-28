@@ -7,7 +7,7 @@
 //
 
 #import "DFGWaterGaugeFinderAPI.h"
-#import "DFGWaterGaugeDataFinderDelegateProtocol.h"
+#import "DFGWaterGaugeFinderDelegateProtocol.h"
 
 @implementation DFGWaterGaugeFinderAPI
 
@@ -58,7 +58,7 @@
         return NO;
     }
     
-    id<DFGWaterGaugeDataFinderDelegateProtocol> delegate = [context delegate];
+    id<DFGWaterGaugeFinderDelegateProtocol> delegate = [context delegate];
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:operationQueue

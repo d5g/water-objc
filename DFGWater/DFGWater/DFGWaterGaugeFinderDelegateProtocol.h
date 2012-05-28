@@ -11,7 +11,7 @@
 
 @class DFGWaterGaugeFinderContext;
 
-@protocol DFGWaterGaugeDataFinderDelegateProtocol <NSObject>
+@protocol DFGWaterGaugeFinderDelegateProtocol <NSObject>
 
 // Will retrieve gauges.
 - (void)gaugeFinder:(id<DFGWaterGaugeFinderProtocol>)theFinder
