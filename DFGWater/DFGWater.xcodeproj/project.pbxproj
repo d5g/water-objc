@@ -18,8 +18,8 @@
 		6704B85114A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6704B85214A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */; };
 		6705A8F715732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6705A8ED15732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6705A8F815732C7900836279 /* DFGWaterGaugeFinderAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6705A8EE15732C7900836279 /* DFGWaterGaugeFinderAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6705A8F915732C7900836279 /* DFGWaterGaugeFinderAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6705A8EF15732C7900836279 /* DFGWaterGaugeFinderAPI.m */; };
+		6705A8F815732C7900836279 /* DFGWaterGaugeAPIFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6705A8EE15732C7900836279 /* DFGWaterGaugeAPIFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6705A8F915732C7900836279 /* DFGWaterGaugeAPIFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6705A8EF15732C7900836279 /* DFGWaterGaugeAPIFinder.m */; };
 		6705A8FA15732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6705A8F015732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6705A8FB15732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6705A8F115732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m */; };
 		6705A8FC15732C7900836279 /* DFGWaterGaugeFinderContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 6705A8F215732C7900836279 /* DFGWaterGaugeFinderContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +33,8 @@
 		6760DAC814ABFBF900EB7881 /* DFGWaterReadingGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 6760DAC614ABFBF900EB7881 /* DFGWaterReadingGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6760DAC914ABFBF900EB7881 /* DFGWaterReadingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6760DAC714ABFBF900EB7881 /* DFGWaterReadingGroup.m */; };
 		67843F2D14B3FE2200FC79E8 /* DFGWater.h in Headers */ = {isa = PBXBuildFile; fileRef = 6704B82A14A57569002C0A30 /* DFGWater.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		67B77B5115747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B77B4F15747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h */; };
+		67B77B5215747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B77B5015747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m */; };
 		67B82B8314A658B60054487A /* DFGWaterGaugeDataRetrieverDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B82B8214A658B60054487A /* DFGWaterGaugeDataRetrieverDelegateProtocol.h */; };
 		67B82B8714A659590054487A /* DFGWaterReading.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B82B8514A659590054487A /* DFGWaterReading.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67B82B8814A659590054487A /* DFGWaterReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B82B8614A659590054487A /* DFGWaterReading.m */; };
@@ -73,8 +75,8 @@
 		6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDataRequestParameters.h; sourceTree = "<group>"; };
 		6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeDataRequestParameters.m; sourceTree = "<group>"; };
 		6705A8ED15732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeFinderDelegateProtocol.h; sourceTree = "<group>"; };
-		6705A8EE15732C7900836279 /* DFGWaterGaugeFinderAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeFinderAPI.h; sourceTree = "<group>"; };
-		6705A8EF15732C7900836279 /* DFGWaterGaugeFinderAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeFinderAPI.m; sourceTree = "<group>"; };
+		6705A8EE15732C7900836279 /* DFGWaterGaugeAPIFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeAPIFinder.h; sourceTree = "<group>"; };
+		6705A8EF15732C7900836279 /* DFGWaterGaugeAPIFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeAPIFinder.m; sourceTree = "<group>"; };
 		6705A8F015732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeFinderAPIRequestBuilder.h; sourceTree = "<group>"; };
 		6705A8F115732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeFinderAPIRequestBuilder.m; sourceTree = "<group>"; };
 		6705A8F215732C7900836279 /* DFGWaterGaugeFinderContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeFinderContext.h; sourceTree = "<group>"; };
@@ -87,6 +89,8 @@
 		670D0AFB14A6C7CF00F05E97 /* DFGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGError.h; sourceTree = "<group>"; };
 		6760DAC614ABFBF900EB7881 /* DFGWaterReadingGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterReadingGroup.h; sourceTree = "<group>"; };
 		6760DAC714ABFBF900EB7881 /* DFGWaterReadingGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterReadingGroup.m; sourceTree = "<group>"; };
+		67B77B4F15747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeFinderAPIResponseParser.h; sourceTree = "<group>"; };
+		67B77B5015747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeFinderAPIResponseParser.m; sourceTree = "<group>"; };
 		67B82B8214A658B60054487A /* DFGWaterGaugeDataRetrieverDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDataRetrieverDelegateProtocol.h; sourceTree = "<group>"; };
 		67B82B8514A659590054487A /* DFGWaterReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterReading.h; sourceTree = "<group>"; };
 		67B82B8614A659590054487A /* DFGWaterReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterReading.m; sourceTree = "<group>"; };
@@ -162,14 +166,16 @@
 			children = (
 				6705A8F415732C7900836279 /* DFGWaterGaugeFinderProtocol.h */,
 				6705A8ED15732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h */,
-				6705A8EE15732C7900836279 /* DFGWaterGaugeFinderAPI.h */,
-				6705A8EF15732C7900836279 /* DFGWaterGaugeFinderAPI.m */,
+				6705A8EE15732C7900836279 /* DFGWaterGaugeAPIFinder.h */,
+				6705A8EF15732C7900836279 /* DFGWaterGaugeAPIFinder.m */,
 				6705A8F015732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h */,
 				6705A8F115732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m */,
 				6705A8F215732C7900836279 /* DFGWaterGaugeFinderContext.h */,
 				6705A8F315732C7900836279 /* DFGWaterGaugeFinderContext.m */,
 				6705A8F515732C7900836279 /* DFGWaterGaugeFinderRequestBuilderProtocol.h */,
 				6705A8F615732C7900836279 /* DFGWaterGaugeFinderResponseParserProtocol.h */,
+				67B77B4F15747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h */,
+				67B77B5015747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m */,
 				670D0AFB14A6C7CF00F05E97 /* DFGError.h */,
 				6704B82A14A57569002C0A30 /* DFGWater.h */,
 				6704B82B14A57569002C0A30 /* DFGWater.m */,
@@ -244,12 +250,13 @@
 				6760DAC814ABFBF900EB7881 /* DFGWaterReadingGroup.h in Headers */,
 				67843F2D14B3FE2200FC79E8 /* DFGWater.h in Headers */,
 				6705A8F715732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h in Headers */,
-				6705A8F815732C7900836279 /* DFGWaterGaugeFinderAPI.h in Headers */,
+				6705A8F815732C7900836279 /* DFGWaterGaugeAPIFinder.h in Headers */,
 				6705A8FA15732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h in Headers */,
 				6705A8FC15732C7900836279 /* DFGWaterGaugeFinderContext.h in Headers */,
 				6705A8FE15732C7900836279 /* DFGWaterGaugeFinderProtocol.h in Headers */,
 				6705A8FF15732C7900836279 /* DFGWaterGaugeFinderRequestBuilderProtocol.h in Headers */,
 				6705A90015732C7900836279 /* DFGWaterGaugeFinderResponseParserProtocol.h in Headers */,
+				67B77B5115747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,9 +366,10 @@
 				67EAC81614A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m in Sources */,
 				67EAC81C14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m in Sources */,
 				6760DAC914ABFBF900EB7881 /* DFGWaterReadingGroup.m in Sources */,
-				6705A8F915732C7900836279 /* DFGWaterGaugeFinderAPI.m in Sources */,
+				6705A8F915732C7900836279 /* DFGWaterGaugeAPIFinder.m in Sources */,
 				6705A8FB15732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m in Sources */,
 				6705A8FD15732C7900836279 /* DFGWaterGaugeFinderContext.m in Sources */,
+				67B77B5215747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
 //
 
-#import "DFGWaterGaugeFinderAPI.h"
+#import "DFGWaterGaugeAPIFinder.h"
 #import "DFGWaterGaugeFinderDelegateProtocol.h"
 
-@implementation DFGWaterGaugeFinderAPI
+@implementation DFGWaterGaugeAPIFinder
 
 @synthesize operationQueue;
 @synthesize requestBuilder;

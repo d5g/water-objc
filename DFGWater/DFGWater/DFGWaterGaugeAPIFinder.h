@@ -12,7 +12,7 @@
 #import "DFGWaterGaugeFinderRequestBuilderProtocol.h"
 #import "DFGWaterGaugeFinderResponseParserProtocol.h"
 
-@interface DFGWaterGaugeFinderAPI : NSObject <DFGWaterGaugeFinderProtocol, DFGError>
+@interface DFGWaterGaugeAPIFinder : NSObject <DFGWaterGaugeFinderProtocol, DFGError>
 
 - (id)initWithOperationQueue:(NSOperationQueue*)theOperationQueue
               requestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder
