@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    DFGWaterGaugeFinderResponseParserProtocolErrorNoDataToParse = 1,
+    DFGWaterGaugeFinderResponseParserProtocolErrorUnableToParseData,
+    DFGWaterGaugeFinderResponseParserProtocolErrorServiceIndicatesFailure
+} DFGWaterGaugeFinderResponseParserError;
+
 @class DFGWaterGaugeFinderContext;
 
 @protocol DFGWaterGaugeFinderResponseParserProtocol <NSObject>
