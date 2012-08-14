@@ -1,0 +1,20 @@
+//
+//  DFGMapAnnotationWaterGauge.h
+//  DFGWater
+//
+//  Created by Brian DeShong on 8/13/12.
+//  Copyright (c) 2012 Half Off Depot. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
+@class DFGWaterGauge;
+
+@interface DFGMapAnnotationWaterGauge : NSObject <MKAnnotation>
+
+- (id)initWithGauge:(DFGWaterGauge*)theGauge;
+
+@property (nonatomic, strong) DFGWaterGauge* gauge;
+
+@end

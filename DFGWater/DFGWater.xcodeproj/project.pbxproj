@@ -50,6 +50,8 @@
 		67EAC81C14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */; };
 		67EAC81F14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */; };
 		67EAC82114A964C00040101E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EAC82014A964C00040101E /* CoreLocation.framework */; };
+		D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		67EAC81D14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVIntegrationTests.h; sourceTree = "<group>"; };
 		67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVIntegrationTests.m; sourceTree = "<group>"; };
 		67EAC82014A964C00040101E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGMapAnnotationWaterGauge.h; sourceTree = "<group>"; };
+		D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGMapAnnotationWaterGauge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				670D0AFB14A6C7CF00F05E97 /* DFGError.h */,
+				D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */,
+				D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */,
 				6704B82A14A57569002C0A30 /* DFGWater.h */,
 				6704B82B14A57569002C0A30 /* DFGWater.m */,
 				67EAC80C14A955580040101E /* DFGWaterGauge.h */,
@@ -264,6 +270,7 @@
 				6705A90015732C7900836279 /* DFGWaterGaugeFinderResponseParserProtocol.h in Headers */,
 				67B77B5115747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h in Headers */,
 				67B77B561574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.h in Headers */,
+				D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +385,7 @@
 				6705A8FD15732C7900836279 /* DFGWaterGaugeFinderContext.m in Sources */,
 				67B77B5215747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m in Sources */,
 				67B77B571574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.m in Sources */,
+				D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
