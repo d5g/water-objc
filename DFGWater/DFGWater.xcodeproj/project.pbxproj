@@ -168,41 +168,41 @@
 		6704B82714A57569002C0A30 /* DFGWater */ = {
 			isa = PBXGroup;
 			children = (
-				6705A8F415732C7900836279 /* DFGWaterGaugeFinderProtocol.h */,
-				6705A8ED15732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h */,
-				6705A8EE15732C7900836279 /* DFGWaterGaugeAPIFinder.h */,
-				6705A8EF15732C7900836279 /* DFGWaterGaugeAPIFinder.m */,
-				6705A8F015732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h */,
-				6705A8F115732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m */,
-				6705A8F215732C7900836279 /* DFGWaterGaugeFinderContext.h */,
-				6705A8F315732C7900836279 /* DFGWaterGaugeFinderContext.m */,
-				6705A8F515732C7900836279 /* DFGWaterGaugeFinderRequestBuilderProtocol.h */,
-				6705A8F615732C7900836279 /* DFGWaterGaugeFinderResponseParserProtocol.h */,
-				67B77B4F15747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h */,
-				67B77B5015747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m */,
-				67B77B541574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.h */,
-				67B77B551574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.m */,
 				670D0AFB14A6C7CF00F05E97 /* DFGError.h */,
 				6704B82A14A57569002C0A30 /* DFGWater.h */,
 				6704B82B14A57569002C0A30 /* DFGWater.m */,
-				6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */,
-				670D0AF614A6C72700F05E97 /* DFGWaterUSGSGaugeDataRetriever.h */,
-				670D0AF714A6C72700F05E97 /* DFGWaterUSGSGaugeDataRetriever.m */,
-				67B82B8214A658B60054487A /* DFGWaterGaugeDataRetrieverDelegateProtocol.h */,
+				67EAC80C14A955580040101E /* DFGWaterGauge.h */,
+				67EAC80D14A955580040101E /* DFGWaterGauge.m */,
+				6705A8EE15732C7900836279 /* DFGWaterGaugeAPIFinder.h */,
+				6705A8EF15732C7900836279 /* DFGWaterGaugeAPIFinder.m */,
 				6704B84F14A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.h */,
 				6704B85014A57B19002C0A30 /* DFGWaterGaugeDataRequestParameters.m */,
-				67EAC81114A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h */,
-				67EAC81314A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h */,
-				67EAC81414A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m */,
-				67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */,
-				67EAC81914A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h */,
-				67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */,
+				67B82B8214A658B60054487A /* DFGWaterGaugeDataRetrieverDelegateProtocol.h */,
+				6704B84D14A57A70002C0A30 /* DFGWaterGaugeDataRetrieverProtocol.h */,
+				67B77B541574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.h */,
+				67B77B551574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.m */,
+				6705A8F015732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.h */,
+				6705A8F115732C7900836279 /* DFGWaterGaugeFinderAPIRequestBuilder.m */,
+				67B77B4F15747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.h */,
+				67B77B5015747102003DC8FD /* DFGWaterGaugeFinderAPIResponseParser.m */,
+				6705A8F215732C7900836279 /* DFGWaterGaugeFinderContext.h */,
+				6705A8F315732C7900836279 /* DFGWaterGaugeFinderContext.m */,
+				6705A8ED15732C7900836279 /* DFGWaterGaugeFinderDelegateProtocol.h */,
+				6705A8F415732C7900836279 /* DFGWaterGaugeFinderProtocol.h */,
+				6705A8F515732C7900836279 /* DFGWaterGaugeFinderRequestBuilderProtocol.h */,
+				6705A8F615732C7900836279 /* DFGWaterGaugeFinderResponseParserProtocol.h */,
 				67B82B8514A659590054487A /* DFGWaterReading.h */,
 				67B82B8614A659590054487A /* DFGWaterReading.m */,
 				6760DAC614ABFBF900EB7881 /* DFGWaterReadingGroup.h */,
 				6760DAC714ABFBF900EB7881 /* DFGWaterReadingGroup.m */,
-				67EAC80C14A955580040101E /* DFGWaterGauge.h */,
-				67EAC80D14A955580040101E /* DFGWaterGauge.m */,
+				67EAC81114A95CC40040101E /* DFGWaterServiceRequestBuilderProtocol.h */,
+				67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */,
+				670D0AF614A6C72700F05E97 /* DFGWaterUSGSGaugeDataRetriever.h */,
+				670D0AF714A6C72700F05E97 /* DFGWaterUSGSGaugeDataRetriever.m */,
+				67EAC81314A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.h */,
+				67EAC81414A95D440040101E /* DFGWaterUSGSIVJSONRequestBuilder.m */,
+				67EAC81914A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.h */,
+				67EAC81A14A961E00040101E /* DFGWaterUSGSIVJSONResponseParser.m */,
 				6704B82814A57569002C0A30 /* Supporting Files */,
 			);
 			path = DFGWater;
@@ -430,7 +430,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -447,7 +447,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -456,10 +456,7 @@
 		6704B84714A57569002C0A30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/DFGWater.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
@@ -467,16 +464,14 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
 		6704B84814A57569002C0A30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/DFGWater.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DFGWater/DFGWater-Prefix.pch";
@@ -484,6 +479,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
 		};

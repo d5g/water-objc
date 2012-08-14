@@ -13,9 +13,11 @@
 @synthesize requestBuilder;
 
 - (id)initWithRequestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder
+              responseParser:(id<DFGWaterGaugeFinderResponseParserProtocol>)theResponseParser
 {
     if (self = [super init]) {
         [self setRequestBuilder:theRequestBuilder];
+        [self setResponseParser:theResponseParser];
     }
     
     return self;

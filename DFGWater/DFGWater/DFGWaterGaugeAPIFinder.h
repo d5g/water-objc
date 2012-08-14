@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "DFGWaterGaugeFinderProtocol.h"
 #import "DFGWaterGaugeFinderRequestBuilderProtocol.h"
+#import "DFGWaterGaugeFinderResponseParserProtocol.h"
 
 @interface DFGWaterGaugeAPIFinder : NSObject <DFGWaterGaugeFinderProtocol>
 
-- (id)initWithRequestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder;
+- (id)initWithRequestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder
+              responseParser:(id<DFGWaterGaugeFinderResponseParserProtocol>)theResponseParser;
 
 @property (nonatomic, strong) id<DFGWaterGaugeFinderRequestBuilderProtocol> requestBuilder;
+@property (nonatomic, strong) id<DFGWaterGaugeFinderResponseParserProtocol> responseParser;
 
 @end

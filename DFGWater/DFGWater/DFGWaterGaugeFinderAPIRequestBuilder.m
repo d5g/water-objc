@@ -1,15 +1,25 @@
 //
-//  DFGWaterGaugeFinderAPIRequestBuilder.m
-//  DFGWater
+//  DFGGaugesByLocationRequestBuilder.m
+//  FloodWatch
 //
-//  Created by Brian DeShong on 5/27/12.
-//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
+//  Created by Brian DeShong on 8/9/12.
+//  Copyright (c) 2012 Brian DeShong. All rights reserved.
 //
 
 #import "DFGWaterGaugeFinderAPIRequestBuilder.h"
-#import "DFGWaterGaugeFinderContext.h"
 
 @implementation DFGWaterGaugeFinderAPIRequestBuilder
+
+@synthesize baseURLString;
+
+- (id)initWithBaseURLString:(NSString*)theBaseURLString
+{
+    if (self = [super init]) {
+        [self setBaseURLString:theBaseURLString];
+    }
+    
+    return self;
+}
 
 - (NSURLRequest*)buildWithLatitude:(float)theLatitude
                          longitude:(float)theLongitude
@@ -17,12 +27,25 @@
                             agency:(NSString*)theAgency
                              limit:(NSUInteger)theLimit
 {
-    // http://api.d5gtech.com/water/v1/gauges?type=location&latitude=33.826977&longitude=-84.640657
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(theLatitude, theLongitude);
+    NSString* agencyParameter = @"";
+    NSString* limitParameter = @"";
     
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.d5gtech.com/water/v1/gauges?type=location&latitude=%f&longitude=%f", coord.latitude, coord.longitude]];
+    if (theAgency) {
+        agencyParameter = [NSString stringWithFormat:@"&agency=%@", theAgency];
+    }
     
-    return [NSURLRequest requestWithURL:url];
+    if (theLimit) {
+        limitParameter = [NSString stringWithFormat:@"&limit=%d", theLimit];
+    }
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@/water/v1/gauges?type=location&latitude=%f&longitude=%f%@%@",
+                           [self baseURLString],
+                           theLatitude,
+                           theLongitude,
+                           agencyParameter,
+                           limitParameter];
+    
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 }
 
 @end

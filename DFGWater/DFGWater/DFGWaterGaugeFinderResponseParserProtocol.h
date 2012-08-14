@@ -20,7 +20,6 @@ typedef enum {
 
 - (NSArray*)parseResponse:(NSURLResponse*)theResponse
                  withData:(NSData*)theData
-                  context:(DFGWaterGaugeFinderContext*)theContext
                     error:(NSError**)theError;
 
 @end

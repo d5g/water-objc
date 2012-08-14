@@ -17,7 +17,6 @@
 
 - (NSArray*)parseResponse:(NSURLResponse*)theResponse
                  withData:(NSData*)theData
-                  context:(DFGWaterGaugeFinderContext*)theContext
                     error:(NSError**)theError
 {
     if ([theData length] == 0) {
