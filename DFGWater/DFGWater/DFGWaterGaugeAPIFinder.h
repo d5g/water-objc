@@ -1,25 +1,19 @@
 //
-//  DFGWaterGaugeFinderAPI.h
-//  DFGWater
+//  DFGGaugesByLocationRetriever.h
+//  FloodWatch
 //
-//  Created by Brian DeShong on 5/27/12.
-//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
+//  Created by Brian DeShong on 8/9/12.
+//  Copyright (c) 2012 Brian DeShong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "DFGError.h"
 #import "DFGWaterGaugeFinderProtocol.h"
 #import "DFGWaterGaugeFinderRequestBuilderProtocol.h"
-#import "DFGWaterGaugeFinderResponseParserProtocol.h"
 
-@interface DFGWaterGaugeAPIFinder : NSObject <DFGWaterGaugeFinderProtocol, DFGError>
+@interface DFGWaterGaugeAPIFinder : NSObject <DFGWaterGaugeFinderProtocol>
 
-- (id)initWithOperationQueue:(NSOperationQueue*)theOperationQueue
-              requestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder
-              responseParser:(id<DFGWaterGaugeFinderResponseParserProtocol>)theResponseParser;
+- (id)initWithRequestBuilder:(id<DFGWaterGaugeFinderRequestBuilderProtocol>)theRequestBuilder;
 
-@property (nonatomic, readonly, strong) NSOperationQueue* operationQueue;
-@property (nonatomic, readonly, strong) id<DFGWaterGaugeFinderRequestBuilderProtocol> requestBuilder;
-@property (nonatomic, readonly, strong) id<DFGWaterGaugeFinderResponseParserProtocol> responseParser;
+@property (nonatomic, strong) id<DFGWaterGaugeFinderRequestBuilderProtocol> requestBuilder;
 
 @end

@@ -11,11 +11,14 @@
 
 @implementation DFGWaterGaugeFinderAPIRequestBuilder
 
-- (NSURLRequest*)buildRequest:(DFGWaterGaugeFinderContext*)theContext
-                        error:(NSError**)error
+- (NSURLRequest*)buildWithLatitude:(float)theLatitude
+                         longitude:(float)theLongitude
+                     radiusInMiles:(float)theRadius
+                            agency:(NSString*)theAgency
+                             limit:(NSUInteger)theLimit
 {
     // http://api.d5gtech.com/water/v1/gauges?type=location&latitude=33.826977&longitude=-84.640657
-    CLLocationCoordinate2D coord = [theContext coordinate];
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(theLatitude, theLongitude);
     
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.d5gtech.com/water/v1/gauges?type=location&latitude=%f&longitude=%f", coord.latitude, coord.longitude]];
     

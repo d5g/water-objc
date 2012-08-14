@@ -1,26 +1,25 @@
 //
-//  DFGWaterGaugeFinderProtocol.h
-//  DFGWater
+//  DFGGaugesByLocationRetrieverProtocol.h
+//  FloodWatch
 //
-//  Created by Brian DeShong on 5/27/12.
-//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
+//  Created by Brian DeShong on 8/9/12.
+//  Copyright (c) 2012 Brian DeShong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@class DFGWaterGaugeFinderContext;
-
-typedef enum {
-    DFGWaterGaugeFinderErrorInadequateParameters = 1,
-    DFGWaterGaugeFinderErrorUnableToBuildRequest,
-    DFGWaterGaugeFinderErrorUnableToParseResponse,
-} DFGWaterGaugeFinderError;
-
-@class DFGWaterGaugeFinderContext;
+typedef void (^DFGGaugesByLocationRetrieverSuccessBlock)(NSArray* theGauges);
+typedef void (^DFGGaugesByLocationRetrieverErrorBlock)(NSURLResponse* response, NSData *data, NSString* errorMessage);
 
 @protocol DFGWaterGaugeFinderProtocol <NSObject>
 
-- (BOOL)findByContext:(DFGWaterGaugeFinderContext*)context
-                error:(NSError**)error;
+- (BOOL)retrieveWithLocation:(CLLocationCoordinate2D)theCoordinate
+               radiusInMiles:(float)theRadius
+                      agency:(NSString*)theAgency
+                       limit:(NSUInteger)theLimit
+                successBlock:(DFGGaugesByLocationRetrieverSuccessBlock)theSuccessBlock
+                  errorBlock:(DFGGaugesByLocationRetrieverErrorBlock)theErrorBlock;
+
 
 @end

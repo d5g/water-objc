@@ -1,17 +1,20 @@
 //
-//  DFGWaterGaugeFinderRequestBuilderProtocol.h
-//  DFGWater
+//  DFGGaugesByLocationRequestBuilder.h
+//  FloodWatch
 //
-//  Created by Brian DeShong on 5/27/12.
-//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
+//  Created by Brian DeShong on 8/9/12.
+//  Copyright (c) 2012 Brian DeShong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "DFGWaterGaugeFinderContext.h"
 
 @protocol DFGWaterGaugeFinderRequestBuilderProtocol <NSObject>
 
-- (NSURLRequest*)buildRequest:(DFGWaterGaugeFinderContext*)theContext
-                        error:(NSError**)error;
+- (NSURLRequest*)buildWithLatitude:(float)theLatitude
+                         longitude:(float)theLongitude
+                     radiusInMiles:(float)theRadius
+                            agency:(NSString*)theAgency
+                             limit:(NSUInteger)theLimit;
+
 
 @end
