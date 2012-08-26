@@ -26,7 +26,7 @@
 
 - (CLLocationCoordinate2D)extractCoordinate:(NSDictionary*)gauge
 {
-    NSArray* loc = [gauge objectForKey:@"location"];
+    NSArray* loc = [[gauge objectForKey:@"location"] objectForKey:@"coordinate"];
     
     return CLLocationCoordinate2DMake([[loc objectAtIndex:0] doubleValue], [[loc objectAtIndex:1] doubleValue]);
 }
