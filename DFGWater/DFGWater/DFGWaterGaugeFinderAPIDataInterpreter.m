@@ -12,11 +12,7 @@
 
 - (NSString*)extractGaugeID:(NSDictionary*)gauge
 {
-    if ([(NSString*)[gauge objectForKey:@"agency"] isEqualToString:@"USGS"]) {
-        return [gauge objectForKey:@"usgs_id"];
-    }
-    
-    return nil;
+    return [gauge objectForKey:@"id"];
 }
 
 - (NSString*)extractName:(NSDictionary*)gauge

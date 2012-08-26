@@ -44,9 +44,6 @@
                                              returningResponse:&response
                                                          error:&error];
         
-        NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"got data %@", string);
-        
         NSArray* theGauges = [[self responseParser] parseResponse:response withData:data error:&error];
         dispatch_sync(dispatch_get_main_queue(), ^{
             theSuccessBlock(theGauges);
