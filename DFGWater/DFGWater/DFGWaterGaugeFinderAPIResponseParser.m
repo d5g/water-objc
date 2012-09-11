@@ -61,7 +61,8 @@
         DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:[interp extractGaugeID:gaugeDict]
                                                                  name:[interp extractName:gaugeDict]
                                                    locationCoordinate:[interp extractCoordinate:gaugeDict]
-                                                           agencyCode:[gaugeDict objectForKey:@"agency"]
+                                                               agency:[interp extractAgency:gaugeDict]
+                                                           agencySlug:[gaugeDict objectForKey:@"agency_slug"]
                                                             stateCode:[gaugeDict objectForKey:@"state_code"]
                                                            countyCode:[gaugeDict objectForKey:@"county_code"]
                                                    hydrologicUnitCode:nil]; // TODO: FIXME

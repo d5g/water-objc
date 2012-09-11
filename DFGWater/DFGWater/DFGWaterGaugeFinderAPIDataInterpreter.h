@@ -14,5 +14,7 @@
 - (NSString*)extractGaugeID:(NSDictionary*)gauge;
 - (NSString*)extractName:(NSDictionary*)gauge;
 - (CLLocationCoordinate2D)extractCoordinate:(NSDictionary*)gauge;
+- (NSString*)extractAgency:(NSDictionary*)gauge;
+- (NSString*)extractAgencySlug:(NSDictionary*)gauge;
 
 @end

@@ -31,4 +31,14 @@
     return CLLocationCoordinate2DMake([[loc objectAtIndex:0] doubleValue], [[loc objectAtIndex:1] doubleValue]);
 }
 
+- (NSString*)extractAgency:(NSDictionary*)gauge
+{
+    return [gauge objectForKey:@"agency"];
+}
+
+- (NSString*)extractAgencySlug:(NSDictionary*)gauge
+{
+    return [gauge objectForKey:@"agency_slug"];
+}
+
 @end

@@ -17,7 +17,8 @@
 - (id)initWithGaugeID:(NSString*)theGaugeID
                  name:(NSString*)theName
    locationCoordinate:(CLLocationCoordinate2D)theLocationCoordinate
-           agencyCode:(NSString*)theAgencyCode
+               agency:(NSString*)theAgency
+           agencySlug:(NSString*)theAgencySlug
             stateCode:(NSString*)theStateCode
            countyCode:(NSString*)theCountyCode
    hydrologicUnitCode:(NSString*)theHydrologicUnitCode;
@@ -25,7 +26,8 @@
 @property (nonatomic, copy, readonly) NSString* gaugeID;
 @property (nonatomic, copy, readonly) NSString* name;
 @property (nonatomic, assign, readonly) CLLocationCoordinate2D locationCoordinate;
-@property (nonatomic, copy, readonly) NSString* agencyCode;
+@property (nonatomic, copy, readonly) NSString* agency;
+@property (nonatomic, copy, readonly) NSString* agencySlug;
 @property (nonatomic, copy, readonly) NSString* stateCode;
 @property (nonatomic, copy, readonly) NSString* countyCode;
 @property (nonatomic, copy, readonly) NSString* hydrologicUnitCode;

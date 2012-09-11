@@ -23,7 +23,7 @@
     DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
                                                              name:nil
                                                locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
-                                                       agencyCode:nil
+                                                       agencySlug:nil
                                                         stateCode:nil
                                                        countyCode:nil
                                                hydrologicUnitCode:nil];
@@ -61,7 +61,8 @@
     DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
                                                              name:nil
                                                locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
-                                                       agencyCode:nil
+                                                           agency:nil
+                                                       agencySlug:nil
                                                         stateCode:nil
                                                        countyCode:nil
                                                hydrologicUnitCode:nil];
@@ -103,7 +104,8 @@
     DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:@"02336910"
                                                              name:nil
                                                locationCoordinate:CLLocationCoordinate2DMake(0.0, 0.0)
-                                                       agencyCode:nil
+                                                           agency:nil
+                                                       agencySlug:nil
                                                         stateCode:nil
                                                        countyCode:nil
                                                hydrologicUnitCode:nil];
