@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "DFGWaterGauge.h"
 #import "DFGWaterGaugeDataRequestParameters.h"
-#import "DFGWaterUSGSGaugeDataRetriever.h"
-#import "DFGWaterUSGSIVJSONRequestBuilder.h"
-#import "DFGWaterUSGSIVJSONResponseParser.h"
 #import "DFGWaterGaugeDataRetrieverDelegateProtocol.h"
 #import "DFGWaterReading.h"
 #import "DFGWaterGaugeAPIFinder.h"
