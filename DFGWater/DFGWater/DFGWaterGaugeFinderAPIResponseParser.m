@@ -57,15 +57,15 @@
     for (NSDictionary* gaugeDict in [dict objectForKey:@"gauges"]) {
         // TODO: DI me.
         DFGWaterGaugeFinderAPIDataInterpreter* interp = [[DFGWaterGaugeFinderAPIDataInterpreter alloc] init];
-        
-        DFGWaterGauge* gauge = [[DFGWaterGauge alloc] initWithGaugeID:[interp extractGaugeID:gaugeDict]
-                                                                 name:[interp extractName:gaugeDict]
-                                                   locationCoordinate:[interp extractCoordinate:gaugeDict]
-                                                               agency:[interp extractAgency:gaugeDict]
-                                                           agencySlug:[gaugeDict objectForKey:@"agency_slug"]
-                                                            stateCode:[gaugeDict objectForKey:@"state_code"]
-                                                           countyCode:[gaugeDict objectForKey:@"county_code"]
-                                                   hydrologicUnitCode:nil]; // TODO: FIXME
+                
+        DFGWaterGauge* gauge = [[DFGWaterGauge alloc] init];
+        [gauge setGaugeID:[interp extractGaugeID:gaugeDict]];
+        [gauge setName:[interp extractName:gaugeDict]];
+        [gauge setLocationCoordinate:[interp extractCoordinate:gaugeDict]];
+        [gauge setAgency:[interp extractAgency:gaugeDict]];
+        [gauge setAgencySlug:[interp extractAgencySlug:gaugeDict]];
+        [gauge setStateCode:[interp extractStateCode:gaugeDict]];
+        [gauge setCountyCode:[interp extractCountyCode:gaugeDict]];
         
         [theGauges addObject:gauge];
     }

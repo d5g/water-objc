@@ -16,5 +16,7 @@
 - (CLLocationCoordinate2D)extractCoordinate:(NSDictionary*)gauge;
 - (NSString*)extractAgency:(NSDictionary*)gauge;
 - (NSString*)extractAgencySlug:(NSDictionary*)gauge;
+- (NSString*)extractStateCode:(NSDictionary*)gauge;
+- (NSString*)extractCountyCode:(NSDictionary*)gauge;
 
 @end

@@ -41,4 +41,14 @@
     return [gauge objectForKey:@"agency_slug"];
 }
 
+- (NSString*)extractStateCode:(NSDictionary*)gauge
+{
+    return [gauge objectForKey:@"state_code"];
+}
+
+- (NSString*)extractCountyCode:(NSDictionary*)gauge
+{
+    return [gauge objectForKey:@"county_code"];
+}
+
 @end

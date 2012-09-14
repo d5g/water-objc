@@ -11,25 +11,13 @@
 
 @interface DFGWaterGauge : NSObject
 
-+ (id)gaugeWithID:(NSString*)theGaugeID
-          name:(NSString*)theName;
-
-- (id)initWithGaugeID:(NSString*)theGaugeID
-                 name:(NSString*)theName
-   locationCoordinate:(CLLocationCoordinate2D)theLocationCoordinate
-               agency:(NSString*)theAgency
-           agencySlug:(NSString*)theAgencySlug
-            stateCode:(NSString*)theStateCode
-           countyCode:(NSString*)theCountyCode
-   hydrologicUnitCode:(NSString*)theHydrologicUnitCode;
-
-@property (nonatomic, copy, readonly) NSString* gaugeID;
-@property (nonatomic, copy, readonly) NSString* name;
-@property (nonatomic, assign, readonly) CLLocationCoordinate2D locationCoordinate;
-@property (nonatomic, copy, readonly) NSString* agency;
-@property (nonatomic, copy, readonly) NSString* agencySlug;
-@property (nonatomic, copy, readonly) NSString* stateCode;
-@property (nonatomic, copy, readonly) NSString* countyCode;
-@property (nonatomic, copy, readonly) NSString* hydrologicUnitCode;
+@property (nonatomic, copy) NSString* gaugeID;
+@property (nonatomic, copy) NSString* name;
+@property (nonatomic, assign) CLLocationCoordinate2D locationCoordinate;
+@property (nonatomic, copy) NSString* agency;
+@property (nonatomic, copy) NSString* agencySlug;
+@property (nonatomic, copy) NSString* stateCode;
+@property (nonatomic, copy) NSString* countyCode;
+@property (nonatomic, copy) NSString* hydrologicUnitCode;
 
 @end
