@@ -3,7 +3,7 @@
 //  DFGWater
 //
 //  Created by Brian DeShong on 5/28/12.
-//  Copyright (c) 2012 Half Off Depot. All rights reserved.
+//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,6 +16,7 @@
 - (CLLocationCoordinate2D)extractCoordinate:(NSDictionary*)gauge;
 - (NSString*)extractAgency:(NSDictionary*)gauge;
 - (NSString*)extractAgencySlug:(NSDictionary*)gauge;
+- (NSString*)extractAgencyGaugeID:(NSDictionary*)gauge;
 - (NSString*)extractStateCode:(NSDictionary*)gauge;
 - (NSString*)extractCountyCode:(NSDictionary*)gauge;
 

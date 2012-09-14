@@ -3,7 +3,7 @@
 //  DFGWater
 //
 //  Created by Brian DeShong on 8/13/12.
-//  Copyright (c) 2012 Half Off Depot. All rights reserved.
+//  Copyright (c) 2012 D5G Technology, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

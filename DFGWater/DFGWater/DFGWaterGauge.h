@@ -16,8 +16,11 @@
 @property (nonatomic, assign) CLLocationCoordinate2D locationCoordinate;
 @property (nonatomic, copy) NSString* agency;
 @property (nonatomic, copy) NSString* agencySlug;
+@property (nonatomic, copy) NSString* agencyGaugeID;
 @property (nonatomic, copy) NSString* stateCode;
 @property (nonatomic, copy) NSString* countyCode;
 @property (nonatomic, copy) NSString* hydrologicUnitCode;
+@property (nonatomic, strong) NSDate* lastUpdated;
+@property (nonatomic, copy) NSString* goesID;
 
 @end

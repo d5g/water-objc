@@ -15,13 +15,16 @@
 @synthesize locationCoordinate;
 @synthesize agency;
 @synthesize agencySlug;
+@synthesize agencyGaugeID;
 @synthesize stateCode;
 @synthesize countyCode;
 @synthesize hydrologicUnitCode;
+@synthesize lastUpdated;
+@synthesize goesID;
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"gauge id = %@; name = %@; location = %f , %f; agency = %@; agency slug = %@; state code = %@; county code = %@; huc code = %@", gaugeID, name, locationCoordinate.latitude, locationCoordinate.longitude, agency, agencySlug, stateCode, countyCode, hydrologicUnitCode];
+    return [NSString stringWithFormat:@"gauge id = %@; name = %@; location = %f , %f; agency = %@; agency slug = %@; agency gauge id = %@; state code = %@; county code = %@; huc code = %@", gaugeID, name, locationCoordinate.latitude, locationCoordinate.longitude, agency, agencySlug, agencyGaugeID, stateCode, countyCode, hydrologicUnitCode];
 }
 
 @end

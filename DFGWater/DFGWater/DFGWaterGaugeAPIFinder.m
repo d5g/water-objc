@@ -40,11 +40,14 @@
         NSURLResponse* response;
         NSError* error;
         
-        NSData* data = [NSURLConnection sendSynchronousRequest:request
+        __weak NSURLRequest* weakRequest = request;
+        
+        NSData* data = [NSURLConnection sendSynchronousRequest:weakRequest
                                              returningResponse:&response
                                                          error:&error];
         
         NSArray* theGauges = [[self responseParser] parseResponse:response withData:data error:&error];
+        
         dispatch_sync(dispatch_get_main_queue(), ^{
             theSuccessBlock(theGauges);
         });
