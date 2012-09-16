@@ -9,6 +9,7 @@
 #import "DFGWaterGaugeDataAdder.h"
 #import "DFGWaterGauge.h"
 #import "DFGWaterReading.h"
+#import "DFGWaterDateMaker.h"
 
 @implementation DFGWaterGaugeDataAdder
 
@@ -18,7 +19,9 @@
     
     if ((reading = [dict valueForKeyPath:@"gauge.readings.height.last_reading"])) {
         NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
-        NSDate* date = nil;
+        
+        DFGWaterDateMaker* dateMaker = [[DFGWaterDateMaker alloc] init];
+        NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
         
         DFGWaterReading* lastHeightReading = [[DFGWaterReading alloc] initWithValue:value atDate:date];
         
