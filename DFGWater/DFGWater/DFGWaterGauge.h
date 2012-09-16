@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>
 
+@class DFGWaterReading;
+
 @interface DFGWaterGauge : NSObject
 
 @property (nonatomic, copy) NSString* gaugeID;
@@ -22,5 +24,10 @@
 @property (nonatomic, copy) NSString* hydrologicUnitCode;
 @property (nonatomic, strong) NSDate* lastUpdated;
 @property (nonatomic, copy) NSString* goesID;
+
+@property (nonatomic, strong) DFGWaterReading* lastHeightReading;
+@property (nonatomic, strong) DFGWaterReading* lastPrecipitationReading;
+@property (nonatomic, strong) DFGWaterReading* lastDischargeReading;
+@property (nonatomic, strong) DFGWaterReading* lastWaterTemperatureReading;
 
 @end

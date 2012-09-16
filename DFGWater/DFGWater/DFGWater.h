@@ -15,6 +15,7 @@
 #import "DFGWaterGaugeFinderAPIRequestBuilder.h"
 #import "DFGWaterGaugeFinderAPIResponseParser.h"
 #import "DFGMapAnnotationWaterGauge.h"
+#import "DFGWaterGaugeAPIDetailRetriever.h"
 
 @interface DFGWater : NSObject
 

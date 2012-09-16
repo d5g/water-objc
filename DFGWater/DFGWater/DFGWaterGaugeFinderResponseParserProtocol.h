@@ -14,8 +14,6 @@ typedef enum {
     DFGWaterGaugeFinderResponseParserProtocolErrorServiceIndicatesFailure
 } DFGWaterGaugeFinderResponseParserError;
 
-@class DFGWaterGaugeFinderContext;
-
 @protocol DFGWaterGaugeFinderResponseParserProtocol <NSObject>
 
 - (NSArray*)parseResponse:(NSURLResponse*)theResponse

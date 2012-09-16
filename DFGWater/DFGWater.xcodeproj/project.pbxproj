@@ -44,10 +44,14 @@
 		67EAC81814A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 67EAC81714A95EE40040101E /* DFGWaterServiceResponseParserProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67EAC81F14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */; };
 		67EAC82114A964C00040101E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EAC82014A964C00040101E /* CoreLocation.framework */; };
+		D31FE224160576A500B9103A /* DFGWaterGaugeDetailRetrieverProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FE2221605769A00B9103A /* DFGWaterGaugeDetailRetrieverProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FE2261605776000B9103A /* DFGWaterGaugeDetailResponseParserProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FE2251605776000B9103A /* DFGWaterGaugeDetailResponseParserProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FE229160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FE227160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FE22A160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE228160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.m */; };
 		D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */; };
-		D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */; };
-		D3C741B01602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */; };
+		D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3C741B01602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3C741B11602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C741AF1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +106,10 @@
 		67EAC81D14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterUSGSIVIntegrationTests.h; sourceTree = "<group>"; };
 		67EAC81E14A962D70040101E /* DFGWaterUSGSIVIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterUSGSIVIntegrationTests.m; sourceTree = "<group>"; };
 		67EAC82014A964C00040101E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D31FE2221605769A00B9103A /* DFGWaterGaugeDetailRetrieverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDetailRetrieverProtocol.h; sourceTree = "<group>"; };
+		D31FE2251605776000B9103A /* DFGWaterGaugeDetailResponseParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDetailResponseParserProtocol.h; sourceTree = "<group>"; };
+		D31FE227160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeAPIDetailRetriever.h; sourceTree = "<group>"; };
+		D31FE228160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeAPIDetailRetriever.m; sourceTree = "<group>"; };
 		D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGMapAnnotationWaterGauge.h; sourceTree = "<group>"; };
 		D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGMapAnnotationWaterGauge.m; sourceTree = "<group>"; };
 		D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDetailRequestBuilderProtocol.h; sourceTree = "<group>"; };
@@ -202,6 +210,10 @@
 				D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */,
 				D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */,
 				D3C741AF1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m */,
+				D31FE2221605769A00B9103A /* DFGWaterGaugeDetailRetrieverProtocol.h */,
+				D31FE227160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.h */,
+				D31FE228160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.m */,
+				D31FE2251605776000B9103A /* DFGWaterGaugeDetailResponseParserProtocol.h */,
 				6704B82814A57569002C0A30 /* Supporting Files */,
 			);
 			path = DFGWater;
@@ -263,6 +275,9 @@
 				D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */,
 				D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */,
 				D3C741B01602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h in Headers */,
+				D31FE224160576A500B9103A /* DFGWaterGaugeDetailRetrieverProtocol.h in Headers */,
+				D31FE2261605776000B9103A /* DFGWaterGaugeDetailResponseParserProtocol.h in Headers */,
+				D31FE229160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +327,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Half Off Depot";
+				ORGANIZATIONNAME = "D5G Technology, LLC";
 			};
 			buildConfigurationList = 6704B81C14A57569002C0A30 /* Build configuration list for PBXProject "DFGWater" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -376,6 +391,7 @@
 				67B77B571574762E003DC8FD /* DFGWaterGaugeFinderAPIDataInterpreter.m in Sources */,
 				D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */,
 				D3C741B11602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m in Sources */,
+				D31FE22A160577DB00B9103A /* DFGWaterGaugeAPIDetailRetriever.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

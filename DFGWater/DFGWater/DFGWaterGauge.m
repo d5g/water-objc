@@ -21,6 +21,10 @@
 @synthesize hydrologicUnitCode;
 @synthesize lastUpdated;
 @synthesize goesID;
+@synthesize lastHeightReading;
+@synthesize lastPrecipitationReading;
+@synthesize lastDischargeReading;
+@synthesize lastWaterTemperatureReading;
 
 - (NSString*)description
 {
