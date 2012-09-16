@@ -19,6 +19,7 @@
 {
     if (self = [super init]) {
         baseURLString = [theBaseURLString copy];
+        version = [theVersion copy];
     }
     
     return self;

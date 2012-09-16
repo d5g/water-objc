@@ -9,6 +9,7 @@
 #import "DFGWaterGaugeAPIDetailRetriever.h"
 #import "DFGWaterGaugeDetailRequestBuilderProtocol.h"
 #import "DFGWaterGaugeDetailResponseParserProtocol.h"
+#import "DFGWaterGaugeDataAdder.h"
 
 @implementation DFGWaterGaugeAPIDetailRetriever
 
@@ -43,6 +44,9 @@
                                                          error:&error];
         
         NSDictionary* allGaugeData = [[self responseParser] parseResponse:response withData:data error:&error];
+        
+        DFGWaterGaugeDataAdder* dataAdder = [[DFGWaterGaugeDataAdder alloc] init];
+        [dataAdder addData:allGaugeData toGauge:gauge];
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             theSuccessBlock(gauge);
