@@ -12,8 +12,10 @@
 
 - (NSDate*)dateFromISODateString:(NSString*)string
 {
+    // 2012-09-16T03:17:23+00:00
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
     return [dateFormatter dateFromString:string];
 }
 
