@@ -29,7 +29,9 @@
 {    
     NSString* urlString = [NSString stringWithFormat:@"%@/water/%@/gauge/%@/%@", baseURLString, version, [gauge agencySlug], [gauge agencyGaugeID]];
     NSURL* url = [NSURL URLWithString:urlString];
-    return [NSURLRequest requestWithURL:url];
+
+    // TODO: centralize cache disabling and timeout?
+    return [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
 }
 
 @end
