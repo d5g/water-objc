@@ -45,7 +45,9 @@
                            agencyParameter,
                            limitParameter];
     
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                            cachePolicy:NSURLRequestReloadIgnoringCacheData
+                        timeoutInterval:30.0];
 }
 
 @end

@@ -25,6 +25,11 @@
 @property (nonatomic, strong) NSDate* lastUpdated;
 @property (nonatomic, copy) NSString* goesID;
 
+@property (nonatomic, assign) BOOL hasHeight;
+@property (nonatomic, assign) BOOL hasPrecipitation;
+@property (nonatomic, assign) BOOL hasDischarge;
+@property (nonatomic, assign) BOOL hasWaterTemperature;
+
 @property (nonatomic, strong) DFGWaterReading* lastHeightReading;
 @property (nonatomic, strong) DFGWaterReading* lastPrecipitationReading;
 @property (nonatomic, strong) DFGWaterReading* lastDischargeReading;

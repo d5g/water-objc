@@ -28,6 +28,11 @@
         [gauge setLastHeightReading:lastHeightReading];
     }
     
+    [gauge setHasHeight:[dict valueForKeyPath:@"gauge.readings.height"] != nil];
+    [gauge setHasPrecipitation:[dict valueForKeyPath:@"gauge.readings.precipitation"] != nil];
+    [gauge setHasDischarge:[dict valueForKeyPath:@"gauge.readings.discharge"] != nil];
+    [gauge setHasWaterTemperature:[dict valueForKeyPath:@"gauge.readings.water_temperature"] != nil];
+    
     return YES;
 }
 

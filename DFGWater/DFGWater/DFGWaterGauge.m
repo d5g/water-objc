@@ -21,6 +21,12 @@
 @synthesize hydrologicUnitCode;
 @synthesize lastUpdated;
 @synthesize goesID;
+
+@synthesize hasHeight;
+@synthesize hasPrecipitation;
+@synthesize hasDischarge;
+@synthesize hasWaterTemperature;
+
 @synthesize lastHeightReading;
 @synthesize lastPrecipitationReading;
 @synthesize lastDischargeReading;
