@@ -28,7 +28,8 @@
 @synthesize hasWaterTemperature;
 
 @synthesize lastHeightReading;
-@synthesize lastPrecipitationReading;
+@synthesize precipitationPast24HoursReading;
+@synthesize precipitationPast7DaysReading;
 @synthesize lastDischargeReading;
 @synthesize lastWaterTemperatureReading;
 

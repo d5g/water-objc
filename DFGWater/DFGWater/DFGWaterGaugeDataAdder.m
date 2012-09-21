@@ -16,11 +16,19 @@
 - (BOOL)addData:(NSDictionary*)dict toGauge:(DFGWaterGauge*)gauge
 {
     NSDictionary* reading;
+
+    [gauge setHasHeight:[dict valueForKeyPath:@"gauge.readings.height"] != nil];
+    [gauge setHasPrecipitation:[dict valueForKeyPath:@"gauge.readings.precipitation"] != nil];
+    [gauge setHasDischarge:[dict valueForKeyPath:@"gauge.readings.discharge"] != nil];
+    [gauge setHasWaterTemperature:[dict valueForKeyPath:@"gauge.readings.water_temperature"] != nil];
+    
+    DFGWaterDateMaker* dateMaker = [[DFGWaterDateMaker alloc] init];
+
+    // TODO: centralize me.
     
     if ((reading = [dict valueForKeyPath:@"gauge.readings.height.last_reading"])) {
         NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
         
-        DFGWaterDateMaker* dateMaker = [[DFGWaterDateMaker alloc] init];
         NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
         NSString* unit = [reading objectForKey:@"unit"];
         
@@ -28,12 +36,47 @@
         
         [gauge setLastHeightReading:lastHeightReading];
     }
+
+    if ((reading = [dict valueForKeyPath:@"gauge.readings.precipitation.past_24_hours"])) {
+        NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
+        NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
+        NSString* unit = [reading objectForKey:@"unit"];
+        
+        DFGWaterReading* precipitationPast24HoursReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
+        
+        [gauge setPrecipitationPast24HoursReading:precipitationPast24HoursReading];
+    }
     
-    [gauge setHasHeight:[dict valueForKeyPath:@"gauge.readings.height"] != nil];
-    [gauge setHasPrecipitation:[dict valueForKeyPath:@"gauge.readings.precipitation"] != nil];
-    [gauge setHasDischarge:[dict valueForKeyPath:@"gauge.readings.discharge"] != nil];
-    [gauge setHasWaterTemperature:[dict valueForKeyPath:@"gauge.readings.water_temperature"] != nil];
-    
+    if ((reading = [dict valueForKeyPath:@"gauge.readings.precipitation.past_7_days"])) {
+        NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
+        NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
+        NSString* unit = [reading objectForKey:@"unit"];
+        
+        DFGWaterReading* precipitationPast7DaysReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
+        
+        [gauge setPrecipitationPast7DaysReading:precipitationPast7DaysReading];
+    }
+
+    if ((reading = [dict valueForKeyPath:@"gauge.readings.discharge.last_reading"])) {
+        NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
+        NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
+        NSString* unit = [reading objectForKey:@"unit"];
+        
+        DFGWaterReading* lastDischargeReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
+        
+        [gauge setLastDischargeReading:lastDischargeReading];
+    }
+
+    if ((reading = [dict valueForKeyPath:@"gauge.readings.water_temperature.last_reading"])) {
+        NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
+        NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
+        NSString* unit = [reading objectForKey:@"unit"];
+        
+        DFGWaterReading* lastWaterTemperatureReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
+        
+        [gauge setLastWaterTemperatureReading:lastWaterTemperatureReading];
+    }
+
     return YES;
 }
 

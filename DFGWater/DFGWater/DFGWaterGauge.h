@@ -31,7 +31,8 @@
 @property (nonatomic, assign) BOOL hasWaterTemperature;
 
 @property (nonatomic, strong) DFGWaterReading* lastHeightReading;
-@property (nonatomic, strong) DFGWaterReading* lastPrecipitationReading;
+@property (nonatomic, strong) DFGWaterReading* precipitationPast24HoursReading;
+@property (nonatomic, strong) DFGWaterReading* precipitationPast7DaysReading;
 @property (nonatomic, strong) DFGWaterReading* lastDischargeReading;
 @property (nonatomic, strong) DFGWaterReading* lastWaterTemperatureReading;
 
