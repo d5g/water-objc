@@ -10,13 +10,14 @@
 
 @interface DFGWaterReading : NSObject
 
-- (id)initWithValue:(NSString*)theValue;
-- (id)initWithValue:(NSString*)theValue atDate:(NSDate*)theDate;
+- (id)initWithValue:(NSString*)theValue unit:(NSString*)theUnit atDate:(NSDate*)theDate;
 
 - (NSDecimalNumber*)valueAsDecimalNumber;
+- (NSString*)valueWithUnit;
 - (BOOL)hasDate;
 
 @property (nonatomic, readonly, copy) NSString* value;
 @property (nonatomic, readonly, strong) NSDate* date;
+@property (nonatomic, readonly, copy) NSString* unit;
 
 @end

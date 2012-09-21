@@ -11,23 +11,25 @@
 @implementation DFGWaterReading
 
 @synthesize value;
+@synthesize unit;
 @synthesize date;
 
-- (id)initWithValue:(NSString*)theValue atDate:(NSDate*)theDate
+- (id)initWithValue:(NSString*)theValue unit:(NSString*)theUnit atDate:(NSDate*)theDate
 {
     self = [super init];
     
     if (self) {
         value = [theValue copy];
+        unit = [theUnit copy];
         date = theDate;
     }
     
     return self;
 }
 
-- (id)initWithValue:(NSString*)theValue
+- (NSString*)valueWithUnit
 {
-    return [self initWithValue:theValue atDate:nil];
+    return [NSString stringWithFormat:@"%@ %@", [self value], [self unit]];
 }
 
 - (NSDecimalNumber*)valueAsDecimalNumber

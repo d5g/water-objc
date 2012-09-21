@@ -22,8 +22,9 @@
         
         DFGWaterDateMaker* dateMaker = [[DFGWaterDateMaker alloc] init];
         NSDate* date = [dateMaker dateFromISODateString:[reading objectForKey:@"when"]];
+        NSString* unit = [reading objectForKey:@"unit"];
         
-        DFGWaterReading* lastHeightReading = [[DFGWaterReading alloc] initWithValue:value atDate:date];
+        DFGWaterReading* lastHeightReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
         
         [gauge setLastHeightReading:lastHeightReading];
     }
