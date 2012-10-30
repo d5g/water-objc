@@ -36,4 +36,9 @@
 @property (nonatomic, strong) DFGWaterReading* lastDischargeReading;
 @property (nonatomic, strong) DFGWaterReading* lastWaterTemperatureReading;
 
+@property (nonatomic, strong) NSArray* heightReadings;
+@property (nonatomic, strong) NSArray* precipitationReadings;
+@property (nonatomic, strong) NSArray* dischargeReadings;
+@property (nonatomic, strong) NSArray* waterTemperatureReadings;
+
 @end

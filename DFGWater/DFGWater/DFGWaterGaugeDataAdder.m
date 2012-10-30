@@ -10,12 +10,28 @@
 #import "DFGWaterGauge.h"
 #import "DFGWaterReading.h"
 #import "DFGWaterDateMaker.h"
+#import "DFGWaterGaugeReadingsBuilder.h"
 
 @implementation DFGWaterGaugeDataAdder
+{
+    DFGWaterGaugeReadingsBuilder* readingsBuilder;
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self) {
+        readingsBuilder = [[DFGWaterGaugeReadingsBuilder alloc] init];
+    }
+    
+    return self;
+}
 
 - (BOOL)addData:(NSDictionary*)dict toGauge:(DFGWaterGauge*)gauge
 {
     NSDictionary* reading;
+    NSDictionary* rawReadings;
 
     [gauge setHasHeight:[dict valueForKeyPath:@"gauge.readings.height"] != nil];
     [gauge setHasPrecipitation:[dict valueForKeyPath:@"gauge.readings.precipitation"] != nil];
@@ -24,8 +40,6 @@
     
     DFGWaterDateMaker* dateMaker = [[DFGWaterDateMaker alloc] init];
 
-    // TODO: centralize me.
-    
     if ((reading = [dict valueForKeyPath:@"gauge.readings.height.last_reading"])) {
         NSString* value = [NSString stringWithFormat:@"%@", [reading objectForKey:@"value"]];
         
@@ -75,6 +89,30 @@
         DFGWaterReading* lastWaterTemperatureReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
         
         [gauge setLastWaterTemperatureReading:lastWaterTemperatureReading];
+    }
+    
+    //
+    // Setup the raw values for the readings.
+    //
+    
+    if ((rawReadings = [dict valueForKeyPath:@"gauge.readings.height.raw_values"])) {
+        NSArray* readings = [readingsBuilder buildReadings:rawReadings];
+        [gauge setHeightReadings:readings];
+    }
+
+    if ((rawReadings = [dict valueForKeyPath:@"gauge.readings.precipitation.raw_values"])) {
+        NSArray* readings = [readingsBuilder buildReadings:rawReadings];
+        [gauge setPrecipitationReadings:readings];
+    }
+
+    if ((rawReadings = [dict valueForKeyPath:@"gauge.readings.discharge.raw_values"])) {
+        NSArray* readings = [readingsBuilder buildReadings:rawReadings];
+        [gauge setDischargeReadings:readings];
+    }
+
+    if ((rawReadings = [dict valueForKeyPath:@"gauge.readings.water_temperature.raw_values"])) {
+        NSArray* readings = [readingsBuilder buildReadings:rawReadings];
+        [gauge setWaterTemperatureReadings:readings];
     }
 
     return YES;

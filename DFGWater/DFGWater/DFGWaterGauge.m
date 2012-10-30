@@ -33,6 +33,11 @@
 @synthesize lastDischargeReading;
 @synthesize lastWaterTemperatureReading;
 
+@synthesize heightReadings;
+@synthesize precipitationReadings;
+@synthesize dischargeReadings;
+@synthesize waterTemperatureReadings;
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"gauge id = %@; name = %@; location = %f , %f; agency = %@; agency slug = %@; agency gauge id = %@; state code = %@; county code = %@; huc code = %@", gaugeID, name, locationCoordinate.latitude, locationCoordinate.longitude, agency, agencySlug, agencyGaugeID, stateCode, countyCode, hydrologicUnitCode];
