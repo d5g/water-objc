@@ -18,5 +18,9 @@
 @property (nonatomic, assign) CGColorRef backgroundColor;
 @property (nonatomic, assign) CGColorRef textColorX;
 @property (nonatomic, assign) CGColorRef textColorY;
+@property (nonatomic, assign) CGFontRef titleFont;
+@property (nonatomic, assign) CGColorRef titleColor;
+@property (nonatomic, assign) CGFontRef fontX;
+@property (nonatomic, assign) CGFontRef fontY;
 
 @end
