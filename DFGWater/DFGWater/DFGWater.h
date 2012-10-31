@@ -18,7 +18,5 @@
 #import "DFGWaterGaugeDetailAPIRequestBuilder.h"
 #import "DFGWaterGaugeDetailAPIResponseParser.h"
 #import "DFGWaterGaugeAPIDetailRetriever.h"
-
-@interface DFGWater : NSObject
-
-@end
+#import "DFGWaterReadingsGraphIllustratorProtocol.h"
+#import "DFGWaterReadingsLineGraphIllustrator.h"

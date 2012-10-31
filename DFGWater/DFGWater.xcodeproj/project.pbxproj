@@ -56,6 +56,9 @@
 		D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3C741B01602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3C741B11602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C741AF1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m */; };
+		D3CD85BA1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h in Headers */ = {isa = PBXBuildFile; fileRef = D3CD85B81640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3CD85BB1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD85B91640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m */; };
+		D3CD85BC1640A7F700405931 /* DFGWaterReadingsGraphIllustratorProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3CD85B61640A6F400405931 /* DFGWaterReadingsGraphIllustratorProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDetailAPIRequestBuilder.h; sourceTree = "<group>"; };
 		D3C741AF1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeDetailAPIRequestBuilder.m; sourceTree = "<group>"; };
 		D3C741B21602DB2000A685B7 /* DFGWaterBaseURLStringProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterBaseURLStringProtocol.h; sourceTree = "<group>"; };
+		D3CD85B61640A6F400405931 /* DFGWaterReadingsGraphIllustratorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGWaterReadingsGraphIllustratorProtocol.h; sourceTree = "<group>"; };
+		D3CD85B81640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterReadingsLineGraphIllustrator.h; sourceTree = "<group>"; };
+		D3CD85B91640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterReadingsLineGraphIllustrator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +230,9 @@
 				6704B82814A57569002C0A30 /* Supporting Files */,
 				D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */,
 				D396394C163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m */,
+				D3CD85B61640A6F400405931 /* DFGWaterReadingsGraphIllustratorProtocol.h */,
+				D3CD85B81640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h */,
+				D3CD85B91640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m */,
 			);
 			path = DFGWater;
 			sourceTree = "<group>";
@@ -288,6 +297,8 @@
 				D31FE2341605818D00B9103A /* DFGWaterGaugeDetailAPIResponseParser.h in Headers */,
 				D31FE2401605879500B9103A /* DFGWaterDateMaker.h in Headers */,
 				D396394D163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h in Headers */,
+				D3CD85BA1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h in Headers */,
+				D3CD85BC1640A7F700405931 /* DFGWaterReadingsGraphIllustratorProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +415,7 @@
 				D31FE2351605818D00B9103A /* DFGWaterGaugeDetailAPIResponseParser.m in Sources */,
 				D31FE2411605879500B9103A /* DFGWaterDateMaker.m in Sources */,
 				D396394E163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m in Sources */,
+				D3CD85BB1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
