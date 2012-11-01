@@ -20,3 +20,4 @@
 #import "DFGWaterGaugeAPIDetailRetriever.h"
 #import "DFGWaterReadingsGraphIllustratorProtocol.h"
 #import "DFGWaterReadingsLineGraphIllustrator.h"
+#import "DFGWaterReadingsDataExtractor.h"

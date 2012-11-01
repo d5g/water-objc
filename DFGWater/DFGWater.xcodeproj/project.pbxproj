@@ -49,6 +49,8 @@
 		D31FE2351605818D00B9103A /* DFGWaterGaugeDetailAPIResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE2331605818D00B9103A /* DFGWaterGaugeDetailAPIResponseParser.m */; };
 		D31FE2401605879500B9103A /* DFGWaterDateMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FE23E1605879400B9103A /* DFGWaterDateMaker.h */; };
 		D31FE2411605879500B9103A /* DFGWaterDateMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FE23F1605879400B9103A /* DFGWaterDateMaker.m */; };
+		D33EC02116420C5A00737263 /* DFGWaterReadingsDataExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = D33EC01F16420C5A00737263 /* DFGWaterReadingsDataExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D33EC02216420C5A00737263 /* DFGWaterReadingsDataExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */; };
 		D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */; };
 		D396394D163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -117,6 +119,8 @@
 		D31FE2331605818D00B9103A /* DFGWaterGaugeDetailAPIResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeDetailAPIResponseParser.m; sourceTree = "<group>"; };
 		D31FE23E1605879400B9103A /* DFGWaterDateMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterDateMaker.h; sourceTree = "<group>"; };
 		D31FE23F1605879400B9103A /* DFGWaterDateMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterDateMaker.m; sourceTree = "<group>"; };
+		D33EC01F16420C5A00737263 /* DFGWaterReadingsDataExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterReadingsDataExtractor.h; sourceTree = "<group>"; };
+		D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterReadingsDataExtractor.m; sourceTree = "<group>"; };
 		D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGMapAnnotationWaterGauge.h; sourceTree = "<group>"; };
 		D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGMapAnnotationWaterGauge.m; sourceTree = "<group>"; };
 		D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeReadingsBuilder.h; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				D3CD85B61640A6F400405931 /* DFGWaterReadingsGraphIllustratorProtocol.h */,
 				D3CD85B81640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h */,
 				D3CD85B91640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m */,
+				D33EC01F16420C5A00737263 /* DFGWaterReadingsDataExtractor.h */,
+				D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */,
 			);
 			path = DFGWater;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 				D396394D163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h in Headers */,
 				D3CD85BA1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h in Headers */,
 				D3CD85BC1640A7F700405931 /* DFGWaterReadingsGraphIllustratorProtocol.h in Headers */,
+				D33EC02116420C5A00737263 /* DFGWaterReadingsDataExtractor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +423,7 @@
 				D31FE2411605879500B9103A /* DFGWaterDateMaker.m in Sources */,
 				D396394E163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m in Sources */,
 				D3CD85BB1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m in Sources */,
+				D33EC02216420C5A00737263 /* DFGWaterReadingsDataExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
