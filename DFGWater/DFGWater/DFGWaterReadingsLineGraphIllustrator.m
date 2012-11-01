@@ -35,8 +35,16 @@
     CGContextTranslateCTM(*context, 0, rect.size.height);
     CGContextScaleCTM(*context, 1, -1);
     
-    NSLog(@"min: %@", [extractor minValue:readings]);
-    NSLog(@"max: %@", [extractor maxValue:readings]);
+    float minValue = [[extractor minValue:readings] floatValue];
+    float maxValue = [[extractor maxValue:readings] floatValue];
+    NSDate* minDate = [extractor minDate:readings];
+    NSDate* maxDate = [extractor maxDate:readings];
+
+    NSLog(@"min value: %.2f", minValue);
+    NSLog(@"max value: %.2f", maxValue);
+    
+    NSLog(@"min date: %@", minDate);
+    NSLog(@"max date: %@", maxDate);
 
     // Not our job to draw the title
     //CGContextSelectFont(*context, "Helvetica", 18.0, kCGEncodingMacRoman);
@@ -61,6 +69,26 @@
     // Horizontal line
     CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
     CGContextAddLineToPoint(*context, rect.size.width, graphStart.y);
+    
+    //
+    // Horizontal grid lines
+    //
+    float range = ceil(maxValue) - floor(minValue);
+    int numLines = 5;
+    float lineYStep = (rect.size.height - graphStart.y) / numLines;
+
+    // Dashed line for grid lines
+    CGFloat dash[] = {2.0, 2.0};
+    
+    
+    for (float i = graphStart.y + lineYStep; i <= rect.size.height - 10.0; i += lineYStep) {
+        CGContextMoveToPoint(*context, graphStart.x, i);
+        CGContextSetLineDash(*context, 0.0, dash, 2);
+        CGContextAddLineToPoint(*context, rect.size.width, i);
+    }
+    
+    // Removed dashed line.
+    CGContextSetLineDash(*context, 0, NULL, 0);
     
     CGContextStrokePath(*context);
     

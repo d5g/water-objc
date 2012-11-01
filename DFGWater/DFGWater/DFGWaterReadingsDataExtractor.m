@@ -28,4 +28,23 @@
     return [readings valueForKeyPath:@"@max.value"];
 }
 
+- (NSDate*)minDate:(NSArray*)readings
+{
+    if (![readings count]) {
+        return nil;
+    }
+    
+    return [readings valueForKeyPath:@"@min.date"];
+}
+
+- (NSDate*)maxDate:(NSArray*)readings
+{
+    if (![readings count]) {
+        return nil;
+    }
+    
+    return [readings valueForKeyPath:@"@max.date"];
+}
+
+
 @end

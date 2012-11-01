@@ -13,4 +13,8 @@
 - (NSString*)minValue:(NSArray*)readings;
 - (NSString*)maxValue:(NSArray*)readings;
 
+- (NSDate*)minDate:(NSArray*)readings;
+- (NSDate*)maxDate:(NSArray*)readings;
+
+
 @end
