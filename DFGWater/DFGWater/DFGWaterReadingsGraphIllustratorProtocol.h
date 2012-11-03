@@ -24,6 +24,8 @@
 @property (nonatomic, assign) CGColorRef gridLineColor;
 @property (nonatomic, assign) CGColorRef axesLineColor;
 @property (nonatomic, assign) CGColorRef graphLineColor;
+@property (nonatomic, assign) CGColorRef graphFillColor;
+@property (nonatomic, assign) float graphFillAlpha;
 @property (nonatomic, strong) DFGWaterReadingsDataExtractor* extractor;
 
 @end

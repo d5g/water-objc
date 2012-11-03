@@ -22,6 +22,8 @@
 @synthesize gridLineColor;
 @synthesize axesLineColor;
 @synthesize graphLineColor;
+@synthesize graphFillColor;
+@synthesize graphFillAlpha;
 @synthesize extractor;
 
 - (BOOL)drawReadings:(NSArray*)readings withGauge:(DFGWaterGauge*)gauge inContext:(CGContextRef*)context withRect:(CGRect)rect
@@ -117,7 +119,10 @@
     int i = 0;
     float valueX = 0;
     float valueY = 0;
+    float firstX;
+    float firstY;
     float lastX;
+    float lastY;
     int numSecondsSinceLastReading = 0;
     DFGWaterReading* lastReading = nil;
 
@@ -134,16 +139,27 @@
 
     CGContextStrokePath(*context);
     
-    CGContextSetLineDash(*context, 0, NULL, 0); // Remove the dash
+    // Remove dash.
+    CGContextSetLineDash(*context, 0, NULL, 0);
     
     // Begin the graph path
     CGContextSetLineWidth(*context, 2.0);
+    
     CGContextSetStrokeColorWithColor(*context, graphLineColor);
     CGContextBeginPath(*context);
     
-    
     // TODO: start at the appropriate Y for reading 0.
-    CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
+    valueY = graphStart.y + (([[[readings objectAtIndex:0] value] floatValue] - lowValue) * graphHeight);
+
+    // Hang on to the starting points so we can come back to them
+    // when filling the graph.
+    firstX = graphStart.x;
+    firstY = valueY;
+    
+    // Set the fill color.
+    //CGContextSetFillColorWithColor(*context, graphFillColor);
+    
+    CGContextMoveToPoint(*context, graphStart.x, valueY);
 
     for (DFGWaterReading* reading in readings) {
         numSecondsSinceLastReading = [[reading date] timeIntervalSinceDate:[lastReading date]];
@@ -160,6 +176,7 @@
         
         lastReading = reading;
         lastX = valueX;
+        lastY = valueY;
         NSLog(@"height = %@", [reading value]);
         
         // After drawing this point, determine if the day changed.  If it has, draw
@@ -169,9 +186,36 @@
         if (![readingDay isEqualToString:lastDay]) {
             goBackToPoint = CGContextGetPathCurrentPoint(*context);
             
+            // Close the current graph point
+            CGContextDrawPath(*context, kCGPathStroke);
+            
+            // Set the dash back
+            CGContextSetLineDash(*context, 0.0, dash, 2);
+            
+            // Back go axes line color.
+            CGContextSetStrokeColorWithColor(*context, axesLineColor);
+
+            // Back to thinner line width.
+            CGContextSetLineWidth(*context, 0.8);
+
             CGContextMoveToPoint(*context, valueX, graphStart.y);
             CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
+
+            // Draw the gridline.
+            CGContextStrokePath(*context);
+
+            // Begin the graph path again.
+            CGContextBeginPath(*context);
             
+            // Change color back to graph line.
+            CGContextSetStrokeColorWithColor(*context, graphLineColor);
+            
+            // Remove dash.
+            CGContextSetLineDash(*context, 0, NULL, 0);
+            
+            // Back to graph line width
+            CGContextSetLineWidth(*context, 2.0);
+
             CGContextMoveToPoint(*context, goBackToPoint.x, goBackToPoint.y);
         }
 
@@ -180,6 +224,14 @@
         i++;
     }
     
+    // Close in the graph before we fill it.
+    //CGContextAddLineToPoint(*context, lastX, graphStart.y);
+    //CGContextAddLineToPoint(*context, graphStart.x, graphStart.y);
+    //CGContextAddLineToPoint(*context, firstX, firstY);
+    
+    // Fill it.
+    //CGContextClosePath(*context);
+        
     CGContextDrawPath(*context, kCGPathStroke);
     
     return YES;
