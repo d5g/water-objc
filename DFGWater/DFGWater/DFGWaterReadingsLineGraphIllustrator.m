@@ -119,6 +119,16 @@
             lastDay = readingDay;
         }
     }
+    
+    //
+    // Draw the points and vertical grid lines
+    //
+    
+    NSDate* firstDate = [[readings objectAtIndex:0] date];
+    NSDate* lastDate = [[readings lastObject] date];
+    
+    int numSecondsRange = [lastDate timeIntervalSinceDate:firstDate];
+    float numPixelsPerSecond = (rect.size.width - (graphPadding * 2)) / numSecondsRange;
 
     // Draw the vertical grid lines.
     NSUInteger numDays = [days count];
@@ -131,9 +141,34 @@
         CGContextAddLineToPoint(*context, lineStartX, rect.size.height - graphPadding);
     }
     
+    int i = 0;
+    float valueX = 0;
+    float valueY = 0;
+    float lastX;
+    int numSecondsSinceLastReading = 0;
+    DFGWaterReading* lastReading = nil;
+    
+    // TODO: start at the appropriate Y for reading 0.
+    CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
+
     for (DFGWaterReading* reading in readings) {
-        CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
+        numSecondsSinceLastReading = [[reading date] timeIntervalSinceDate:[lastReading date]];
+        
+        if (numSecondsSinceLastReading < 0) {
+            valueX = graphStart.x;
+        } else {
+            valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
+        }
+        
+        valueY = 150.0;
+        
+        CGContextAddLineToPoint(*context, valueX, valueY);
+        
+        lastReading = reading;
+        lastX = valueX;
         NSLog(@"height = %@", [reading value]);
+        
+        i++;
     }
     
     CGContextStrokePath(*context);
