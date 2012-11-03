@@ -49,6 +49,7 @@
     
     float lowValue = floor(minValue);
     float highValue = ceil(maxValue);
+    float yRange = highValue - lowValue;
 
     // Not our job to draw the title
     //CGContextSelectFont(*context, "Helvetica", 18.0, kCGEncodingMacRoman);
@@ -100,27 +101,6 @@
     }
     
     //
-    // Vertical grid lines
-    //
-    
-    // Get the number of days represented
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    
-    NSString* lastDay = nil;
-    NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:5];
-    NSString* readingDay = nil;
-    
-    for (DFGWaterReading* reading in readings) {
-        readingDay = [dateFormatter stringFromDate:[reading date]];
-        
-        if (![readingDay isEqualToString:lastDay]) {
-            [days addObject:readingDay];
-            lastDay = readingDay;
-        }
-    }
-    
-    //
     // Draw the points and vertical grid lines
     //
     
@@ -131,15 +111,7 @@
     float numPixelsPerSecond = (rect.size.width - (graphPadding * 2)) / numSecondsRange;
 
     // Draw the vertical grid lines.
-    NSUInteger numDays = [days count];
     CGFloat lineStartX;
-    CGFloat lineXStep = (rect.size.width - (graphPadding * 2)) / numDays;
-    
-    for (int i = 1; i < numDays; i++) {
-        lineStartX = graphStart.x + (lineXStep * i);
-        CGContextMoveToPoint(*context, lineStartX, graphStart.y);
-        CGContextAddLineToPoint(*context, lineStartX, rect.size.height - graphPadding);
-    }
     
     int i = 0;
     float valueX = 0;
@@ -147,6 +119,21 @@
     float lastX;
     int numSecondsSinceLastReading = 0;
     DFGWaterReading* lastReading = nil;
+
+    // Get the number of days represented
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
+    NSString* lastDay = nil;
+    NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:5];
+    NSString* readingDay = nil;
+
+    CGFloat graphHeight = rect.size.height - (graphPadding * 2);
+    CGPoint goBackToPoint;
+
+    // Begin the graph path
+    //CGContextBeginPath(*context);
+    
     
     // TODO: start at the appropriate Y for reading 0.
     CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
@@ -160,13 +147,28 @@
             valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
         }
         
-        valueY = 150.0;
+        valueY = graphStart.y + (([[reading value] floatValue] - lowValue) * graphHeight);
         
         CGContextAddLineToPoint(*context, valueX, valueY);
         
         lastReading = reading;
         lastX = valueX;
         NSLog(@"height = %@", [reading value]);
+        
+        // After drawing this point, determine if the day changed.  If it has, draw
+        // the vertical grid line as well.
+        readingDay = [dateFormatter stringFromDate:[reading date]];
+        
+        if (![readingDay isEqualToString:lastDay]) {
+            goBackToPoint = CGContextGetPathCurrentPoint(*context);
+            
+            CGContextMoveToPoint(*context, valueX, graphStart.y);
+            CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
+            
+            CGContextMoveToPoint(*context, goBackToPoint.x, goBackToPoint.y);
+        }
+
+        lastDay = readingDay;
         
         i++;
     }
