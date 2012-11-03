@@ -9,6 +9,7 @@
 #import "DFGWaterReadingsLineGraphIllustrator.h"
 #import "DFGWaterGauge.h"
 #import "DFGWaterReadingsDataExtractor.h"
+#import "DFGWaterReading.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 @implementation DFGWaterReadingsLineGraphIllustrator
@@ -60,35 +61,71 @@
     CGContextSetStrokeColorWithColor(*context, axesLineColor);
     CGContextSetLineWidth(*context, 0.8);
     CGContextBeginPath(*context);
-    CGPoint graphStart = CGPointMake(10.0, 10.0);
+    CGFloat graphPadding = 10.0;
+    CGPoint graphStart = CGPointMake(graphPadding, graphPadding);
     
-    // Vertical line
+    // Left vertical line
     CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
-    CGContextAddLineToPoint(*context, graphStart.x, rect.size.height);
+    CGContextAddLineToPoint(*context, graphStart.x, rect.size.height - graphStart.y);
     
     // Horizontal line
     CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
-    CGContextAddLineToPoint(*context, rect.size.width, graphStart.y);
+    CGContextAddLineToPoint(*context, rect.size.width - graphPadding, graphStart.y);
+    
+    // Right vertical line
+    CGContextMoveToPoint(*context, graphStart.x + rect.size.width - (graphPadding * 2), graphStart.y);
+    CGContextAddLineToPoint(*context, graphStart.x + rect.size.width - (graphPadding * 2), rect.size.height - graphStart.y);
     
     //
     // Horizontal grid lines
     //
-    float range = ceil(maxValue) - floor(minValue);
     int numLines = 5;
-    float lineYStep = (rect.size.height - graphStart.y) / numLines;
+    // Equal Y padding on top and bottom, hence the * 2.
+    float lineYStep = (rect.size.height - (graphStart.y * 2)) / numLines;
 
     // Dashed line for grid lines
     CGFloat dash[] = {2.0, 2.0};
+    CGContextSetLineDash(*context, 0.0, dash, 2);
     
-    
-    for (float i = graphStart.y + lineYStep; i <= rect.size.height - 10.0; i += lineYStep) {
-        CGContextMoveToPoint(*context, graphStart.x, i);
-        CGContextSetLineDash(*context, 0.0, dash, 2);
-        CGContextAddLineToPoint(*context, rect.size.width, i);
+    CGFloat lineStartY;
+
+    for (int i = 1; i <= numLines; i++) {
+        lineStartY = graphStart.y + (lineYStep * i);
+        CGContextMoveToPoint(*context, graphStart.x, lineStartY);
+        CGContextAddLineToPoint(*context, rect.size.width - graphPadding, lineStartY);
     }
     
-    // Removed dashed line.
-    CGContextSetLineDash(*context, 0, NULL, 0);
+    //
+    // Vertical grid lines
+    //
+    
+    // Get the number of days represented
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
+    NSString* lastDay = nil;
+    NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:5];
+    NSString* readingDay = nil;
+    
+    for (DFGWaterReading* reading in readings) {
+        readingDay = [dateFormatter stringFromDate:[reading date]];
+        
+        if (![readingDay isEqualToString:lastDay]) {
+            [days addObject:readingDay];
+            lastDay = readingDay;
+        }
+    }
+    
+    NSUInteger numDays = [days count];
+    CGFloat lineStartX;
+    CGFloat lineXStep = (rect.size.width - (graphPadding * 2)) / numDays;
+    
+    for (int i = 1; i < numDays; i++) {
+        lineStartX = graphStart.x + (lineXStep * i);
+        CGContextMoveToPoint(*context, lineStartX, graphStart.y);
+        CGContextAddLineToPoint(*context, lineStartX, rect.size.height - graphPadding);
+    }
     
     CGContextStrokePath(*context);
     
