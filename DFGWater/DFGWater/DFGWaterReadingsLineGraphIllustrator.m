@@ -21,6 +21,7 @@
 @synthesize fontY;
 @synthesize gridLineColor;
 @synthesize axesLineColor;
+@synthesize graphLineColor;
 @synthesize extractor;
 
 - (BOOL)drawReadings:(NSArray*)readings withGauge:(DFGWaterGauge*)gauge inContext:(CGContextRef*)context withRect:(CGRect)rect
@@ -131,8 +132,14 @@
     CGFloat graphHeight = rect.size.height - (graphPadding * 2);
     CGPoint goBackToPoint;
 
+    CGContextStrokePath(*context);
+    
+    CGContextSetLineDash(*context, 0, NULL, 0); // Remove the dash
+    
     // Begin the graph path
-    //CGContextBeginPath(*context);
+    CGContextSetLineWidth(*context, 2.0);
+    CGContextSetStrokeColorWithColor(*context, graphLineColor);
+    CGContextBeginPath(*context);
     
     
     // TODO: start at the appropriate Y for reading 0.
@@ -173,7 +180,7 @@
         i++;
     }
     
-    CGContextStrokePath(*context);
+    CGContextDrawPath(*context, kCGPathStroke);
     
     return YES;
 }
