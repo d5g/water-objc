@@ -46,6 +46,9 @@
     
     NSLog(@"min date: %@", minDate);
     NSLog(@"max date: %@", maxDate);
+    
+    float lowValue = floor(minValue);
+    float highValue = ceil(maxValue);
 
     // Not our job to draw the title
     //CGContextSelectFont(*context, "Helvetica", 18.0, kCGEncodingMacRoman);
@@ -79,6 +82,7 @@
     //
     // Horizontal grid lines
     //
+    
     int numLines = 5;
     // Equal Y padding on top and bottom, hence the * 2.
     float lineYStep = (rect.size.height - (graphStart.y * 2)) / numLines;
@@ -100,7 +104,6 @@
     //
     
     // Get the number of days represented
-    
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
@@ -116,7 +119,8 @@
             lastDay = readingDay;
         }
     }
-    
+
+    // Draw the vertical grid lines.
     NSUInteger numDays = [days count];
     CGFloat lineStartX;
     CGFloat lineXStep = (rect.size.width - (graphPadding * 2)) / numDays;
@@ -125,6 +129,11 @@
         lineStartX = graphStart.x + (lineXStep * i);
         CGContextMoveToPoint(*context, lineStartX, graphStart.y);
         CGContextAddLineToPoint(*context, lineStartX, rect.size.height - graphPadding);
+    }
+    
+    for (DFGWaterReading* reading in readings) {
+        CGContextMoveToPoint(*context, graphStart.x, graphStart.y);
+        NSLog(@"height = %@", [reading value]);
     }
     
     CGContextStrokePath(*context);
