@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @class DFGWaterGauge;
+@class DFGWaterReading;
 @class DFGWaterReadingsDataExtractor;
 
 @protocol DFGWaterReadingsGraphIllustratorProtocol <NSObject>
@@ -19,6 +20,8 @@
           cumulative:(BOOL)cumulative
            inContext:(CGContextRef*)context
             withRect:(CGRect)rect;
+
+- (DFGWaterReading*)readingAtPoint:(CGPoint)point;
 
 @property (nonatomic, assign) CGColorRef backgroundColor;
 @property (nonatomic, assign) CGColorRef textColorX;

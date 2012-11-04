@@ -12,6 +12,14 @@
 #import "DFGWaterReading.h"
 #import <CoreGraphics/CoreGraphics.h>
 
+@interface DFGWaterReadingsLineGraphIllustrator ()
+
+- (float)reading:(float)value cumulative:(BOOL)cumulative;
+- (NSString*)keyForViewX:(CGFloat)x;
+@property (nonatomic, strong) NSMutableDictionary* readingsByGraphX;
+
+@end
+
 @implementation DFGWaterReadingsLineGraphIllustrator
 {
     float cumulativeTotal;
@@ -34,6 +42,9 @@
            inContext:(CGContextRef*)context
             withRect:(CGRect)rect
 {
+    // Setup a new dictionary of readings by X graph coordinate.
+    [self setReadingsByGraphX:[NSMutableDictionary dictionaryWithCapacity:10]];
+    
     if ([readings count] == 0) {
         return NO;
     }
@@ -169,6 +180,8 @@
             valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
         }
         
+        [[self readingsByGraphX] setObject:reading forKey:[self keyForViewX:valueX]];
+        
         if (![readingDay isEqualToString:lastDay]) {
             CGContextMoveToPoint(*context, valueX, graphStart.y);
             CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
@@ -244,7 +257,6 @@
         lastReading = reading;
         lastX = valueX;
         lastY = valueY;
-        NSLog(@"reading = %@", reading);
         
         i++;
     }
@@ -265,6 +277,20 @@
     }
     
     return YES;
+}
+
+- (DFGWaterReading*)readingAtPoint:(CGPoint)point
+{
+    NSString* key = [self keyForViewX:point.x];
+    return [[self readingsByGraphX] objectForKey:key];
+}
+
+#pragma mark -
+#pragma mark Private methods
+
+- (NSString*)keyForViewX:(CGFloat)x
+{
+    return [NSString stringWithFormat:@"%d", (int) floor(x)];
 }
 
 - (float)reading:(float)value cumulative:(BOOL)cumulative
