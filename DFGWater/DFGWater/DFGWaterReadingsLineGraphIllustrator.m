@@ -31,6 +31,9 @@
         return NO;
     }
     
+    // Clear context before drawing anything.
+    CGContextClearRect(*context, rect);
+    
     CGContextSetFillColorWithColor(*context, backgroundColor);
     CGContextFillRect(*context, rect);
     
