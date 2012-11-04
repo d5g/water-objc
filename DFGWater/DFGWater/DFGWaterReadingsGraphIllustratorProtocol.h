@@ -14,7 +14,11 @@
 
 @protocol DFGWaterReadingsGraphIllustratorProtocol <NSObject>
 
-- (BOOL)drawReadings:(NSArray*)readings withGauge:(DFGWaterGauge*)gauge inContext:(CGContextRef*)context withRect:(CGRect)rect;
+- (BOOL)drawReadings:(NSArray*)readings
+           withGauge:(DFGWaterGauge*)gauge
+          cumulative:(BOOL)cumulative
+           inContext:(CGContextRef*)context
+            withRect:(CGRect)rect;
 
 @property (nonatomic, assign) CGColorRef backgroundColor;
 @property (nonatomic, assign) CGColorRef textColorX;

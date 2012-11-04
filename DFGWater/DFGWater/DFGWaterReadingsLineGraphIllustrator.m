@@ -13,6 +13,9 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @implementation DFGWaterReadingsLineGraphIllustrator
+{
+    float cumulativeTotal;
+}
 
 @synthesize backgroundColor;
 @synthesize textColorX;
@@ -25,10 +28,18 @@
 @synthesize graphFillColor;
 @synthesize extractor;
 
-- (BOOL)drawReadings:(NSArray*)readings withGauge:(DFGWaterGauge*)gauge inContext:(CGContextRef*)context withRect:(CGRect)rect
+- (BOOL)drawReadings:(NSArray*)readings
+           withGauge:(DFGWaterGauge*)gauge
+          cumulative:(BOOL)cumulative
+           inContext:(CGContextRef*)context
+            withRect:(CGRect)rect
 {
     if ([readings count] == 0) {
         return NO;
+    }
+    
+    if (cumulative) {
+        cumulativeTotal = 0.0;
     }
     
     // Clear context before drawing anything.
@@ -41,8 +52,17 @@
     CGContextTranslateCTM(*context, 0, rect.size.height);
     CGContextScaleCTM(*context, 1, -1);
     
-    float minValue = [[extractor minValue:readings] floatValue];
-    float maxValue = [[extractor maxValue:readings] floatValue];
+    float minValue = 0.0;
+    float maxValue = 0.0;
+    
+    if (!cumulative) {
+        minValue = [[extractor minValue:readings] floatValue];
+        maxValue = [[extractor maxValue:readings] floatValue];
+    } else {
+        minValue = 0.0;
+        maxValue = [[extractor sumValue:readings] floatValue];
+    }
+    
     NSDate* minDate = [extractor minDate:readings];
     NSDate* maxDate = [extractor maxDate:readings];
 
@@ -202,6 +222,8 @@
     CGContextSetFillColorWithColor(*context, graphFillColor);
     
     CGContextMoveToPoint(*context, graphStart.x, valueY);
+    
+    float relevantReading;
 
     for (DFGWaterReading* reading in readings) {
         numSecondsSinceLastReading = [[reading date] timeIntervalSinceDate:[lastReading date]];
@@ -212,8 +234,10 @@
             valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
         }
 
+        relevantReading = [self reading:[[reading value] floatValue] cumulative:cumulative];
+        
         // height - ((low value / number of feet in graph)) * (number of pixels in graph)
-        valueY = (([[reading value] floatValue] - lowValue) / yRange) * graphHeight;
+        valueY = ((relevantReading - lowValue) / yRange) * graphHeight;
         
         CGContextAddLineToPoint(*context, valueX, valueY);
         
@@ -235,7 +259,22 @@
     
     CGContextDrawPath(*context, kCGPathFill);
     
+    // Reset the cumulative total.
+    if (cumulative) {
+        cumulativeTotal = 0.0;
+    }
+    
     return YES;
+}
+
+- (float)reading:(float)value cumulative:(BOOL)cumulative
+{
+    if (cumulative) {
+        cumulativeTotal += value;
+        return cumulativeTotal;
+    }
+    
+    return value;
 }
 
 @end

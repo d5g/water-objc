@@ -46,5 +46,13 @@
     return [readings valueForKeyPath:@"@max.date"];
 }
 
+- (NSString*)sumValue:(NSArray*)readings
+{
+    if (![readings count]) {
+        return nil;
+    }
+    
+    return [readings valueForKeyPath:@"@sum.value.floatValue"];
+}
 
 @end
