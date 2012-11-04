@@ -23,7 +23,6 @@
 @synthesize axesLineColor;
 @synthesize graphLineColor;
 @synthesize graphFillColor;
-@synthesize graphFillAlpha;
 @synthesize extractor;
 
 - (BOOL)drawReadings:(NSArray*)readings withGauge:(DFGWaterGauge*)gauge inContext:(CGContextRef*)context withRect:(CGRect)rect
@@ -67,7 +66,7 @@
     CGContextSetFillColorWithColor(*context, axesLineColor);
     CGContextSetStrokeColorWithColor(*context, axesLineColor);
     CGContextSetLineWidth(*context, 0.8);
-    CGContextBeginPath(*context);
+    //CGContextBeginPath(*context);
     CGFloat graphPadding = 10.0;
     CGPoint graphStart = CGPointMake(graphPadding, graphPadding);
     
@@ -102,43 +101,76 @@
         CGContextMoveToPoint(*context, graphStart.x, lineStartY);
         CGContextAddLineToPoint(*context, rect.size.width - graphPadding, lineStartY);
     }
-    
+
     //
-    // Draw the points and vertical grid lines
+    // Draw the vertical grid lines.
     //
+    NSString* lastDay = nil;
+    NSString* readingDay = nil;
     
     NSDate* firstDate = [[readings objectAtIndex:0] date];
     NSDate* lastDate = [[readings lastObject] date];
     
     int numSecondsRange = [lastDate timeIntervalSinceDate:firstDate];
     float numPixelsPerSecond = (rect.size.width - (graphPadding * 2)) / numSecondsRange;
-
-    // Draw the vertical grid lines.
-    CGFloat lineStartX;
     
-    int i = 0;
-    float valueX = 0;
-    float valueY = 0;
-    float firstX;
-    float firstY;
-    float lastX;
-    float lastY;
-    int numSecondsSinceLastReading = 0;
-    DFGWaterReading* lastReading = nil;
-
-    // Get the number of days represented
+    
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
-    NSString* lastDay = nil;
     NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:5];
-    NSString* readingDay = nil;
 
-    CGFloat graphHeight = rect.size.height - (graphPadding * 2);
-    CGPoint goBackToPoint;
-
-    CGContextStrokePath(*context);
+    float valueX = 0;
+    float lastX = 0;
+    int numSecondsSinceLastReading = 0;
+    DFGWaterReading* lastReading = nil;
     
+    for (DFGWaterReading* reading in readings) {
+        // After drawing this point, determine if the day changed.  If it has, draw
+        // the vertical grid line as well.
+        numSecondsSinceLastReading = [[reading date] timeIntervalSinceDate:[lastReading date]];
+
+        readingDay = [dateFormatter stringFromDate:[reading date]];
+        
+        if (numSecondsSinceLastReading < 0) {
+            valueX = graphStart.x;
+        } else {
+            valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
+        }
+        
+        if (![readingDay isEqualToString:lastDay]) {
+            CGContextMoveToPoint(*context, valueX, graphStart.y);
+            CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
+        }
+        
+        lastDay = readingDay;
+        lastX = valueX;
+        lastReading = reading;
+    }
+    
+    CGContextClosePath(*context);
+    CGContextStrokePath(*context);
+        
+    //
+    // Draw the points.
+    //
+    
+    int i = 0;
+    valueX = 0;
+    float valueY = 0;
+    float firstX;
+    float firstY;
+    lastX = 0.0;
+    float lastY;
+    numSecondsSinceLastReading = 0;
+    
+    lastReading = nil;
+
+    CGContextBeginPath(*context);
+    
+    // Get the number of days represented
+    CGFloat graphHeight = rect.size.height - (graphPadding * 2);
+
     // Remove dash.
     CGContextSetLineDash(*context, 0, NULL, 0);
     
@@ -146,7 +178,6 @@
     CGContextSetLineWidth(*context, 2.0);
     
     CGContextSetStrokeColorWithColor(*context, graphLineColor);
-    CGContextBeginPath(*context);
     
     // TODO: start at the appropriate Y for reading 0.
     valueY = graphStart.y + (([[[readings objectAtIndex:0] value] floatValue] - lowValue) * graphHeight);
@@ -157,7 +188,7 @@
     firstY = valueY;
     
     // Set the fill color.
-    //CGContextSetFillColorWithColor(*context, graphFillColor);
+    CGContextSetFillColorWithColor(*context, graphFillColor);
     
     CGContextMoveToPoint(*context, graphStart.x, valueY);
 
@@ -169,70 +200,29 @@
         } else {
             valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
         }
-        
-        valueY = graphStart.y + (([[reading value] floatValue] - lowValue) * graphHeight);
+
+        // height - ((low value / number of feet in graph)) * (number of pixels in graph)
+        valueY = (([[reading value] floatValue] - lowValue) / yRange) * graphHeight;
         
         CGContextAddLineToPoint(*context, valueX, valueY);
         
         lastReading = reading;
         lastX = valueX;
         lastY = valueY;
-        NSLog(@"height = %@", [reading value]);
-        
-        // After drawing this point, determine if the day changed.  If it has, draw
-        // the vertical grid line as well.
-        readingDay = [dateFormatter stringFromDate:[reading date]];
-        
-        if (![readingDay isEqualToString:lastDay]) {
-            goBackToPoint = CGContextGetPathCurrentPoint(*context);
-            
-            // Close the current graph point
-            CGContextDrawPath(*context, kCGPathStroke);
-            
-            // Set the dash back
-            CGContextSetLineDash(*context, 0.0, dash, 2);
-            
-            // Back go axes line color.
-            CGContextSetStrokeColorWithColor(*context, axesLineColor);
-
-            // Back to thinner line width.
-            CGContextSetLineWidth(*context, 0.8);
-
-            CGContextMoveToPoint(*context, valueX, graphStart.y);
-            CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
-
-            // Draw the gridline.
-            CGContextStrokePath(*context);
-
-            // Begin the graph path again.
-            CGContextBeginPath(*context);
-            
-            // Change color back to graph line.
-            CGContextSetStrokeColorWithColor(*context, graphLineColor);
-            
-            // Remove dash.
-            CGContextSetLineDash(*context, 0, NULL, 0);
-            
-            // Back to graph line width
-            CGContextSetLineWidth(*context, 2.0);
-
-            CGContextMoveToPoint(*context, goBackToPoint.x, goBackToPoint.y);
-        }
-
-        lastDay = readingDay;
+        NSLog(@"reading = %@", reading);
         
         i++;
     }
     
     // Close in the graph before we fill it.
-    //CGContextAddLineToPoint(*context, lastX, graphStart.y);
-    //CGContextAddLineToPoint(*context, graphStart.x, graphStart.y);
-    //CGContextAddLineToPoint(*context, firstX, firstY);
+    CGContextAddLineToPoint(*context, lastX, graphStart.y);
+    CGContextAddLineToPoint(*context, graphStart.x, graphStart.y);
+    CGContextAddLineToPoint(*context, firstX, firstY);
     
     // Fill it.
-    //CGContextClosePath(*context);
-        
-    CGContextDrawPath(*context, kCGPathStroke);
+    CGContextClosePath(*context);
+    
+    CGContextDrawPath(*context, kCGPathFill);
     
     return YES;
 }
