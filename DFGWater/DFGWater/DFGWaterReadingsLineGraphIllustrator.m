@@ -70,7 +70,7 @@
     CGContextSetStrokeColorWithColor(*context, axesLineColor);
     CGContextSetLineWidth(*context, 0.8);
     //CGContextBeginPath(*context);
-    CGFloat graphPadding = 10.0;
+    CGFloat graphPadding = 40.0;
     CGPoint graphStart = CGPointMake(graphPadding, graphPadding);
     
     // Left vertical line
@@ -89,7 +89,17 @@
     // Horizontal grid lines
     //
     
-    int numLines = 5;
+    int numLines;
+    
+    if (yRange == 1) {
+        numLines = 5;
+    } else if (yRange > 1 && yRange <= 5) {
+        numLines = 5;
+    } else {
+        numLines = yRange;
+    }
+    
+    
     // Equal Y padding on top and bottom, hence the * 2.
     float lineYStep = (rect.size.height - (graphStart.y * 2)) / numLines;
 
@@ -121,8 +131,6 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
-    NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:5];
-
     float valueX = 0;
     float lastX = 0;
     int numSecondsSinceLastReading = 0;
