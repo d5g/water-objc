@@ -101,7 +101,7 @@
     CGContextSetStrokeColorWithColor(*context, axesLineColor);
     CGContextSetLineWidth(*context, 0.8);
     //CGContextBeginPath(*context);
-    CGFloat graphPadding = 40.0;
+    CGFloat graphPadding = 5.0;
     CGPoint graphStart = CGPointMake(graphPadding, graphPadding);
     
     // Left vertical line

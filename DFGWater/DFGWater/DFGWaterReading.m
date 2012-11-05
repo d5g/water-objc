@@ -29,7 +29,7 @@
 
 - (NSString*)valueWithUnit
 {
-    return [NSString stringWithFormat:@"%@ %@", [self value], [self unit]];
+    return [NSString stringWithFormat:@"%.2f %@", [[self value] floatValue], [self unit]];
 }
 
 - (NSDecimalNumber*)valueAsDecimalNumber
