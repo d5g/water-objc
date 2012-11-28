@@ -118,7 +118,7 @@
     CGContextSetStrokeColorWithColor(*context, axesLineColor);
     CGContextSetLineWidth(*context, 0.8);
     //CGContextBeginPath(*context);
-    CGFloat graphPadding = 5.0;
+    CGFloat graphPadding = 12.0;
     CGPoint graphStart = CGPointMake(graphPadding, graphPadding);
     
     // Left vertical line
@@ -158,6 +158,7 @@
     CGFloat lineStartY;
     const char* yLabelString;
     float stepPerLine = (highValue - lowValue) / numLines;
+    NSString* readingUnit = [[readings objectAtIndex:0] unit];
                                 
     for (int i = 0; i <= numLines; i++) {
         lineStartY = graphStart.y + (lineYStep * i);
@@ -171,7 +172,7 @@
         
         // Label each line.
         float axisValue = (float) (lowValue + (stepPerLine * i));
-        yLabelString = [[NSString stringWithFormat:@"%.2f %@", axisValue, @"ft"] cStringUsingEncoding:NSUTF8StringEncoding];
+        yLabelString = [[NSString stringWithFormat:@"%.2f %@", axisValue, readingUnit] cStringUsingEncoding:NSUTF8StringEncoding];
         
         // TODO: use the axesFont given
         CGContextSelectFont(*context, "Arial", 12.0, kCGEncodingMacRoman);
