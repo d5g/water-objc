@@ -32,6 +32,8 @@
 @synthesize fontY;
 @synthesize gridLineColor;
 @synthesize axesLineColor;
+@synthesize axesFont;
+@synthesize dateFormatter;
 @synthesize graphLineColor;
 @synthesize graphFillColor;
 @synthesize extractor;
@@ -84,7 +86,22 @@
     NSLog(@"max date: %@", maxDate);
     
     float lowValue = floor(minValue);
+    
+    // If the low value is equal to the minimum value, allow an
+    // extra foot of low value on the graph so it doesn't bottom
+    // out at the bottom of the graph.
+    if (minValue != 0.0 && lowValue == minValue) {
+        lowValue--;
+    }
+    
     float highValue = ceil(maxValue);
+
+    // Same here -- don't show the max value at the very top of the
+    // graph if the high value is equal to the max.
+    if (maxValue != 0.0 && highValue == maxValue) {
+        highValue++;
+    }
+    
     float yRange = highValue - lowValue;
 
     // Not our job to draw the title
@@ -139,11 +156,26 @@
     CGContextSetLineDash(*context, 0.0, dash, 2);
     
     CGFloat lineStartY;
-
-    for (int i = 1; i <= numLines; i++) {
+    const char* yLabelString;
+    float stepPerLine = (highValue - lowValue) / numLines;
+                                
+    for (int i = 0; i <= numLines; i++) {
         lineStartY = graphStart.y + (lineYStep * i);
-        CGContextMoveToPoint(*context, graphStart.x, lineStartY);
-        CGContextAddLineToPoint(*context, rect.size.width - graphPadding, lineStartY);
+        
+        // We've already drawn the bottom Y axis line, so skip it,
+        // but ensure that we still label each one.
+        if (i > 0) {
+            CGContextMoveToPoint(*context, graphStart.x, lineStartY);
+            CGContextAddLineToPoint(*context, rect.size.width - graphPadding, lineStartY);
+        }
+        
+        // Label each line.
+        float axisValue = (float) (lowValue + (stepPerLine * i));
+        yLabelString = [[NSString stringWithFormat:@"%.2f %@", axisValue, @"ft"] cStringUsingEncoding:NSUTF8StringEncoding];
+        
+        // TODO: use the axesFont given
+        CGContextSelectFont(*context, "Arial", 12.0, kCGEncodingMacRoman);
+        CGContextShowTextAtPoint(*context, graphStart.x, lineStartY, yLabelString, strlen(yLabelString));
     }
 
     //
@@ -157,15 +189,13 @@
     
     int numSecondsRange = [lastDate timeIntervalSinceDate:firstDate];
     float numPixelsPerSecond = (rect.size.width - (graphPadding * 2)) / numSecondsRange;
-    
-    
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    
+        
     float valueX = 0;
     float lastX = 0;
     int numSecondsSinceLastReading = 0;
     DFGWaterReading* lastReading = nil;
+    
+    const char* xLabelString = nil;
     
     for (DFGWaterReading* reading in readings) {
         // After drawing this point, determine if the day changed.  If it has, draw
@@ -185,6 +215,13 @@
         if (![readingDay isEqualToString:lastDay]) {
             CGContextMoveToPoint(*context, valueX, graphStart.y);
             CGContextAddLineToPoint(*context, valueX, rect.size.height - graphPadding);
+            
+            // Label each line.
+            xLabelString = [[NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:[reading date]]] cStringUsingEncoding:NSUTF8StringEncoding];
+            
+            // TODO: use the axesFont given
+            CGContextSelectFont(*context, "Arial", 12.0, kCGEncodingMacRoman);
+            CGContextShowTextAtPoint(*context, valueX, 0, xLabelString, strlen(xLabelString));
         }
         
         lastDay = readingDay;
@@ -241,7 +278,7 @@
     for (DFGWaterReading* reading in readings) {
         numSecondsSinceLastReading = [[reading date] timeIntervalSinceDate:[lastReading date]];
         
-        if (numSecondsSinceLastReading < 0) {
+        if (numSecondsSinceLastReading <= 0) {
             valueX = graphStart.x;
         } else {
             valueX = lastX + (numSecondsSinceLastReading * numPixelsPerSecond);
@@ -250,7 +287,11 @@
         relevantReading = [self reading:[[reading value] floatValue] cumulative:cumulative];
         
         // height - ((low value / number of feet in graph)) * (number of pixels in graph)
-        valueY = ((relevantReading - lowValue) / yRange) * graphHeight;
+        valueY = (((relevantReading - lowValue) / yRange) * graphHeight) + graphStart.y;
+        
+        if (isnan(valueY)) {
+            valueY = graphStart.y;
+        }
         
         CGContextAddLineToPoint(*context, valueX, valueY);
         

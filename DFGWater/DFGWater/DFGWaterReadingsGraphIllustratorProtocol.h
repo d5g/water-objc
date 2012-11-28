@@ -30,6 +30,8 @@
 @property (nonatomic, assign) CGFontRef fontY;
 @property (nonatomic, assign) CGColorRef gridLineColor;
 @property (nonatomic, assign) CGColorRef axesLineColor;
+@property (nonatomic, assign) CGFontRef axesFont;
+@property (nonatomic, retain) NSDateFormatter* dateFormatter;
 @property (nonatomic, assign) CGColorRef graphLineColor;
 @property (nonatomic, assign) CGColorRef graphFillColor;
 @property (nonatomic, strong) DFGWaterReadingsDataExtractor* extractor;
