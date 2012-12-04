@@ -10,6 +10,7 @@
 #import <CoreLocation/CLLocation.h>
 
 @class DFGWaterReading;
+@class DFGWaterGaugeStages;
 
 @interface DFGWaterGauge : NSObject
 
@@ -40,5 +41,7 @@
 @property (nonatomic, strong) NSArray* precipitationReadings;
 @property (nonatomic, strong) NSArray* dischargeReadings;
 @property (nonatomic, strong) NSArray* waterTemperatureReadings;
+
+@property (nonatomic, strong) DFGWaterGaugeStages* stages;
 
 @end

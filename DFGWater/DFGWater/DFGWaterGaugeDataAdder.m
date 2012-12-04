@@ -11,6 +11,8 @@
 #import "DFGWaterReading.h"
 #import "DFGWaterDateMaker.h"
 #import "DFGWaterGaugeReadingsBuilder.h"
+#import "DFGWaterGaugeStages.h"
+#import "DFGWaterGaugeStage.h"
 
 @implementation DFGWaterGaugeDataAdder
 {
@@ -113,6 +115,53 @@
     if ((rawReadings = [dict valueForKeyPath:@"gauge.readings.water_temperature.raw_values"])) {
         NSArray* readings = [readingsBuilder buildReadings:rawReadings];
         [gauge setWaterTemperatureReadings:readings];
+    }
+    
+    //
+    // Setup the raw values for the flood stages
+    //
+    
+    NSDictionary* rawStages = [dict valueForKeyPath:@"gauge.stages"];
+    
+    if (rawStages) {
+        float actionHeight = [[rawStages objectForKey:@"action_height"] floatValue];
+        float floodHeight = [[rawStages objectForKey:@"flood_height"] floatValue];
+        float moderateHeight = [[rawStages objectForKey:@"moderate_height"] floatValue];
+        float majorHeight = [[rawStages objectForKey:@"major_height"] floatValue];
+        
+        DFGWaterGaugeStages* stages = [[DFGWaterGaugeStages alloc] init];
+        
+        if (actionHeight) {
+            DFGWaterGaugeStage* actionStage = [[DFGWaterGaugeStage alloc] init];
+            [actionStage setName:@"Action"];
+            [actionStage setValue:actionHeight];
+            [stages setAction:actionStage];
+        }
+        
+        if (floodHeight) {
+            DFGWaterGaugeStage* floodStage = [[DFGWaterGaugeStage alloc] init];
+            [floodStage setName:@"Flood"];
+            [floodStage setValue:floodHeight];
+            [stages setFlood:floodStage];
+        }
+        
+        if (moderateHeight) {
+            DFGWaterGaugeStage* moderateStage = [[DFGWaterGaugeStage alloc] init];
+            [moderateStage setName:@"Moderate"];
+            [moderateStage setValue:moderateHeight];
+            [stages setModerate:moderateStage];
+        }
+
+        if (majorHeight) {
+            DFGWaterGaugeStage* majorStage = [[DFGWaterGaugeStage alloc] init];
+            [majorStage setName:@"Major"];
+            [majorStage setValue:moderateHeight];
+            [stages setMajor:majorStage];
+        }
+        
+        if ([stages hasStage]) {
+            [gauge setStages:stages];
+        }
     }
 
     return YES;

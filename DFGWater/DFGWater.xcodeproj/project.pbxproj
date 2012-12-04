@@ -53,6 +53,10 @@
 		D33EC02216420C5A00737263 /* DFGWaterReadingsDataExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */; };
 		D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */; };
+		D38A09D6166D8B48001430FD /* DFGWaterGaugeStages.h in Headers */ = {isa = PBXBuildFile; fileRef = D38A09D4166D8B48001430FD /* DFGWaterGaugeStages.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38A09D7166D8B48001430FD /* DFGWaterGaugeStages.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A09D5166D8B48001430FD /* DFGWaterGaugeStages.m */; };
+		D38A09DB166D8B76001430FD /* DFGWaterGaugeStage.h in Headers */ = {isa = PBXBuildFile; fileRef = D38A09D9166D8B76001430FD /* DFGWaterGaugeStage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38A09DC166D8B76001430FD /* DFGWaterGaugeStage.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A09DA166D8B76001430FD /* DFGWaterGaugeStage.m */; };
 		D396394D163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D396394E163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D396394C163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m */; };
 		D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +127,10 @@
 		D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterReadingsDataExtractor.m; sourceTree = "<group>"; };
 		D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGMapAnnotationWaterGauge.h; sourceTree = "<group>"; };
 		D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGMapAnnotationWaterGauge.m; sourceTree = "<group>"; };
+		D38A09D4166D8B48001430FD /* DFGWaterGaugeStages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeStages.h; sourceTree = "<group>"; };
+		D38A09D5166D8B48001430FD /* DFGWaterGaugeStages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeStages.m; sourceTree = "<group>"; };
+		D38A09D9166D8B76001430FD /* DFGWaterGaugeStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeStage.h; sourceTree = "<group>"; };
+		D38A09DA166D8B76001430FD /* DFGWaterGaugeStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeStage.m; sourceTree = "<group>"; };
 		D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeReadingsBuilder.h; sourceTree = "<group>"; };
 		D396394C163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeReadingsBuilder.m; sourceTree = "<group>"; };
 		D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeDetailRequestBuilderProtocol.h; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				D3CD85B91640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m */,
 				D33EC01F16420C5A00737263 /* DFGWaterReadingsDataExtractor.h */,
 				D33EC02016420C5A00737263 /* DFGWaterReadingsDataExtractor.m */,
+				D38A09D4166D8B48001430FD /* DFGWaterGaugeStages.h */,
+				D38A09D5166D8B48001430FD /* DFGWaterGaugeStages.m */,
+				D38A09D9166D8B76001430FD /* DFGWaterGaugeStage.h */,
+				D38A09DA166D8B76001430FD /* DFGWaterGaugeStage.m */,
 			);
 			path = DFGWater;
 			sourceTree = "<group>";
@@ -306,6 +318,8 @@
 				D3CD85BA1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.h in Headers */,
 				D3CD85BC1640A7F700405931 /* DFGWaterReadingsGraphIllustratorProtocol.h in Headers */,
 				D33EC02116420C5A00737263 /* DFGWaterReadingsDataExtractor.h in Headers */,
+				D38A09D6166D8B48001430FD /* DFGWaterGaugeStages.h in Headers */,
+				D38A09DB166D8B76001430FD /* DFGWaterGaugeStage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +438,8 @@
 				D396394E163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m in Sources */,
 				D3CD85BB1640A7E500405931 /* DFGWaterReadingsLineGraphIllustrator.m in Sources */,
 				D33EC02216420C5A00737263 /* DFGWaterReadingsDataExtractor.m in Sources */,
+				D38A09D7166D8B48001430FD /* DFGWaterGaugeStages.m in Sources */,
+				D38A09DC166D8B76001430FD /* DFGWaterGaugeStage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

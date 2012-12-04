@@ -21,3 +21,5 @@
 #import "DFGWaterReadingsGraphIllustratorProtocol.h"
 #import "DFGWaterReadingsLineGraphIllustrator.h"
 #import "DFGWaterReadingsDataExtractor.h"
+#import "DFGWaterGaugeStages.h"
+#import "DFGWaterGaugeStage.h"
