@@ -11,6 +11,7 @@
 @interface DFGWaterGaugeStage : NSObject
 
 - (NSDecimalNumber*)valueAsDecimalNumber;
+- (NSString*)valueWithUnit;
 
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, assign) float value;

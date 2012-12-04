@@ -12,6 +12,7 @@
 
 @synthesize name;
 @synthesize value;
+@synthesize unit;
 
 - (NSDecimalNumber*)valueAsDecimalNumber
 {
@@ -20,6 +21,11 @@
     NSDecimalNumber* decimal = (NSDecimalNumber*)[formatter numberFromString:[NSString stringWithFormat:@"%.4f", value]];
     
     return decimal;
+}
+
+- (NSString*)valueWithUnit
+{
+    return [NSString stringWithFormat:@"%.2f %@", value, unit];
 }
 
 - (NSString*)description

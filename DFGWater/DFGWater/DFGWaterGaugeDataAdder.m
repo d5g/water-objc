@@ -124,38 +124,43 @@
     NSDictionary* rawStages = [dict valueForKeyPath:@"gauge.stages"];
     
     if (rawStages) {
-        float actionHeight = [[rawStages objectForKey:@"action_height"] floatValue];
-        float floodHeight = [[rawStages objectForKey:@"flood_height"] floatValue];
-        float moderateHeight = [[rawStages objectForKey:@"moderate_height"] floatValue];
-        float majorHeight = [[rawStages objectForKey:@"major_height"] floatValue];
+        id actionHeight = [rawStages objectForKey:@"action_height"];
+        id floodHeight = [rawStages objectForKey:@"flood_height"];
+        id moderateHeight = [rawStages objectForKey:@"moderate_height"];
+        id majorHeight = [rawStages objectForKey:@"major_height"];
+        NSString* stageUnit = [rawStages objectForKey:@"unit"];
         
         DFGWaterGaugeStages* stages = [[DFGWaterGaugeStages alloc] init];
         
-        if (actionHeight) {
+        if (actionHeight != [NSNull null]) {
             DFGWaterGaugeStage* actionStage = [[DFGWaterGaugeStage alloc] init];
             [actionStage setName:@"Action"];
-            [actionStage setValue:actionHeight];
+            [actionStage setValue:[actionHeight floatValue]];
+            [actionStage setUnit:stageUnit];
             [stages setAction:actionStage];
         }
         
-        if (floodHeight) {
+        if (floodHeight != [NSNull null]) {
             DFGWaterGaugeStage* floodStage = [[DFGWaterGaugeStage alloc] init];
             [floodStage setName:@"Flood"];
-            [floodStage setValue:floodHeight];
+            [floodStage setValue:[floodHeight floatValue]];
+            [floodStage setUnit:stageUnit];
             [stages setFlood:floodStage];
         }
         
-        if (moderateHeight) {
+        if (moderateHeight != [NSNull null]) {
             DFGWaterGaugeStage* moderateStage = [[DFGWaterGaugeStage alloc] init];
             [moderateStage setName:@"Moderate"];
-            [moderateStage setValue:moderateHeight];
+            [moderateStage setValue:[moderateHeight floatValue]];
+            [moderateStage setUnit:stageUnit];
             [stages setModerate:moderateStage];
         }
 
-        if (majorHeight) {
+        if (majorHeight != [NSNull null]) {
             DFGWaterGaugeStage* majorStage = [[DFGWaterGaugeStage alloc] init];
             [majorStage setName:@"Major"];
-            [majorStage setValue:moderateHeight];
+            [majorStage setValue:[majorHeight floatValue]];
+            [majorStage setUnit:stageUnit];
             [stages setMajor:majorStage];
         }
         
