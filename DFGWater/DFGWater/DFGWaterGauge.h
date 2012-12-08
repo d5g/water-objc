@@ -11,6 +11,7 @@
 
 @class DFGWaterReading;
 @class DFGWaterGaugeStages;
+@class DFGWaterGaugeForecast;
 
 @interface DFGWaterGauge : NSObject
 
@@ -43,5 +44,7 @@
 @property (nonatomic, strong) NSArray* waterTemperatureReadings;
 
 @property (nonatomic, strong) DFGWaterGaugeStages* stages;
+
+@property (nonatomic, strong) DFGWaterGaugeForecast* heightForecast;
 
 @end

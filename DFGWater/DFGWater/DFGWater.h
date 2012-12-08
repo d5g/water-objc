@@ -23,3 +23,4 @@
 #import "DFGWaterReadingsDataExtractor.h"
 #import "DFGWaterGaugeStages.h"
 #import "DFGWaterGaugeStage.h"
+#import "DFGWaterGaugeForecast.h"

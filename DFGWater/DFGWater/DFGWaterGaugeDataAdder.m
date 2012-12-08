@@ -13,6 +13,7 @@
 #import "DFGWaterGaugeReadingsBuilder.h"
 #import "DFGWaterGaugeStages.h"
 #import "DFGWaterGaugeStage.h"
+#import "DFGWaterGaugeForecast.h"
 
 @implementation DFGWaterGaugeDataAdder
 {
@@ -166,6 +167,35 @@
         
         if ([stages hasStage]) {
             [gauge setStages:stages];
+        }
+    }
+    
+    //
+    // Forecasts
+    //
+    
+    // Height
+    NSDictionary* forecastHeight = [dict valueForKeyPath:@"gauge.forecast.height"];
+    
+    if (forecastHeight) {
+        NSDictionary* highest = [forecastHeight objectForKey:@"highest"];
+        DFGWaterReading* heightHighestReading = nil;
+        NSDate* issued = nil;
+        
+        if (highest) {
+            NSString* unit = [highest objectForKey:@"unit"];
+            NSString* value = [NSString stringWithFormat:@"%.4f", [[highest objectForKey:@"value"] floatValue]];
+            NSDate* date = [dateMaker dateFromISODateString:[highest objectForKey:@"when"]];
+            issued = [dateMaker dateFromISODateString:[highest objectForKey:@"issued"]];
+            
+            heightHighestReading = [[DFGWaterReading alloc] initWithValue:value unit:unit atDate:date];
+        }
+
+        if (heightHighestReading) {
+            DFGWaterGaugeForecast* heightForecast = [[DFGWaterGaugeForecast alloc] init];
+            [heightForecast setHighestReading:heightHighestReading];
+            [heightForecast setIssued:issued];
+            [gauge setHeightForecast:heightForecast];
         }
     }
 
