@@ -13,6 +13,13 @@
 @class DFGWaterGaugeStages;
 @class DFGWaterGaugeForecast;
 
+typedef enum {
+    kDFGWaterGaugeHeightStatusSteady = 1,
+    kDFGWaterGaugeHeightStatusRising,
+    kDFGWaterGaugeHeightStatusFalling,
+    kDFGWaterGaugeHeightStatusUnknown
+} DFGWaterGaugeHeightStatusType;
+
 @interface DFGWaterGauge : NSObject
 
 @property (nonatomic, copy) NSString* gaugeID;
@@ -46,5 +53,7 @@
 @property (nonatomic, strong) DFGWaterGaugeStages* stages;
 
 @property (nonatomic, strong) DFGWaterGaugeForecast* heightForecast;
+
+@property (nonatomic, assign) DFGWaterGaugeHeightStatusType heightStatus;
 
 @end

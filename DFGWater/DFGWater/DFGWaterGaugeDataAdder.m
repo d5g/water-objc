@@ -119,6 +119,12 @@
     }
     
     //
+    // Setup gauge height status.
+    //
+    
+    NSString* heightStatus;
+    
+    //
     // Setup the raw values for the flood stages
     //
     
