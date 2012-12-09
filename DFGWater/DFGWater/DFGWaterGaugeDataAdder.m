@@ -122,14 +122,14 @@
     // Setup the raw values for the flood stages
     //
     
-    NSDictionary* rawStages = [dict valueForKeyPath:@"gauge.stages"];
+    id rawStages = [dict valueForKeyPath:@"gauge.stages"];
     
-    if (rawStages) {
-        id actionHeight = [rawStages objectForKey:@"action_height"];
-        id floodHeight = [rawStages objectForKey:@"flood_height"];
-        id moderateHeight = [rawStages objectForKey:@"moderate_height"];
-        id majorHeight = [rawStages objectForKey:@"major_height"];
-        NSString* stageUnit = [rawStages objectForKey:@"unit"];
+    if (rawStages != [NSNull null]) {
+        id actionHeight = [(NSDictionary*)rawStages objectForKey:@"action_height"];
+        id floodHeight = [(NSDictionary*)rawStages objectForKey:@"flood_height"];
+        id moderateHeight = [(NSDictionary*)rawStages objectForKey:@"moderate_height"];
+        id majorHeight = [(NSDictionary*)rawStages objectForKey:@"major_height"];
+        NSString* stageUnit = [(NSDictionary*)rawStages objectForKey:@"unit"];
         
         DFGWaterGaugeStages* stages = [[DFGWaterGaugeStages alloc] init];
         
@@ -175,10 +175,10 @@
     //
     
     // Height
-    NSDictionary* forecastHeight = [dict valueForKeyPath:@"gauge.forecast.height"];
+    id forecastHeight = [dict valueForKeyPath:@"gauge.forecast.height"];
     
-    if (forecastHeight) {
-        NSDictionary* highest = [forecastHeight objectForKey:@"highest"];
+    if (forecastHeight != [NSNull null]) {
+        NSDictionary* highest = [(NSDictionary*)forecastHeight objectForKey:@"highest"];
         DFGWaterReading* heightHighestReading = nil;
         NSDate* issued = nil;
         
