@@ -122,7 +122,23 @@
     // Setup gauge height status.
     //
     
-    NSString* heightStatus;
+    id heightStatus = [dict valueForKeyPath:@"gauge.readings.height.status"];
+    
+    if (heightStatus != [NSNull null]) {
+        DFGWaterGaugeHeightStatusType status;
+        
+        if ([(NSString*)heightStatus isEqualToString:@"rising"]) {
+            status = kDFGWaterGaugeHeightStatusRising;
+        } else if ([(NSString*)heightStatus isEqualToString:@"falling"]) {
+            status = kDFGWaterGaugeHeightStatusFalling;
+        } else if ([(NSString*)heightStatus isEqualToString:@"steady"]) {
+            status = kDFGWaterGaugeHeightStatusSteady;
+        } else {
+            status = kDFGWaterGaugeHeightStatusUnknown;
+        }
+        
+        [gauge setHeightStatus:status];
+    }
     
     //
     // Setup the raw values for the flood stages
