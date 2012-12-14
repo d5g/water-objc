@@ -20,9 +20,17 @@
     self = [super init];
     
     if (self) {
+        NSLog(@"trying");
         // Managed object model
-        //managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:[NSArray arrayWithObject:bundle]];
-        managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:[NSArray arrayWithObject:bundle]];
+        //managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+
+        NSString* bundlePath = [[NSBundle mainBundle] pathForResource:@"DFGWaterModels"
+                                                     ofType:@"bundle"];
+        NSBundle* modelsBundle = [NSBundle bundleWithPath:bundlePath];
+        NSString* modelPath = [modelsBundle pathForResource:@"FloodWatch2"
+                                     ofType:@"momd"];
+        NSURL* modelURL = [NSURL fileURLWithPath:modelPath];
+        managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
         
         // Persistent store setup
         persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="2.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3012" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="FavoriteGauge" representedClassName="FavoriteGauge" syncable="YES">
+        <attribute name="agency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="agencyGaugeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="agencySlug" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countyCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gaugeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="heightStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastDischargeReadingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastDischargeReadingUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastDischargeReadingValue" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastHeightReadingDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastHeightReadingUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastHeightReadingValue" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastWaterTemperatureReadingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastWaterTemperatureReadingUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastWaterTemperatureReadingValue" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="locationLatitude" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="locationLongitude" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precipitation7DaysReadingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="precipitation7DaysReadingUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precipitation7DaysReadingValue" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="precipitation24HoursReadingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="precipitation24HoursReadingUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precipitation24HoursReadingValue" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="stateCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FavoriteGauge" positionX="160" positionY="192" width="128" height="420"/>
+    </elements>
+</model>
