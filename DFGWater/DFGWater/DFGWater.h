@@ -24,3 +24,4 @@
 #import "DFGWaterGaugeStages.h"
 #import "DFGWaterGaugeStage.h"
 #import "DFGWaterGaugeForecast.h"
+#import "DFGWaterFavoritesManager.h"

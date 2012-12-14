@@ -48,12 +48,12 @@
 
 - (NSString*)extractStateCode:(NSDictionary*)gauge
 {
-    return [gauge objectForKey:@"state_code"];
+    return [[gauge objectForKey:@"location"] objectForKey:@"state_code"];
 }
 
 - (NSString*)extractCountyCode:(NSDictionary*)gauge
 {
-    return [gauge objectForKey:@"county_code"];
+    return [[gauge objectForKey:@"location"] objectForKey:@"county_code"];
 }
 
 @end
