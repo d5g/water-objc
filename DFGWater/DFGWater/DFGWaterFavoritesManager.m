@@ -18,7 +18,8 @@
 - (id)initWithBundle:(NSBundle*)bundle
 {
     self = [super init];
-    
+
+    /**
     if (self) {
         NSLog(@"trying");
         // Managed object model
@@ -53,6 +54,7 @@
         managedObjectContext = [[NSManagedObjectContext alloc] init];
         [managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
     }
+    **/
     
     return self;
 }
@@ -66,6 +68,7 @@
 - (BOOL)isInFavorites:(DFGWaterGauge*)gauge
 {
     NSLog(@"is in favorites?");
+    return NO;
 
     // Determine if gage is in favorites
     NSEntityDescription *favoriteGaugeEntity = [NSEntityDescription entityForName:@"FavoriteGauge" inManagedObjectContext:managedObjectContext];
