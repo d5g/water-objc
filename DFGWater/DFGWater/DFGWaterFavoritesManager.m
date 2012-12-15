@@ -8,6 +8,13 @@
 
 #import "DFGWaterFavoritesManager.h"
 #import "DFGWaterGauge.h"
+#import "DFGWaterReading.h"
+
+@interface DFGWaterFavoritesManager ()
+
+- (NSManagedObject*)favoriteGaugeByGaugeID:(DFGWaterGauge*)gauge;
+
+@end
 
 @implementation DFGWaterFavoritesManager
 
@@ -19,7 +26,6 @@
 {
     self = [super init];
 
-    /**
     if (self) {
         NSLog(@"trying");
         // Managed object model
@@ -54,7 +60,6 @@
         managedObjectContext = [[NSManagedObjectContext alloc] init];
         [managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
     }
-    **/
     
     return self;
 }
@@ -62,14 +67,71 @@
 - (BOOL)addToFavorites:(DFGWaterGauge*)gauge
 {
     NSLog(@"add to favorites");
+    
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"FavoriteGauge" inManagedObjectContext:managedObjectContext];
+    NSManagedObject* favorite = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    
+    [favorite setValue:[gauge gaugeID] forKey:@"gaugeID"];
+    [favorite setValue:[gauge agency] forKey:@"agency"];
+    [favorite setValue:[gauge agencySlug] forKey:@"agencySlug"];
+    [favorite setValue:[gauge name] forKey:@"name"];
+    [favorite setValue:[NSDecimalNumber numberWithFloat:[gauge locationCoordinate].latitude] forKey:@"locationLatitude"];
+    [favorite setValue:[NSDecimalNumber numberWithFloat:[gauge locationCoordinate].longitude] forKey:@"locationLongitude"];
+    [favorite setValue:[[gauge lastHeightReading] value] forKey:@"lastHeightReadingValue"];
+    [favorite setValue:[[gauge lastHeightReading] date] forKey:@"lastHeightReadingDate"];
+    [favorite setValue:[[gauge lastHeightReading] unit] forKey:@"lastHeightReadingUnit"];
+    
+    [managedObjectContext insertObject:favorite];
+    
+    NSError* error;
+    [managedObjectContext save:&error];
+    
     return NO;
 }
 
 - (BOOL)isInFavorites:(DFGWaterGauge*)gauge
 {
-    NSLog(@"is in favorites?");
-    return NO;
+    BOOL isInFavorites = [self favoriteGaugeByGaugeID:gauge] != nil;
+    NSLog(@"is in favorites? %d", isInFavorites);
+    return isInFavorites;
+}
 
+- (BOOL)removeFromFavorites:(DFGWaterGauge*)gauge
+{
+    NSLog(@"remove from favorites");
+    
+    NSManagedObject* favoriteGauge = [self favoriteGaugeByGaugeID:gauge];
+    
+    if (!favoriteGauge) {
+        return NO;
+    }
+    
+    [managedObjectContext deleteObject:favoriteGauge];
+    
+    NSError* error;
+    [managedObjectContext save:&error];
+    
+    return YES;
+}
+
+- (NSArray*)allFavorites:(DFGWaterFavoritesSortType)sort error:(NSError*)error
+{
+    NSEntityDescription *favoriteGaugeEntity = [NSEntityDescription entityForName:@"FavoriteGauge" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:favoriteGaugeEntity];
+
+    // No predicate -- get them all.
+    [request setPredicate:[NSPredicate predicateWithValue:YES]];
+    
+    NSArray* favorites = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    // TODO: turn me into DFGWaterGauge objects.
+    
+    return favorites;
+}
+
+- (NSManagedObject*)favoriteGaugeByGaugeID:(DFGWaterGauge*)gauge
+{
     // Determine if gage is in favorites
     NSEntityDescription *favoriteGaugeEntity = [NSEntityDescription entityForName:@"FavoriteGauge" inManagedObjectContext:managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -81,15 +143,11 @@
     NSError *error;
     NSArray *matches = [managedObjectContext executeFetchRequest:request error:&error];
     
-    NSLog(@"matches count = %d", [matches count]);
+    if ([matches count] == 0) {
+        return nil;
+    }
     
-    return ([matches count] > 0);
-}
-
-- (BOOL)removeFromFavorites:(DFGWaterGauge*)gauge
-{
-    NSLog(@"remove from favorites");
-    return YES;
+    return [matches objectAtIndex:0];
 }
 
 @end
