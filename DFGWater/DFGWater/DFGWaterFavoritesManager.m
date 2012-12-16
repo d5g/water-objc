@@ -13,6 +13,7 @@
 @interface DFGWaterFavoritesManager ()
 
 - (NSManagedObject*)favoriteGaugeByGaugeID:(DFGWaterGauge*)gauge;
+- (DFGWaterGauge*)gaugeFromManagedObject:(NSManagedObject*)mo;
 
 @end
 
@@ -73,6 +74,7 @@
     
     [favorite setValue:[gauge gaugeID] forKey:@"gaugeID"];
     [favorite setValue:[gauge agency] forKey:@"agency"];
+    [favorite setValue:[gauge agencyGaugeID] forKey:@"agencyGaugeID"];
     [favorite setValue:[gauge agencySlug] forKey:@"agencySlug"];
     [favorite setValue:[gauge name] forKey:@"name"];
     [favorite setValue:[NSDecimalNumber numberWithFloat:[gauge locationCoordinate].latitude] forKey:@"locationLatitude"];
@@ -80,6 +82,7 @@
     [favorite setValue:[[gauge lastHeightReading] value] forKey:@"lastHeightReadingValue"];
     [favorite setValue:[[gauge lastHeightReading] date] forKey:@"lastHeightReadingDate"];
     [favorite setValue:[[gauge lastHeightReading] unit] forKey:@"lastHeightReadingUnit"];
+    [favorite setValue:[NSNumber numberWithInt:[gauge heightStatus]] forKey:@"heightStatus"];
     
     [managedObjectContext insertObject:favorite];
     
@@ -123,12 +126,21 @@
     // No predicate -- get them all.
     [request setPredicate:[NSPredicate predicateWithValue:YES]];
     
-    NSArray* favorites = [managedObjectContext executeFetchRequest:request error:&error];
+    NSArray* mos = [managedObjectContext executeFetchRequest:request error:&error];
     
     // TODO: turn me into DFGWaterGauge objects.
+
+    NSMutableArray* favorites = [NSMutableArray arrayWithCapacity:2];
     
-    return favorites;
+    for (NSManagedObject* mo in mos) {
+        [favorites addObject:[self gaugeFromManagedObject:mo]];
+    }
+    
+    return [NSArray arrayWithArray:favorites];
 }
+
+#pragma mark -
+#pragma mark Private methods
 
 - (NSManagedObject*)favoriteGaugeByGaugeID:(DFGWaterGauge*)gauge
 {
@@ -148,6 +160,34 @@
     }
     
     return [matches objectAtIndex:0];
+}
+
+- (DFGWaterGauge*)gaugeFromManagedObject:(NSManagedObject*)mo
+{
+    DFGWaterGauge* gauge = [[DFGWaterGauge alloc] init];
+    
+    // Basic data
+    [gauge setGaugeID:[mo valueForKey:@"gaugeID"]];
+    [gauge setAgency:[mo valueForKey:@"agency"]];
+    [gauge setAgencySlug:[mo valueForKey:@"agencySlug"]];
+    [gauge setAgencyGaugeID:[mo valueForKey:@"agencyGaugeID"]];
+    [gauge setName:[mo valueForKey:@"name"]];
+    
+    // Location
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake([[mo valueForKey:@"locationLatitude"] floatValue], [[mo valueForKey:@"locationLongitude"] floatValue]);
+    [gauge setLocationCoordinate:location];
+    
+    // Last height reading
+    NSString* lastHeightValue = [mo valueForKey:@"lastHeightReadingValue"];
+    NSString* lastHeightUnit = [mo valueForKey:@"lastHeightReadingUnit"];
+    NSDate* lastHeightDate = [mo valueForKey:@"lastHeightReadingDate"];
+    DFGWaterReading* lastHeightReading = [[DFGWaterReading alloc] initWithValue:lastHeightValue unit:lastHeightUnit atDate:lastHeightDate];
+    [gauge setLastHeightReading:lastHeightReading];
+    
+    // Height status
+    [gauge setHeightStatus:[[mo valueForKey:@"heightStatus"] intValue]];
+
+    return gauge;
 }
 
 @end
