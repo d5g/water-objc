@@ -16,6 +16,7 @@
 - (DFGWaterGauge*)gaugeFromManagedObject:(NSManagedObject*)mo;
 - (void)handleGaugeUpdates:(DFGWaterGauge*)gauge;
 - (void)unhandleGaugeUpdates:(DFGWaterGauge*)gauge;
+- (void)saveFavoritesData;
 
 // Created a reading object from the given managed object, with the given keys.
 // Used to centralize creation of DFGWaterReading objects from managed object data.
@@ -86,6 +87,13 @@
     return self;
 }
 
+- (void)dealloc
+{
+    for (DFGWaterGauge* observed in [[self gaugesByGaugeID] allValues]) {
+        [self unhandleGaugeUpdates:observed];
+    }
+}
+
 - (BOOL)addToFavorites:(DFGWaterGauge*)gauge
 {
     NSLog(@"add to favorites");
@@ -118,9 +126,6 @@
     [self updateFavoriteLastWaterTemperatureReading:favorite withGauge:gauge];
     
     [managedObjectContext insertObject:favorite];
-    
-    NSError* error;
-    [managedObjectContext save:&error];
     
     // Add the gauge object to the cache of favorites.
     [[self gaugesByGaugeID] setObject:gauge forKey:[gauge gaugeID]];
@@ -287,11 +292,25 @@
 - (void)handleGaugeUpdates:(DFGWaterGauge*)gauge
 {
     NSLog(@"listening for updates on %@", [gauge gaugeID]);
+    
+    [gauge addObserver:self forKeyPath:@"lastHeightReading" options:NSKeyValueObservingOptionNew context:NULL];
+    [gauge addObserver:self forKeyPath:@"heightStatus" options:NSKeyValueObservingOptionNew context:NULL];
+    [gauge addObserver:self forKeyPath:@"precipitationPast24HoursReading" options:NSKeyValueObservingOptionNew context:NULL];
+    [gauge addObserver:self forKeyPath:@"precipitationPast7DaysReading" options:NSKeyValueObservingOptionNew context:NULL];
+    [gauge addObserver:self forKeyPath:@"lastDischargeReading" options:NSKeyValueObservingOptionNew context:NULL];
+    [gauge addObserver:self forKeyPath:@"lastWaterTemperatureReading" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)unhandleGaugeUpdates:(DFGWaterGauge*)gauge
 {
-    NSLog(@"don't care about updates on %@", [gauge gaugeID]);    
+    NSLog(@"don't care about updates on %@", [gauge gaugeID]);
+    
+    [gauge removeObserver:self forKeyPath:@"lastHeightReading"];
+    [gauge removeObserver:self forKeyPath:@"heightStatus"];
+    [gauge removeObserver:self forKeyPath:@"precipitationPast24HoursReading"];
+    [gauge removeObserver:self forKeyPath:@"precipitationPast7DaysReading"];
+    [gauge removeObserver:self forKeyPath:@"lastDischargeReading"];
+    [gauge removeObserver:self forKeyPath:@"lastWaterTemperatureReading"];
 }
 
 - (DFGWaterReading*)readingObjectFromManagedObject:(NSManagedObject*)mo
@@ -307,10 +326,38 @@
 }
 
 #pragma mark -
+#pragma mark Observer methods
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSManagedObject* favorite = [self favoriteGaugeByGaugeID:(DFGWaterGauge*)object];
+    DFGWaterGauge* gauge = (DFGWaterGauge*)object;
+    
+    if ([keyPath isEqualToString:@"lastHeightReading"]) {
+        [self updateFavoriteLastHeightReading:favorite withGauge:gauge];
+    } else if ([keyPath isEqualToString:@"heightStatus"]) {
+        [self updateFavoriteHeightStatus:favorite withGauge:gauge];
+    } else if ([keyPath isEqualToString:@"precipitationPast24HoursReading"]) {
+        [self updateFavoritePrecipitationPast24HoursReading:favorite withGauge:gauge];
+    } else if ([keyPath isEqualToString:@"precipitationPast7DaysReading"]) {
+        [self updateFavoritePrecipitationPast7DaysReading:favorite withGauge:gauge];
+    } else if ([keyPath isEqualToString:@"lastDischargeReading"]) {
+        [self updateFavoriteLastDischargeReading:favorite withGauge:gauge];
+    } else if ([keyPath isEqualToString:@"lastWaterTemperatureReading"]) {
+        [self updateFavoriteLastWaterTemperatureReading:favorite withGauge:gauge];
+    }
+
+    // Persist whatever was updated.
+    [self saveFavoritesData];
+}
+
+#pragma mark -
 #pragma mark Private methods -- handle managed object data updates
 
 - (void)updateFavoriteLastHeightReading:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got height reading update for %@", [gauge gaugeID]);
+    
     [mo setValue:[[gauge lastHeightReading] value] forKey:@"lastHeightReadingValue"];
     [mo setValue:[[gauge lastHeightReading] date] forKey:@"lastHeightReadingDate"];
     [mo setValue:[[gauge lastHeightReading] unit] forKey:@"lastHeightReadingUnit"];
@@ -318,11 +365,15 @@
 
 - (void)updateFavoriteHeightStatus:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got height status update for %@", [gauge gaugeID]);
+    
     [mo setValue:[NSNumber numberWithInt:[gauge heightStatus]] forKey:@"heightStatus"];
 }
 
 - (void)updateFavoritePrecipitationPast24HoursReading:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got precip 24 update for %@", [gauge gaugeID]);
+
     [mo setValue:[[gauge precipitationPast24HoursReading] value] forKey:@"precipitation24HoursReadingValue"];
     [mo setValue:[[gauge precipitationPast24HoursReading] date] forKey:@"precipitation24HoursReadingDate"];
     [mo setValue:[[gauge precipitationPast24HoursReading] unit] forKey:@"precipitation24HoursReadingUnit"];
@@ -330,6 +381,8 @@
 
 - (void)updateFavoritePrecipitationPast7DaysReading:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got precip 7 update for %@", [gauge gaugeID]);
+    
     [mo setValue:[[gauge precipitationPast7DaysReading] value] forKey:@"precipitation7DaysReadingValue"];
     [mo setValue:[[gauge precipitationPast7DaysReading] date] forKey:@"precipitation7DaysReadingDate"];
     [mo setValue:[[gauge precipitationPast7DaysReading] unit] forKey:@"precipitation7DaysReadingUnit"];
@@ -337,6 +390,8 @@
 
 - (void)updateFavoriteLastDischargeReading:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got discharge update for %@", [gauge gaugeID]);
+
     [mo setValue:[[gauge lastDischargeReading] value] forKey:@"lastDischargeReadingValue"];
     [mo setValue:[[gauge lastDischargeReading] date] forKey:@"lastDischargeReadingDate"];
     [mo setValue:[[gauge lastDischargeReading] unit] forKey:@"lastDischargeReadingUnit"];
@@ -344,9 +399,17 @@
 
 - (void)updateFavoriteLastWaterTemperatureReading:(NSManagedObject*)mo withGauge:(DFGWaterGauge*)gauge
 {
+    NSLog(@"got water temp update for %@", [gauge gaugeID]);
+    
     [mo setValue:[[gauge lastWaterTemperatureReading] value] forKey:@"lastWaterTemperatureReadingValue"];
     [mo setValue:[[gauge lastWaterTemperatureReading] date] forKey:@"lastWaterTemperatureReadingDate"];
     [mo setValue:[[gauge lastWaterTemperatureReading] unit] forKey:@"lastWaterTemperatureReadingUnit"];
+}
+
+- (void)saveFavoritesData
+{
+    NSError* error;
+    [managedObjectContext save:&error];
 }
 
 @end
