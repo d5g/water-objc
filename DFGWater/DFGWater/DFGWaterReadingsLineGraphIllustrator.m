@@ -76,15 +76,6 @@
         maxValue = [[extractor sumValue:readings] floatValue];
     }
     
-    NSDate* minDate = [extractor minDate:readings];
-    NSDate* maxDate = [extractor maxDate:readings];
-
-    NSLog(@"min value: %.2f", minValue);
-    NSLog(@"max value: %.2f", maxValue);
-    
-    NSLog(@"min date: %@", minDate);
-    NSLog(@"max date: %@", maxDate);
-    
     float lowValue = floor(minValue);
     
     // If the low value is equal to the minimum value, allow an
