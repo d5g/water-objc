@@ -7,7 +7,7 @@
 //
 
 #import "DFGWaterGaugeMultiDetailAPIRequestBuilder.h"
-#import "DFGWater/DFGWater.h"
+#import "DFGWaterGauge.h"
 
 @interface DFGWaterGaugeMultiDetailAPIRequestBuilder ()
 
