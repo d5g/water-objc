@@ -13,6 +13,10 @@
 @optional
 - (id)initWithBaseURLString:(NSString*)theBaseURLString;
 
+- (id)initWithBaseURLString:(NSString*)theBaseURLString
+                    version:(NSString*)theVersion;
+
 @property (nonatomic, strong) NSString* baseURLString;
+@property (nonatomic, strong) NSString* version;
 
 @end

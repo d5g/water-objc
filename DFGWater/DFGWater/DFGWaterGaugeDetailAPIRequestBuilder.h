@@ -12,9 +12,4 @@
 
 @interface DFGWaterGaugeDetailAPIRequestBuilder : NSObject <DFGWaterGaugeDetailRequestBuilderProtocol, DFGWaterBaseURLStringProtocol>
 
-- (id)initWithBaseURLString:(NSString*)theBaseURLString
-                    version:(NSString*)theVersion;
-
-@property (nonatomic, strong) NSString* version;
-
 @end
