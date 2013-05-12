@@ -25,3 +25,4 @@
 #import "DFGWaterGaugeStage.h"
 #import "DFGWaterGaugeForecast.h"
 #import "DFGWaterFavoritesManager.h"
+#import "DFGWaterGaugeDataAdder.h"

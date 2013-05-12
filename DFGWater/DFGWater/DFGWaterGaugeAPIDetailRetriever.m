@@ -54,8 +54,6 @@
     });
     
     return YES;
-
-    return YES;
 }
 
 @end

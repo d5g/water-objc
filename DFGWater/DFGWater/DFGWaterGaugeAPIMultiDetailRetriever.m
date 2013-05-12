@@ -7,6 +7,7 @@
 //
 
 #import "DFGWaterGaugeAPIMultiDetailRetriever.h"
+#import "DFGWater/DFGWater.h"
 
 @implementation DFGWaterGaugeAPIMultiDetailRetriever
 
@@ -29,6 +30,31 @@
              successBlock:(DFGWaterGaugeMultiDetailRetrieverSuccessBlock)theSuccessBlock
                errorBlock:(DFGWaterGaugeMultiDetailRetrieverErrorBlock)theErrorBlock
 {
+    NSURLRequest* request = [requestBuilder buildWithGauges:gauges
+                                                detailLevel:detailLevel];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSURLResponse* response;
+        NSError* error;
+        
+        __weak NSURLRequest* weakRequest = request;
+        
+        NSData* data = [NSURLConnection sendSynchronousRequest:weakRequest
+                                             returningResponse:&response
+                                                         error:&error];
+        
+        NSDictionary* allGaugeData = [[self responseParser] parseResponse:response withData:data error:&error];
+        
+        DFGWaterGaugeDataAdder* dataAdder = [[DFGWaterGaugeDataAdder alloc] init];
+
+        // TODO: make data adder take an array of gauges and an array of dictionaries
+        // and pair them up correctly?
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            theSuccessBlock(gauges, detailLevel);
+        });
+    });
+    
     return YES;
 }
 
