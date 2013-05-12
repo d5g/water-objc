@@ -13,5 +13,6 @@
 @interface DFGWaterGaugeDataAdder : NSObject
 
 - (BOOL)addData:(NSDictionary*)dict toGauge:(DFGWaterGauge*)gauge;
+- (BOOL)addMultiGaugeData:(NSDictionary*)dict toGauges:(NSArray*)gauges;
 
 @end

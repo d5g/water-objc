@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DFGError.h"
+#import "DFGWaterGaugeMultiDetailResponseParserProtocol.h"
 
-@interface DFGWaterGaugeMultiDetailAPIResponseParser : NSObject
+@interface DFGWaterGaugeMultiDetailAPIResponseParser : NSObject <DFGWaterGaugeMultiDetailResponseParserProtocol, DFGError>
 
 @end

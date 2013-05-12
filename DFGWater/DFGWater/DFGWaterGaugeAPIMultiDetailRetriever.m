@@ -46,10 +46,8 @@
         NSDictionary* allGaugeData = [[self responseParser] parseResponse:response withData:data error:&error];
         
         DFGWaterGaugeDataAdder* dataAdder = [[DFGWaterGaugeDataAdder alloc] init];
+        [dataAdder addMultiGaugeData:allGaugeData toGauges:gauges];
 
-        // TODO: make data adder take an array of gauges and an array of dictionaries
-        // and pair them up correctly?
-        
         dispatch_sync(dispatch_get_main_queue(), ^{
             theSuccessBlock(gauges, detailLevel);
         });

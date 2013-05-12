@@ -16,8 +16,8 @@ typedef enum {
 
 @protocol DFGWaterGaugeMultiDetailResponseParserProtocol <NSObject>
 
-- (NSArray*)parseResponse:(NSURLResponse*)theResponse
-                 withData:(NSData*)theData
-                    error:(NSError**)theError;
+- (NSDictionary*)parseResponse:(NSURLResponse*)theResponse
+                      withData:(NSData*)theData
+                         error:(NSError**)theError;
 
 @end
