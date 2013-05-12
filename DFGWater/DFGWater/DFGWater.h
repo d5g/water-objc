@@ -26,3 +26,6 @@
 #import "DFGWaterGaugeForecast.h"
 #import "DFGWaterFavoritesManager.h"
 #import "DFGWaterGaugeDataAdder.h"
+#import "DFGWaterGaugeAPIMultiDetailRetriever.h"
+#import "DFGWaterGaugeMultiDetailAPIRequestBuilder.h"
+#import "DFGWaterGaugeMultiDetailAPIResponseParser.h"
