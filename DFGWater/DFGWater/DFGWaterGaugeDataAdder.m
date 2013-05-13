@@ -45,7 +45,7 @@
 - (BOOL)addMultiGaugeData:(NSDictionary*)dict toGauges:(NSArray*)gauges
 {
     for (NSDictionary* gaugeData in [dict valueForKeyPath:@"gauges"]) {
-        NSString* gaugeID = [dict valueForKey:@"id"];
+        NSString* gaugeID = [gaugeData valueForKey:@"id"];
         NSPredicate* findGaugePredicate = [NSPredicate predicateWithFormat:@"gaugeID = %@", gaugeID];
         NSArray* matches = [gauges filteredArrayUsingPredicate:findGaugePredicate];
 
@@ -63,7 +63,7 @@
         
         DFGWaterGauge* gauge = [matches objectAtIndex:0];
         
-        [self addGaugeNodeData:dict toGauge:gauge];
+        [self addGaugeNodeData:gaugeData toGauge:gauge];
     }
     
     return YES;
@@ -160,7 +160,7 @@
     // Setup gauge height status.
     //
     
-    id heightStatus = [dict valueForKeyPath:@"gauge.readings.height.status"];
+    id heightStatus = [dict valueForKeyPath:@"readings.height.status"];
     
     if (heightStatus != [NSNull null]) {
         DFGWaterGaugeHeightStatusType status;

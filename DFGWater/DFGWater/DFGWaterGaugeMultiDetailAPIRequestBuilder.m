@@ -35,7 +35,7 @@
 - (NSURLRequest*)buildWithGauges:(NSArray*)gauges
                      detailLevel:(DFGWaterGaugeMultiDetailLevel)detailLevel;
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/water/%@/gauge/%@/%@", baseURLString, version, [self detailLevelString:detailLevel], [self gaugesIdsString:gauges]];
+    NSString* urlString = [NSString stringWithFormat:@"%@/water/%@/gauges/%@/%@", baseURLString, version, [self detailLevelString:detailLevel], [self gaugesIdsString:gauges]];
     NSURL* url = [NSURL URLWithString:urlString];
     
     // TODO: centralize cache disabling and timeout?
@@ -53,13 +53,13 @@
 
 - (NSString*)gaugesIdsString:(NSArray*)gauges
 {
-    NSMutableString* idsString = [[NSMutableString alloc] initWithCapacity:10];
+    NSMutableArray* gaugeIDs = [[NSMutableArray alloc] initWithCapacity:2];
     
     for (DFGWaterGauge* gauge in gauges) {
-        [idsString appendFormat:@"%@", [gauge gaugeID]];
+        [gaugeIDs addObject:[gauge gaugeID]];
     }
     
-    return [NSString stringWithString:idsString];
+    return [gaugeIDs componentsJoinedByString:@","];
 }
 
 @end
