@@ -204,6 +204,10 @@
         }
     }
     
+    if ([favorites count] == 0) {
+        return nil;
+    }
+    
     return [NSArray arrayWithArray:favorites];
 }
 
