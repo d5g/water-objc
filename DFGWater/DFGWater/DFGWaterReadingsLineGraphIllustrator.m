@@ -44,6 +44,10 @@
            inContext:(CGContextRef*)context
             withRect:(CGRect)rect
 {
+    if (gauge == nil) {
+        return NO;
+    }
+    
     // Setup a new dictionary of readings by X graph coordinate.
     [self setReadingsByGraphX:[NSMutableDictionary dictionaryWithCapacity:10]];
     

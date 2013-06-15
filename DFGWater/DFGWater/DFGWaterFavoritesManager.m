@@ -133,6 +133,9 @@
     // Now that it's a favorite, listen for updates on the gauge.
     [self handleGaugeUpdates:gauge];
     
+    // TODO: do we always want to persist this early?
+    [self saveFavoritesData];
+    
     return NO;
 }
 
