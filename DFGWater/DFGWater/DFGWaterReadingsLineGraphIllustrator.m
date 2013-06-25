@@ -233,13 +233,10 @@
     //
     
     int i = 0;
-    valueX = 0;
     float valueY = 0;
     float firstX;
     float firstY;
     lastX = 0.0;
-    float lastY;
-    numSecondsSinceLastReading = 0;
     
     lastReading = nil;
 
@@ -293,7 +290,6 @@
         
         lastReading = reading;
         lastX = valueX;
-        lastY = valueY;
         
         i++;
     }
