@@ -1,6 +1,3 @@
-D5G Technology, LLC
-http://d5gtech.com/
-
 Water data SDK
 ==============
 
@@ -15,3 +12,6 @@ levels, precipitation amounts, flood stage levels, and discharge levels.
 
 Initial framework will be available as a Core Foundation framework for Cocoa
 and iOS (i.e. OS X Lion and iOS 7+).
+
+[D5G Technology, LLC](http://d5gtech.com/)
+
