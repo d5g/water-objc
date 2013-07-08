@@ -18,7 +18,7 @@ but is available as an open source project under a BSD 2-clause license.
 
 Underlying API requests can be seen below:
 
-[USGS gauge 02336910; all data](https://api.d5gtech.com/water/v1/gauge/usgs/02336910)
-[USGS gauges 02335910, 02337000; basicdata](https://api.d5gtech.com/water/v1/gauges/basic/usgs:02336910,usgs:02337000)
+* [USGS gauge 02336910; all data](https://api.d5gtech.com/water/v1/gauge/usgs/02336910)
+* [USGS gauges 02335910, 02337000; basic data](https://api.d5gtech.com/water/v1/gauges/basic/usgs:02336910,usgs:02337000)
 
 [D5G Technology, LLC](http://d5gtech.com/)
