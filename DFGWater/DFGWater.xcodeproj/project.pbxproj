@@ -62,16 +62,12 @@
 		D3474CF81731F8C100136E5B /* DFGWaterGaugeMultiDetailAPIResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3474CF61731F8C100136E5B /* DFGWaterGaugeMultiDetailAPIResponseParser.m */; };
 		D35C801415D9E7910099EE54 /* DFGMapAnnotationWaterGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D35C801515D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */; };
-		D36F8E91167C209200C68655 /* FloodWatch2.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = D3F7BFD5167AE0B500E54C05 /* FloodWatch2.xcdatamodeld */; };
-		D380AD20167AED4700E23D5E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DDFE85167AE83900B4C3F8 /* CoreFoundation.framework */; };
-		D380AD31167AF23C00E23D5E /* DFGWaterModels.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D380AD1F167AED4700E23D5E /* DFGWaterModels.bundle */; };
 		D38A09D6166D8B48001430FD /* DFGWaterGaugeStages.h in Headers */ = {isa = PBXBuildFile; fileRef = D38A09D4166D8B48001430FD /* DFGWaterGaugeStages.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D38A09D7166D8B48001430FD /* DFGWaterGaugeStages.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A09D5166D8B48001430FD /* DFGWaterGaugeStages.m */; };
 		D38A09DB166D8B76001430FD /* DFGWaterGaugeStage.h in Headers */ = {isa = PBXBuildFile; fileRef = D38A09D9166D8B76001430FD /* DFGWaterGaugeStage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D38A09DC166D8B76001430FD /* DFGWaterGaugeStage.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A09DA166D8B76001430FD /* DFGWaterGaugeStage.m */; };
 		D396394D163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D396394B163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D396394E163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D396394C163F64C500FC8CAF /* DFGWaterGaugeReadingsBuilder.m */; };
-		D3AF22F0167C229B0071C55D /* FloodWatch2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3F7BFD5167AE0B500E54C05 /* FloodWatch2.xcdatamodeld */; };
 		D3C741A81602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741A71602DA2600A685B7 /* DFGWaterGaugeDetailRequestBuilderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3C741B01602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C741AE1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3C741B11602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C741AF1602DAA100A685B7 /* DFGWaterGaugeDetailAPIRequestBuilder.m */; };
@@ -91,13 +87,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6704B82114A57569002C0A30;
 			remoteInfo = DFGWater;
-		};
-		D380AD2B167AED5D00E23D5E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6704B81914A57569002C0A30 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D380AD1E167AED4700E23D5E;
-			remoteInfo = DFGWaterModels;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -172,9 +161,6 @@
 		D3474CF61731F8C100136E5B /* DFGWaterGaugeMultiDetailAPIResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeMultiDetailAPIResponseParser.m; sourceTree = "<group>"; };
 		D35C801215D9E7900099EE54 /* DFGMapAnnotationWaterGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGMapAnnotationWaterGauge.h; sourceTree = "<group>"; };
 		D35C801315D9E7910099EE54 /* DFGMapAnnotationWaterGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGMapAnnotationWaterGauge.m; sourceTree = "<group>"; };
-		D380AD1F167AED4700E23D5E /* DFGWaterModels.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DFGWaterModels.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D380AD23167AED4700E23D5E /* DFGWaterModels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DFGWaterModels-Info.plist"; sourceTree = "<group>"; };
-		D380AD27167AED4700E23D5E /* DFGWaterModels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFGWaterModels-Prefix.pch"; sourceTree = "<group>"; };
 		D38A09D4166D8B48001430FD /* DFGWaterGaugeStages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeStages.h; sourceTree = "<group>"; };
 		D38A09D5166D8B48001430FD /* DFGWaterGaugeStages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterGaugeStages.m; sourceTree = "<group>"; };
 		D38A09D9166D8B76001430FD /* DFGWaterGaugeStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterGaugeStage.h; sourceTree = "<group>"; };
@@ -193,7 +179,6 @@
 		D3DB1AD8167831300073E1D1 /* DFGWaterFavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGWaterFavoritesManager.h; sourceTree = "<group>"; };
 		D3DB1AD9167831300073E1D1 /* DFGWaterFavoritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGWaterFavoritesManager.m; sourceTree = "<group>"; };
 		D3DDFE85167AE83900B4C3F8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		D3F7BFD6167AE0B500E54C05 /* FloodWatch2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FloodWatch2.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,14 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D380AD1C167AED4700E23D5E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D380AD20167AED4700E23D5E /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -233,7 +210,6 @@
 			children = (
 				6704B82714A57569002C0A30 /* DFGWater */,
 				6704B83B14A57569002C0A30 /* DFGWaterTests */,
-				D380AD21167AED4700E23D5E /* DFGWaterModels */,
 				6704B82414A57569002C0A30 /* Frameworks */,
 				6704B82314A57569002C0A30 /* Products */,
 			);
@@ -244,7 +220,6 @@
 			children = (
 				6704B82214A57569002C0A30 /* libDFGWater.a */,
 				6704B83214A57569002C0A30 /* DFGWaterTests.octest */,
-				D380AD1F167AED4700E23D5E /* DFGWaterModels.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -329,7 +304,6 @@
 				D3474CEB1731F64B00136E5B /* DFGWaterGaugeMultiDetailRetrieverProtocol.h */,
 				D316D47E17400BC30087E787 /* DFGWaterGaugeAPIMultiDetailRetriever.h */,
 				D316D47F17400BC30087E787 /* DFGWaterGaugeAPIMultiDetailRetriever.m */,
-				D3F7BFD5167AE0B500E54C05 /* FloodWatch2.xcdatamodeld */,
 			);
 			path = DFGWater;
 			sourceTree = "<group>";
@@ -357,23 +331,6 @@
 			children = (
 				6704B83D14A57569002C0A30 /* DFGWaterTests-Info.plist */,
 				6704B83E14A57569002C0A30 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D380AD21167AED4700E23D5E /* DFGWaterModels */ = {
-			isa = PBXGroup;
-			children = (
-				D380AD22167AED4700E23D5E /* Supporting Files */,
-			);
-			path = DFGWaterModels;
-			sourceTree = "<group>";
-		};
-		D380AD22167AED4700E23D5E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D380AD23167AED4700E23D5E /* DFGWaterModels-Info.plist */,
-				D380AD27167AED4700E23D5E /* DFGWaterModels-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -442,7 +399,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D380AD2C167AED5D00E23D5E /* PBXTargetDependency */,
 			);
 			name = DFGWater;
 			productName = DFGWater;
@@ -468,23 +424,6 @@
 			productReference = 6704B83214A57569002C0A30 /* DFGWaterTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		D380AD1E167AED4700E23D5E /* DFGWaterModels */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D380AD28167AED4700E23D5E /* Build configuration list for PBXNativeTarget "DFGWaterModels" */;
-			buildPhases = (
-				D380AD1B167AED4700E23D5E /* Sources */,
-				D380AD1C167AED4700E23D5E /* Frameworks */,
-				D380AD1D167AED4700E23D5E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DFGWaterModels;
-			productName = DFGWaterModels;
-			productReference = D380AD1F167AED4700E23D5E /* DFGWaterModels.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -508,7 +447,6 @@
 			targets = (
 				6704B82114A57569002C0A30 /* DFGWater */,
 				6704B83114A57569002C0A30 /* DFGWaterTests */,
-				D380AD1E167AED4700E23D5E /* DFGWaterModels */,
 			);
 		};
 /* End PBXProject section */
@@ -519,15 +457,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6704B84014A57569002C0A30 /* InfoPlist.strings in Resources */,
-				D380AD31167AF23C00E23D5E /* DFGWaterModels.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D380AD1D167AED4700E23D5E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D36F8E91167C209200C68655 /* FloodWatch2.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,14 +518,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D380AD1B167AED4700E23D5E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D3AF22F0167C229B0071C55D /* FloodWatch2.xcdatamodeld in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -604,11 +525,6 @@
 			isa = PBXTargetDependency;
 			target = 6704B82114A57569002C0A30 /* DFGWater */;
 			targetProxy = 6704B83814A57569002C0A30 /* PBXContainerItemProxy */;
-		};
-		D380AD2C167AED5D00E23D5E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D380AD1E167AED4700E23D5E /* DFGWaterModels */;
-			targetProxy = D380AD2B167AED5D00E23D5E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -741,46 +657,6 @@
 			};
 			name = Release;
 		};
-		D380AD29167AED4700E23D5E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DFGWaterModels/DFGWaterModels-Prefix.pch";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "DFGWaterModels/DFGWaterModels-Info.plist";
-				INSTALL_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		D380AD2A167AED4700E23D5E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DFGWaterModels/DFGWaterModels-Prefix.pch";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "DFGWaterModels/DFGWaterModels-Info.plist";
-				INSTALL_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -811,29 +687,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D380AD28167AED4700E23D5E /* Build configuration list for PBXNativeTarget "DFGWaterModels" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D380AD29167AED4700E23D5E /* Debug */,
-				D380AD2A167AED4700E23D5E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D3F7BFD5167AE0B500E54C05 /* FloodWatch2.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D3F7BFD6167AE0B500E54C05 /* FloodWatch2.xcdatamodel */,
-			);
-			currentVersion = D3F7BFD6167AE0B500E54C05 /* FloodWatch2.xcdatamodel */;
-			path = FloodWatch2.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6704B81914A57569002C0A30 /* Project object */;
 }

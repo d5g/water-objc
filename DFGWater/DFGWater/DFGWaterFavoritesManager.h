@@ -24,7 +24,7 @@ typedef enum {
 
 @interface DFGWaterFavoritesManager : NSObject
 
-- (id)initWithBundle:(NSBundle*)bundle;
+- (id)initWithManagedObjectModel:(NSManagedObjectModel*)theManagedObjectModel;
 - (BOOL)addToFavorites:(DFGWaterGauge*)gauge;
 - (BOOL)isInFavorites:(DFGWaterGauge*)gauge;
 - (BOOL)removeFromFavorites:(DFGWaterGauge*)gauge;
